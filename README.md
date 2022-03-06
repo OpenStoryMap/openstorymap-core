@@ -1,0 +1,1 @@
+# openstorymap-core
