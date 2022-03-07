@@ -1,5 +1,6 @@
 export interface Layer {
   url: string,
+  name: string
 }
 
 export default interface Config {

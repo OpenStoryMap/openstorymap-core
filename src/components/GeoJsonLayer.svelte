@@ -4,11 +4,15 @@
     import chroma from "chroma-js";
 
     export let url;
+    export let name;
     let data = undefined;
     let layer = undefined;
 
-    const map = getContext('map');
+    //const map = getContext('map');
     const colorChroma = chroma.scale(['#fff', '#000']);
+
+    // to let the layer control know we made the layer
+    const dispatch = createEventDispatcher();
 
     const onStyle = (feature) => {
         // set the opacity of the border based on percentage of population less than the income    
@@ -28,14 +32,16 @@
         }
         data = await response.json();
 
-        const leafletMap = map();
+        //const leafletMap = map();
         //layer = L.geoJSON(data, {style: onStyle});
         layer = L.geoJSON(data);
-        layer.addTo(leafletMap);
+        //layer.addTo(leafletMap);
+        dispatch('create-layer', {layer, url, name});
 
         return () => {
-            const leafletMap = map();
-            leafletMap.removeFrom(layer);
+            //const leafletMap = map();
+            //leafletMap.removeFrom(layer);
+            dispatch('remove-layer', {url, name});
         }
     };
 
