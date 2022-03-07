@@ -1,0 +1,9 @@
+{
+  "mapboxAccessToken": "",
+  "latLng": [40.689656366699694, -74.04497587916974],
+  "zoom": 13,
+  "layers": [
+    {"url": "layers/new-york-city.json"},
+    {"url": "layers/statue-of-liberty.json"}
+  ]
+}

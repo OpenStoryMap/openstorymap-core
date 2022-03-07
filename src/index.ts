@@ -1,9 +1,9 @@
 import Config from './config';
-import { initMap } from './map';
+import { initMap } from './utils/map';
 
 import './styles.scss';
 
-import rawConfig from './config.json';
+import rawConfig from './configs/config.json';
 
 async function main(): Promise<void> {
   const config = rawConfig as Config;
