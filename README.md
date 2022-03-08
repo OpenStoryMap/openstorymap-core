@@ -1,5 +1,21 @@
 # OpenStoryMap
 
+## New Docs With Svelte@
+To get this up and running, follow the docs for svelte below.
+
+The `App` component is the entrypoinit for the app.
+Here, we use svelte material ui to build a layout and split our slides from our map.
+
+The mapping piece starts with the `MapMain` file. This is basically the entrypoint.
+
+The `MapMain` component will create a `Map` component, which holds our leaflet map.
+
+Insdie the map, we dynamically create the oerlay layers using a config file in `configs/config.json`. This config holds our start point, our starting zoom, and a list of layers.
+Each layer has a name and a url. The app will take the name and url and put them a layer control in the top right corner of the map.
+
+
+# Legacy Docs
+
 ## Requirements
 
 - Node 16
@@ -33,7 +49,7 @@ npm run build
 The package will be in the `dist` directory
 
 
-# Svelte Default Readme
+## Svelte Default Readme
 
 *Psst — looking for a more complete solution? Check out [SvelteKit](https://kit.svelte.dev), the official framework for building web applications of all sizes, with a beautiful development experience and flexible filesystem-based routing.*
 
@@ -144,3 +160,4 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
+
