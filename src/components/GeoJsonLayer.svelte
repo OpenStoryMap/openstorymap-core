@@ -5,6 +5,7 @@
 
     export let url;
     export let name;
+    //export let onStyle: (feature) => any;
     let data = undefined;
     let layer = undefined;
 
@@ -33,9 +34,7 @@
         data = await response.json();
 
         //const leafletMap = map();
-        //layer = L.geoJSON(data, {style: onStyle});
         layer = L.geoJSON(data);
-        //layer.addTo(leafletMap);
         dispatch('create-layer', {layer, url, name});
 
         return () => {
