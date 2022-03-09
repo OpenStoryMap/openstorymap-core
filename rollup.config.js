@@ -84,7 +84,7 @@ export default {
         copy({
             targets: [
                 { src: 'node_modules/leaflet/dist/images/*', dest: 'public/build/images/' },
-                { src: 'node_modules/svelte-material-ui/bare.css', dest: 'public/svelte-material-ui/bare.css' },
+                { src: 'node_modules/svelte-material-ui/bare.css', dest: 'public/svelte-material-ui/' },
                 { src: 'src/layers/*', dest: 'public/layers/' },
                 { src: 'src/public/*', dest: 'public/' },
             ]
