@@ -109,6 +109,6 @@ dist
 
 
 ## App
-src/config.json
+/public
 src/layers/*
 !src/layers/statue-of-liberty.json
