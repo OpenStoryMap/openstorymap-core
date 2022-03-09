@@ -1,7 +1,6 @@
 import L from 'leaflet';
 
-import layers from './layers';
-import Config from '../config';
+import type Config from '../config';
 
 const layerStyle = {
   fillColor: "#FF00FF",
