@@ -84,6 +84,7 @@ export default {
         copy({
             targets: [
                 { src: 'node_modules/leaflet/dist/images/*', dest: 'public/build/images/' },
+                { src: 'src/public/*', dest: 'public/' },
             ]
         })
 	],
