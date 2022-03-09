@@ -3,8 +3,10 @@
     import L from 'leaflet';
     import 'leaflet/dist/leaflet.css';
     import LayersControl from './LayerControl.svelte';
+    import GeotiffLayer from './GeotiffLayer.svelte';
     import Config from '../config';
     import { SetupBaseLayer } from '../utils/map';
+    import { mapStore } from '../stores.js';
 
     // Must set either bounds, or view and zoom.
     export let bounds = undefined;
@@ -28,6 +30,7 @@
 
     function createLeaflet(node) {
         map = L.map(node).on('zoom', (e) => dispatch('zoom', e));
+        mapStore.set(map);
 
         if(bounds) {
             map.fitBounds(bounds)
@@ -59,6 +62,7 @@
     {#if map}
         <slot {map}>
         <LayersControl {config} />
+        <GeotiffLayer url={"rasters/af_hi_f.tif"} />
         </slot>
     {/if}
 </div>

@@ -1,8 +1,8 @@
 <script lang="ts">
-	export let name: string;
     import LayoutGrid, {Cell} from '@smui/layout-grid';
     import MapMain from './components/MapMain.svelte';
     import NavBar from './components/NavBar.svelte';
+    import Panel from './components/Panel.svelte'
 </script>
 
 <link rel="stylesheet" href="/svelte-material-ui/bare.css" />
@@ -11,7 +11,7 @@
     <NavBar />
     <LayoutGrid>
         <Cell span={3}>
-            <h1>Hello {name}!</h1>
+            <Panel />
         </Cell>
         <Cell span={9}>
             <MapMain />
