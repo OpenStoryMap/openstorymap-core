@@ -7,7 +7,6 @@
         const { name, url } = config;
 
         if (name == "New York City Income") {
-            console.log('here');
             return {component: LayerByIncome, ...config};
         }
 

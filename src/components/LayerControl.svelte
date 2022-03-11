@@ -19,12 +19,10 @@
     });
 
     const overlayAdd = (layer) => {
-        console.log(layer);
         $layersStore[layer.name] = true;
     }
 
     const overlayRemove = (layer) => {
-        console.log(layer);
         $layersStore[layer.name] = false;
     }
 

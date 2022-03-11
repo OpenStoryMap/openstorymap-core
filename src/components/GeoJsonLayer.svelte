@@ -23,7 +23,6 @@
         data = await response.json();
 
         //const leafletMap = map();
-        console.log(onStyle);
         layer = onStyle == null ? L.geoJSON(data) : L.geoJSON(data, {style: onStyle});
         dispatch('create-layer', {layer, url, name});
 
