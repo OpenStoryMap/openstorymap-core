@@ -5,6 +5,8 @@
     import { CreateLayer } from './LayerCreator.svelte';
     import Config from '../config';
 
+    import { layersStore } from '../stores.js';
+
     export let config: Config = undefined;
     let control = undefined;
     let layers = [];
@@ -16,10 +18,23 @@
         layers = config.layers.map(x => CreateLayer(x));
     });
 
+    const overlayAdd = (layer) => {
+        console.log(layer);
+        $layersStore[layer.name] = true;
+    }
+
+    const overlayRemove = (layer) => {
+        console.log(layer);
+        $layersStore[layer.name] = false;
+    }
+
     const createControl = async (container) => {
         control = L.control.layers();
         const leafletMap = map();
         control.addTo(leafletMap);
+
+        leafletMap.on('overlayadd', overlayAdd);
+        leafletMap.on('overlayremove', overlayRemove);
 
         return () => {
             const leafletMap = map();
@@ -31,12 +46,14 @@
         const { layer, name, url } = event.detail;
         control.addOverlay(layer, name);
         layersMap[name] = layer;
+        $layersStore[name] = false;
     };
 
     const removeLayer = (event: any) => {
         const { name, url } = event.detail;
         control.removeLayer(layersMap[name]);
         delete layersMap[name];
+        delete $layersStore[name];
     }
 
 </script>

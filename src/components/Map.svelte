@@ -72,7 +72,7 @@
         position: static;
     }
     .map-container {
-        height: 90vh;
+        height: 85vh;
         width: 100%;
     }
 

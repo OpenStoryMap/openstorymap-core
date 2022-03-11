@@ -86,6 +86,7 @@ export default {
                 { src: 'node_modules/leaflet/dist/images/*', dest: 'public/build/images/' },
                 { src: 'node_modules/svelte-material-ui/bare.css', dest: 'public/svelte-material-ui/' },
                 { src: 'src/layers/*', dest: 'public/layers/' },
+                { src: 'src/images/*', dest: 'public/images/' },
                 { src: 'src/public/*', dest: 'public/' },
             ]
         })
