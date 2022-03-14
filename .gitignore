@@ -113,4 +113,4 @@ dist
 src/layers/*
 !src/layers/statue-of-liberty.geojson
 src/configs/*
-!src/layers/config.template.json
+!src/configs/config.template.json
