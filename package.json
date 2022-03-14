@@ -2,6 +2,10 @@
   "name": "openstorymap",
   "version": "1.0.0",
   "private": true,
+  "engines" : { 
+    "npm" : ">=7.0.0",
+    "node" : ">=16.0.0"
+  },
   "scripts": {
     "start-parcel": "parcel index.html --open",
     "build-parcel": "parcel build index.html",
