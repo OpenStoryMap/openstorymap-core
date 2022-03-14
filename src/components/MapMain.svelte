@@ -17,8 +17,7 @@
         if(map) { map.invalidateSize(); }
     }
 </script>
+
 <svelte:window on:resize={resizeMap} />
+<Map bind:map view={config.latLng} zoom={config.zoom} config={config}> </Map>
 
-
-<Map bind:map view={config.latLng} zoom={config.zoom} config={config}>
-</Map>

@@ -1,5 +1,6 @@
 import L from 'leaflet';
 
+//import layers from './layers';
 import type Config from '../config';
 
 const layerStyle = {

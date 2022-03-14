@@ -5,26 +5,15 @@
 
     export let url;
     export let name;
-    //export let onStyle: (feature) => any;
+    export let onStyle = undefined;
+    export let layer = undefined;
     let data = undefined;
-    let layer = undefined;
 
     //const map = getContext('map');
     const colorChroma = chroma.scale(['#fff', '#000']);
 
     // to let the layer control know we made the layer
     const dispatch = createEventDispatcher();
-
-    const onStyle = (feature) => {
-        // set the opacity of the border based on percentage of population less than the income    
-        const opacity = feature.properties[`Income|200000`];    
-        return {      
-            fillOpacity: 0,    
-            opacity: 1,    
-            color: colorChroma(opacity),    
-            weight: 3,    
-        };
-    }
 
     const createLayer = async (container) => {
         const response = await fetch(url);
@@ -34,7 +23,7 @@
         data = await response.json();
 
         //const leafletMap = map();
-        layer = L.geoJSON(data);
+        layer = onStyle == null ? L.geoJSON(data) : L.geoJSON(data, {style: onStyle});
         dispatch('create-layer', {layer, url, name});
 
         return () => {
