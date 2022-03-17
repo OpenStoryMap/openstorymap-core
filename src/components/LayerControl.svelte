@@ -1,9 +1,9 @@
 <script lang="ts">
-	import L from 'leaflet';
+    import L from 'leaflet';
     import { getContext, onMount, onDestroy } from 'svelte';
-	import GeoJsonLayer from './GeoJsonLayer.svelte';
+    import GeoJsonLayer from './GeoJsonLayer.svelte';
     import { CreateLayer } from './LayerCreator.svelte';
-    import Config from '../config';
+    import Config, { Layer } from '../config';
 
     import { layersStore } from '../stores.js';
 
@@ -14,8 +14,11 @@
 
     const map = getContext('map');
 
-    onMount(() => {
-        layers = config.layers.map(x => CreateLayer(x));
+    onMount(async () => {
+        const layerPromises = config.layers.map((layerConfig: Layer) => CreateLayer(layerConfig));
+        // await everything here, otherwise the components will try to load before they
+        // are properly setup
+        layers = await Promise.all(layerPromises);
     });
 
     const overlayAdd = (layer) => {
