@@ -17,8 +17,8 @@
     onMount(async () => {
         const layerPromises = config.layers.map((layerConfig: Layer) => CreateLayer(layerConfig));
         // await everything here, otherwise the components will try to load before they
-        // are properly setup
-        layers = await Promise.all(layerPromises);
+        // are properly setup. For now, we will filter out any bad layers.
+        layers = (await Promise.all(layerPromises)).filter(l => l.component !== undefined);
     });
 
     const overlayAdd = (layer) => {

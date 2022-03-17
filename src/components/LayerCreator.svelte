@@ -15,7 +15,17 @@
             component = (await import(`./${layerConfig.component}.svelte`)).default;
         }
         */
-        component = layerConfig.type == 'geojson' ? GeoJsonLayer : GeotiffLayer;
+
+        switch (layerConfig.type) {
+            case 'geojson':
+                component = GeoJsonLayer;
+                break;
+            case 'raster':
+                component = GeotiffLayer;
+                break;
+            default:
+                component = undefined;
+        }
         return {component, ...layerConfig};
     }
 
