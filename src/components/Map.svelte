@@ -1,22 +1,23 @@
 <script lang="ts">
-    import { createEventDispatcher, setContext, onMount } from 'svelte';
+    import { createEventDispatcher, setContext } from 'svelte';
     import L from 'leaflet';
-    import 'leaflet/dist/leaflet.css';
+
     import LayersControl from './LayerControl.svelte';
     import GeotiffLayer from './GeotiffLayer.svelte';
-    import Config from '../config';
-    import { SetupBaseLayer } from '../utils/map';
+    import type Config from '../config';
     import { mapStore } from '../stores.js';
+
+    import 'leaflet/dist/leaflet.css';
 
     // Must set either bounds, or view and zoom.
     export let bounds = undefined;
     export let view = undefined;
     export let zoom: number = undefined;
     export let config: Config = undefined;
-    let mapProp = undefined;
+    let mapProp: L.Map|undefined = undefined;
     export { mapProp as map };
 
-    export const invalidateSize = () => map?.invalidateSize();
+    export const invalidateSize = () => mapProp?.invalidateSize();
 
     const dispatch = createEventDispatcher();
 
@@ -28,6 +29,29 @@
     setContext('layer', getMap);
     setContext('map', getMap);
 
+    /**
+     * Add a mapbox layer.
+     *
+     * Return a function to remove the layer. Used for onDestroy
+     */
+    function setupBaseLayer(map: L.Map, config: Config): Function {
+        const layer = L.tileLayer(
+            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
+            {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: config.mapboxAccessToken
+            }
+        );
+
+        layer.addTo(map);
+
+        return () => layer.removeFrom(map);
+    }
+
     function createLeaflet(node) {
         map = L.map(node).on('zoom', (e) => dispatch('zoom', e));
         mapStore.set(map);
@@ -38,7 +62,7 @@
             map.setView(view, zoom);
         }
 
-        const destroyLayer = SetupBaseLayer(map, config);
+        const destroyLayer = setupBaseLayer(map, config);
 
         return {
             destroy() {

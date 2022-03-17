@@ -111,4 +111,6 @@ dist
 ## App
 /public
 src/layers/*
-!src/layers/statue-of-liberty.json
+!src/layers/statue-of-liberty.geojson
+src/configs/*
+!src/configs/config.template.json
