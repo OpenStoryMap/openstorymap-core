@@ -16,14 +16,16 @@ export interface Layer {
 
 export interface Story {
   title: string,
-  content: string
+  content: string,
 }
 
 export interface ControlProperty {
   id: string,
-  type: 'slider',
+  type?: 'slider'|'flyTo',
   title?: string,
   subtitle?: string,
   key?: string,
-  prefixKey?: string
+  prefixKey?: string,
+  // generic arguments that depends on the type
+  args: any
 }

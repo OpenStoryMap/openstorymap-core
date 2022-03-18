@@ -18,7 +18,8 @@
   });
 
   function panTo(): void {
-    map?.flyTo(new LatLng(40.68967735303955, -74.04534588323135), 15);
+    const { lat, lng, zoom } = controlProperty.args;
+    map?.flyTo(new LatLng(lat, lng), zoom);
   }
 
   onDestroy(unsubscribe);
