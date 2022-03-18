@@ -22,6 +22,8 @@ export interface Story {
 export interface ControlProperty {
   id: string,
   type: 'slider',
+  title?: string,
+  subtitle?: string,
   key?: string,
   prefixKey?: string
 }

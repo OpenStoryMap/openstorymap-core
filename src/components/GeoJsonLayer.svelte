@@ -3,6 +3,7 @@
 	import L from 'leaflet';
     import chroma from "chroma-js";
 
+    export let id;
     export let url;
     export let name;
     export let onStyle = undefined;
@@ -24,12 +25,12 @@
 
         //const leafletMap = map();
         layer = onStyle == null ? L.geoJSON(data) : L.geoJSON(data, {style: onStyle});
-        dispatch('create-layer', {layer, url, name});
+        dispatch('create-layer', {layer, url, name, id});
 
         return () => {
             //const leafletMap = map();
             //leafletMap.removeFrom(layer);
-            dispatch('remove-layer', {url, name});
+            dispatch('remove-layer', {url, name, id});
         }
     };
 

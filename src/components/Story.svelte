@@ -1,42 +1,28 @@
 <script lang="ts">
-  import {LatLng, Map} from 'leaflet';
-  import { onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
   import Slider from '@smui/slider';
-  import { mapStore, layersStore, incomeSlider } from '../stores.js';
+  import { layersStore, incomeSlider } from '../stores.js';
   import Paper, { Title, Subtitle, Content } from '@smui/paper';
+  import config from '../configs/config.json';
+  import { CreateControl } from './controls/ControlCreator.svelte';
 
-  let map: Map|undefined = undefined;
+  let controls = [];
 
-  const unsubscribe = mapStore.subscribe((newMap: Map|null) => {
-    if (newMap != null) {
-      map = newMap;
-    }
+  onMount(async () => {
+      const controlPromises = config.layers
+        .map((layerConfig: Layer) => layerConfig.controlProperties?.map(l => {
+            return {idLayer: layerConfig.id, nameLayer: layerConfig.name, controlProperties: l}}))
+        .filter(x => x !== undefined)
+        .flat()
+        .map(x => CreateControl(x.controlProperties, x.idLayer, x.nameLayer));
+
+      // await everything here, otherwise the components will try to load before they
+      // are properly setup. For now, we will filter out any bad layers.
+      controls = (await Promise.all(controlPromises)).filter(l => l.component !== undefined);
   });
 
-  onDestroy(unsubscribe);
-
-  function panTo(): void {
-    map?.flyTo(new LatLng(40.68967735303955, -74.04534588323135), 15);
-  }
 </script>
 
-<style>
-    .panel {
-        margin-bottom: 1rem;
-    }
-</style>
-
-<div class="panel">
-{#if $layersStore['Statue of Liberty']}
-<Paper>
-    <Title>Statue of Liberty</Title>
-    <Subtitle>Pan to the Statue of Libery</Subtitle>
-    <Content>
-        <button on:click={panTo}>Statue of Liberty</button>
-    </Content>
-</Paper>
-{/if}
-</div>
 
 <!-- hacky solution until I learn about the svelte css better. Otherwise, the if ignores the class -->
 <div class="panel">
@@ -58,3 +44,24 @@
 </Paper>
 {/if}
 </div>
+
+{#if config}
+    {#each controls as {component, idLayer, nameLayer, ...props}}
+        {#if $layersStore[idLayer] == true}
+            <div class="panel">
+                <svelte:component
+                    this={component}
+                    idLayer={idLayer}
+                    nameLayer={nameLayer}
+                    controlProperty={props} />
+            </div>
+        {/if}
+    {/each}
+{/if}
+
+<style>
+    .panel {
+        margin-bottom: 1rem;
+    }
+</style>
+

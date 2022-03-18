@@ -11,6 +11,7 @@
     let control = undefined;
     let layers = [];
     let layersMap = {};
+    let layersNameToIdMap = {};
 
     const map = getContext('map');
 
@@ -19,11 +20,13 @@
     });
 
     const overlayAdd = (layer) => {
-        $layersStore[layer.name] = true;
+        const layerId = layersNameToIdMap[layer.name];
+        $layersStore[layerId] = true;
     }
 
     const overlayRemove = (layer) => {
-        $layersStore[layer.name] = false;
+        const layerId = layersNameToIdMap[layer.name];
+        $layersStore[layerId] = false;
     }
 
     const createControl = async (container) => {
@@ -41,17 +44,19 @@
     };
 
     const addLayer = (event: any) => {
-        const { layer, name, url } = event.detail;
+        const { layer, name, url, id } = event.detail;
         control.addOverlay(layer, name);
         layersMap[name] = layer;
-        $layersStore[name] = false;
+        layersNameToIdMap[name] = id;
+        $layersStore[id] = false;
     };
 
     const removeLayer = (event: any) => {
-        const { name, url } = event.detail;
+        const { name, url, id } = event.detail;
         control.removeLayer(layersMap[name]);
         delete layersMap[name];
-        delete $layersStore[name];
+        delete layersNameToIdMap[name];
+        delete $layersStore[id];
     }
 
 </script>
