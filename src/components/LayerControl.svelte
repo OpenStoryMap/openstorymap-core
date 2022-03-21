@@ -1,9 +1,9 @@
 <script lang="ts">
-	import L from 'leaflet';
+    import L from 'leaflet';
     import { getContext, onMount, onDestroy } from 'svelte';
-	import GeoJsonLayer from './GeoJsonLayer.svelte';
+    import GeoJsonLayer from './GeoJsonLayer.svelte';
     import { CreateLayer } from './LayerCreator.svelte';
-    import Config from '../config';
+    import Config, { Layer } from '../config';
 
     import { layersStore } from '../stores.js';
 
@@ -14,8 +14,11 @@
 
     const map = getContext('map');
 
-    onMount(() => {
-        layers = config.layers.map(x => CreateLayer(x));
+    onMount(async () => {
+        const layerPromises = config.layers.map((layerConfig: Layer) => CreateLayer(layerConfig));
+        // await everything here, otherwise the components will try to load before they
+        // are properly setup. For now, we will filter out any bad layers.
+        layers = (await Promise.all(layerPromises)).filter(l => l.component !== undefined);
     });
 
     const overlayAdd = (layer) => {
@@ -58,8 +61,12 @@
 
 <div style="display:hidden" use:createControl>
     {#if config}
-        {#each layers as {component, ...props}}
-            <svelte:component this={component} {...props} on:create-layer={addLayer} on:remove-layer={removeLayer}/>
+        {#each layers as {component, layerConfig}}
+            <svelte:component
+                this={component}
+                {...layerConfig}
+                on:create-layer={addLayer}
+                on:remove-layer={removeLayer} />
         {/each}
     {/if}
 </div>

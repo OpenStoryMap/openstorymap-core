@@ -1,12 +1,15 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
+    import { getContext, createEventDispatcher } from 'svelte';
 	import L from 'leaflet';
     import chroma from "chroma-js";
 
     import parseGeoraster from "georaster";
     import GeoRasterLayer from 'georaster-layer-for-leaflet';
 
+    const dispatch = createEventDispatcher();
+
     export let url;
+    export let name;
     let data = undefined;
     let layer = undefined;
     const map = getContext('map');
@@ -29,11 +32,9 @@
               }         
           });
 
-        const leafletMap = map();
-        leafletMap.addLayer(layer);
-
+        dispatch('create-layer', {layer, url, name});
         return () => {
-            map.removeLayer(layer);
+            dispatch('remove-layer', {url, name});
         }
     };
 

@@ -86,7 +86,6 @@
     {#if map}
         <slot {map}>
         <LayersControl {config} />
-        <GeotiffLayer url={"rasters/af_hi_f.tif"} />
         </slot>
     {/if}
 </div>
