@@ -61,8 +61,12 @@
 
 <div style="display:hidden" use:createControl>
     {#if config}
-        {#each layers as {component, ...props}}
-            <svelte:component this={component} {...props} on:create-layer={addLayer} on:remove-layer={removeLayer}/>
+        {#each layers as {component, layerConfig}}
+            <svelte:component
+                this={component}
+                {...layerConfig}
+                on:create-layer={addLayer}
+                on:remove-layer={removeLayer} />
         {/each}
     {/if}
 </div>

@@ -1,10 +1,12 @@
 <script context="module" lang="ts">
+    import type { SvelteComponent } from 'svelte';
     import GeoJsonLayer from './GeoJsonLayer.svelte';
     import GeotiffLayer from './GeotiffLayer.svelte';
     import LayerByIncome from './LayerByIncome.svelte';
     import type { Layer } from '../config';
 
-    export async function CreateLayer(layerConfig: Layer) {
+
+    export async function CreateLayer(layerConfig: Layer): {component: SvelteComponent, layerConfig: Layer}{
         let component;
         /*
         // FIXME add this code back in when we get the rollup config to work properly.
@@ -24,9 +26,10 @@
                 component = GeotiffLayer;
                 break;
             default:
+                console.warn(`Could not find a layer called ${layerConfig.type}`);
                 component = undefined;
         }
-        return {component, ...layerConfig};
+        return {component, layerConfig};
     }
 
 </script>
