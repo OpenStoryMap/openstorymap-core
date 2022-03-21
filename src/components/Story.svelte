@@ -4,17 +4,12 @@
   import { layersStore, incomeSlider } from '../stores.js';
   import Paper, { Title, Subtitle, Content } from '@smui/paper';
   import config from '../configs/config.json';
-  import { CreateControl } from './controls/ControlCreator.svelte';
+  import { CreateControls } from './controls/ControlCreator.svelte';
 
   let controls = [];
 
   onMount(async () => {
-      const controlPromises = config.layers
-        .map((layerConfig: Layer) => layerConfig.controlProperties?.map(l => {
-            return {idLayer: layerConfig.id, nameLayer: layerConfig.name, controlProperties: l}}))
-        .filter(x => x !== undefined)
-        .flat()
-        .map(x => CreateControl(x.controlProperties, x.idLayer, x.nameLayer));
+      const controlPromises = CreateControls(config.layers);
 
       // await everything here, otherwise the components will try to load before they
       // are properly setup. For now, we will filter out any bad layers.
@@ -26,7 +21,7 @@
 
 <!-- hacky solution until I learn about the svelte css better. Otherwise, the if ignores the class -->
 <div class="panel">
-{#if $layersStore['New York City Income']}
+{#if $layersStore['NewYorkCityIncome'] == true}
 <Paper>
     <Title>NYC INCOME - {$incomeSlider > 225 ? 'All' : `$${$incomeSlider * 1000}`}</Title>
     <Subtitle>Select income. Darker areas mean higher percentage below slider</Subtitle>
@@ -46,14 +41,13 @@
 </div>
 
 {#if config}
-    {#each controls as {component, idLayer, nameLayer, ...props}}
-        {#if $layersStore[idLayer] == true}
+    {#each controls as {component, layerProperty, controlProperty}}
+        {#if $layersStore[layerProperty.id] == true}
             <div class="panel">
                 <svelte:component
                     this={component}
-                    idLayer={idLayer}
-                    nameLayer={nameLayer}
-                    controlProperty={props} />
+                    layerProperty={layerProperty}
+                    controlProperty={controlProperty} />
             </div>
         {/if}
     {/each}

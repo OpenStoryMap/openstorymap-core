@@ -8,10 +8,14 @@ export default interface Config {
 
 export interface Layer {
   id: string,
+  property: LayerProperty,
+  controlProperties?: ControlProperty[]
+}
+
+export interface LayerProperty {
   name: string,
   url: string,
   type: 'geojson'|'raster',
-  controlProperties?: ControlProperty[]
 }
 
 export interface Story {
@@ -27,5 +31,6 @@ export interface ControlProperty {
   key?: string,
   prefixKey?: string,
   // generic arguments that depends on the type
+  // FIXME remove any
   args: any
 }

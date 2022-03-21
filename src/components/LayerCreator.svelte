@@ -3,12 +3,12 @@
     import LayerByIncome from './LayerByIncome.svelte';
     import type { Layer } from '../config';
 
-    export function CreateLayer(layerConfig: Layer) {
-        if (layerConfig.name === 'New York City Income') {
-            return {component: LayerByIncome, ...layerConfig};
+    export function CreateLayer(layer: Layer) {
+        if (layer.property?.name === 'New York City Income') {
+            return {component: LayerByIncome, ...layer.property};
         }
 
-        return {component: GeoJsonLayer, ...layerConfig};
+        return {component: GeoJsonLayer, ...layer.property};
     }
 
 </script>

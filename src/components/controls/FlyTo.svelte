@@ -5,8 +5,7 @@
   import type { ControlProperty } from '../../config';
   import Control from './Control.svelte';
 
-  export let idLayer: string;
-  export let nameLayer: string;
+  export let layerProperty: LayerProperty;
   export let controlProperty: ControlProperty = undefined;
 
   let map: Map|undefined = undefined;
@@ -25,8 +24,8 @@
   onDestroy(unsubscribe);
 </script>
 
-<Control nameLayer={nameLayer} idLayer={idLayer} controlProperty={controlProperty}>
-    <button on:click={panTo}>Fly To {controlProperty.title || nameLayer}</button>
+<Control layerProperty={layerProperty} controlProperty={controlProperty}>
+    <button on:click={panTo}>Fly To {controlProperty.title || layerProperty.name}</button>
 </Control>
 
 <style>
