@@ -3,11 +3,11 @@
     import { getContext, onMount, onDestroy } from 'svelte';
     import GeoJsonLayer from './GeoJsonLayer.svelte';
     import { CreateLayer } from './LayerCreator.svelte';
-    import Config, { Layer } from '../config';
+    import type { Config, Layer } from '../config';
 
     import { layersStore } from '../stores.js';
 
-    export let config: Config = undefined;
+    export let config: Config|undefined = undefined;
     let control = undefined;
     let layers = [];
     let layersMap = {};
