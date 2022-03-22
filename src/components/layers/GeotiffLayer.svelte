@@ -2,20 +2,23 @@
     import { getContext, createEventDispatcher } from 'svelte';
 	import L from 'leaflet';
     import chroma from "chroma-js";
+    import type { LayerProperty } from '../../config';
 
     import parseGeoraster from "georaster";
     import GeoRasterLayer from 'georaster-layer-for-leaflet';
 
     const dispatch = createEventDispatcher();
 
-    export let url;
-    export let name;
-    let data = undefined;
-    let layer = undefined;
+    export let id: string;
+    export let property: LayerProperty;
+
+    let layer: L.Layer;
+    // FIXME typing
+    let data: any = undefined;
     const map = getContext('map');
 
     const createLayer = async (container) => {
-        const response = await fetch(url);
+        const response = await fetch(property.url);
         if (!response.ok) {
             return;
         }
@@ -32,9 +35,10 @@
               }         
           });
 
-        dispatch('create-layer', {layer, url, name});
+        dispatch('create-layer', {layer, url: property.url, name: property.name, id});
+
         return () => {
-            dispatch('remove-layer', {url, name});
+            dispatch('remove-layer', {url: property.url, name: property.name, id});
         }
     };
 

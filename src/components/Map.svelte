@@ -2,8 +2,7 @@
     import { createEventDispatcher, setContext } from 'svelte';
     import L from 'leaflet';
 
-    import LayersControl from './LayerControl.svelte';
-    import GeotiffLayer from './GeotiffLayer.svelte';
+    import LayersControl from './layers/LayerControl.svelte';
     import type Config from '../config';
     import { mapStore } from '../stores.js';
 

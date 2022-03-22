@@ -1,19 +1,24 @@
 <script lang="ts">
     import L from 'leaflet';
     import { getContext, onMount, onDestroy } from 'svelte';
+
+    import type Config, { Layer } from '../../config';
     import GeoJsonLayer from './GeoJsonLayer.svelte';
     import { CreateLayer } from './LayerCreator.svelte';
-    import Config, { Layer } from '../config';
+    import { layersStore } from '../../stores.js';
 
-    import { layersStore } from '../stores.js';
-
-    export let config: Config = undefined;
-    let control = undefined;
-    let layers = [];
-    let layersMap = {};
+    export let config: Config;
+    // FIXME types, but need to figure out leaflet types here
+    let control: L.Control;
+    let layers: L.Layer[] = [];
+    let layersMap: {[key: string]: L.Layer} = {};
+    let layerIdByNameMap: {[key: string]: string} = {};
 
     const map = getContext('map');
 
+    /**
+    *   onMount creates promises that then resolve to create all configured layers
+    */
     onMount(async () => {
         const layerPromises = config.layers.map((layerConfig: Layer) => CreateLayer(layerConfig));
         // await everything here, otherwise the components will try to load before they
@@ -21,12 +26,16 @@
         layers = (await Promise.all(layerPromises)).filter(l => l.component !== undefined);
     });
 
+    // when adding an overlay, mark the store based on the layer id
     const overlayAdd = (layer) => {
-        $layersStore[layer.name] = true;
+        const layerId = layerIdByNameMap[layer.name];
+        $layersStore[layerId] = true;
     }
 
+    // when removing an overlay, mark the store based on the layer id
     const overlayRemove = (layer) => {
-        $layersStore[layer.name] = false;
+        const layerId = layerIdByNameMap[layer.name];
+        $layersStore[layerId] = false;
     }
 
     const createControl = async (container) => {
@@ -44,10 +53,11 @@
     };
 
     const addLayer = (event: any) => {
-        const { layer, name, url } = event.detail;
+        const { layer, name, url, id } = event.detail;
         control.addOverlay(layer, name);
         layersMap[name] = layer;
-        $layersStore[name] = false;
+        layerIdByNameMap[name] = id;
+        $layersStore[id] = false;
     };
 
     const removeLayer = (event: any) => {
@@ -55,6 +65,7 @@
         control.removeLayer(layersMap[name]);
         delete layersMap[name];
         delete $layersStore[name];
+        delete layerIdByNameMap[name];
     }
 
 </script>
@@ -64,7 +75,8 @@
         {#each layers as {component, layerConfig}}
             <svelte:component
                 this={component}
-                {...layerConfig}
+                id={layerConfig.property.id}
+                property={layerConfig.property}
                 on:create-layer={addLayer}
                 on:remove-layer={removeLayer} />
         {/each}

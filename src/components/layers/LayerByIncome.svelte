@@ -1,6 +1,6 @@
 <script lang="ts">
 	import GeoJsonLayer from './GeoJsonLayer.svelte';
-    import { incomeSlider } from '../stores.js';
+    import { incomeSlider } from '../../stores.js';
     import { onDestroy } from 'svelte';
     import chroma from "chroma-js";
 
