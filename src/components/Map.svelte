@@ -4,7 +4,7 @@
 
     import LayersControl from './LayerControl.svelte';
     import GeotiffLayer from './GeotiffLayer.svelte';
-    import type Config from '../config';
+    import type { Config } from '../config';
     import { mapStore } from '../stores.js';
 
     import 'leaflet/dist/leaflet.css';
