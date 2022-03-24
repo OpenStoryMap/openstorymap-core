@@ -1,13 +1,16 @@
-export default interface Config {
-  mapboxAccessToken: string,
-  latLng: [number, number],
-  zoom: number,
-  layers: Layer[],
-  stories: Story[]
+import config from './configs/config.json';
+
+
+export interface Config {
+    mapboxAccessToken: string,
+    // FIXME typescript was unhappy with [number, number]
+    latLng: number[],
+    zoom: number,
+    layers: Layer[],
+    stories: Story[]
 }
 
 export interface Layer {
-  id: string,
   property: LayerProperty,
   controlProperties?: ControlProperty[],
   // args depending on the type
@@ -22,8 +25,9 @@ export interface LayerProperty {
 }
 
 export interface Story {
-  title: string,
-  content: string
+    title: string,
+    content: string,
+    mapState: MapState
 }
 
 export interface ControlProperty {
@@ -64,3 +68,11 @@ export interface LayerByValueListArgs {
   maxValueLabel?: string,
   initialValue?: any,
 }
+
+export interface MapState {
+    lat: number,
+    lng: number,
+    zoom: number
+}
+
+export default config as Config;

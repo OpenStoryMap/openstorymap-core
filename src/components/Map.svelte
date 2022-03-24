@@ -3,7 +3,7 @@
     import L from 'leaflet';
 
     import LayersControl from './layers/LayerControl.svelte';
-    import type Config from '../config';
+    import type { Config } from '../config';
     import { mapStore } from '../stores.js';
 
     import 'leaflet/dist/leaflet.css';

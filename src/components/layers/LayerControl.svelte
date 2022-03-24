@@ -2,12 +2,13 @@
     import L from 'leaflet';
     import { getContext, onMount, onDestroy } from 'svelte';
 
-    import type Config, { Layer } from '../../config';
+    import type { Config, Layer } from '../config';
     import GeoJsonLayer from './GeoJsonLayer.svelte';
     import { CreateLayer } from './LayerCreator.svelte';
-    import { layersStore } from '../../stores.js';
+    import { layersStore } from '../../stores';
 
-    export let config: Config;
+    export let config: Config|undefined = undefined;
+
     // FIXME types, but need to figure out leaflet types here
     let control: L.Control;
     let layers: L.Layer[] = [];
