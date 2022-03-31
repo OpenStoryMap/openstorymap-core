@@ -81,6 +81,12 @@ export interface LayerByValueListArgs {
   initialValue?: any,
 }
 
+// args for layer types
+export interface LayerPluralityArgs {
+  prefixKey: string,
+  colorMap: {[key: string]: string}
+}
+
 export interface MapState {
     lat: number,
     lng: number,

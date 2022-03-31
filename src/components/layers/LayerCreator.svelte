@@ -5,6 +5,7 @@
     import GeotiffLayer from './GeotiffLayer.svelte';
     import GeoJsonOpacityLayer from './GeoJsonOpacityLayer.svelte';
     import LayerFilter from './LayerFilter.svelte';
+    import LayerPlurality from './LayerPlurality.svelte';
 
     // FIXME this should be dynamic
     import LayerByValueList from './LayerByValueList.svelte';
@@ -33,7 +34,10 @@
             case 'layer-with-filters':
                 component = LayerFilter;
                 break;
-            case 'layerByValueList':
+            case 'layer-plurality':
+                component = LayerPlurality;
+                break;
+            case 'layer-by-value-list':
                 component = LayerByValueList;
                 break;
             default:
