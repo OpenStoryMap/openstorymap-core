@@ -13,6 +13,7 @@ const STORE_MAP: {[key: string]: any} = {}
  * We will create one store per control. This store will be cached, as
  * there is no easy way to remove a svelte store (TODO: more research on this)
  * 
+ * FIXME use generics
  */
 export const GetOrCreateControlStore = (id: string, initialValue: any): Writable<any> => {
 

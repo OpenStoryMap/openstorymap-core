@@ -2,29 +2,36 @@
   import Slider from '@smui/slider';
   import { Writable } from "svelte/store"
   import { onMount, onDestroy } from 'svelte';
-  import type { ControlProperty, LayerProperty, SliderProperties } from '../../config';
+  import type { ControlProperty, LayerProperty, SliderRangeProperties } from '../../config';
   import Control from './Control.svelte';
   import { GetOrCreateControlStore } from '../../stores';
 
   export let layerProperty: LayerProperty;
   export let controlProperty: ControlProperty;
-  let args: SliderProperties;
 
+  let args: SliderRangeProperties;
   let store: Writable;
-  let value: number;
+
+  let start: number;
+  let end: number;
 
   onMount(() => {
     // FIXME move this function somewhere else
-    const id = `${layerProperty.id}.${controlProperty.id}`;
-    store = GetOrCreateControlStore(id);
-    args = controlProperty.args as SliderProperties;
-    value = args.initialValue;
+    const storeId = `${layerProperty.id}.${controlProperty.id}`;
+    console.log(storeId);
+    store = GetOrCreateControlStore(storeId);
+    args = controlProperty.args as SliderRangeProperties;
+    start = args.start;
+    end = args.end;
+
+    // initial value will be a list
+    store.set([start, end]);
   });
 
+  // on changes, set the start and stop values
   $: {
     if (args !== undefined) {
-      const valueMultiplier = value * (args.multiplier ?? 1);
-      store.set(valueMultiplier);
+      store.set([start, end]);
     }
   };
 
@@ -34,9 +41,11 @@
 <Control layerProperty={layerProperty} controlProperty={controlProperty}>
     <!-- FIXME this is hacky and because of life cycle issues.
          the slider complains if this is undefined -->
-    {#if value != null}
+    {#if start != null && end != null}
     <Slider
-        bind:value={value}
+        bind:start={start}
+        bind:end={end}
+        range
         min={args?.min || 0}
         max={args?.max}
         step={args?.step}

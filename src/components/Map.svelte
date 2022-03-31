@@ -52,7 +52,7 @@
     }
 
     function createLeaflet(node) {
-        map = L.map(node).on('zoom', (e) => dispatch('zoom', e));
+        map = L.map(node, {preferCanvas: true}).on('zoom', (e) => dispatch('zoom', e));
         mapStore.set(map);
 
         if(bounds) {

@@ -25,6 +25,7 @@
         // await everything here, otherwise the components will try to load before they
         // are properly setup. For now, we will filter out any bad layers.
         layers = (await Promise.all(layerPromises)).filter(l => l.component !== undefined);
+        console.log(layers);
     });
 
     // when adding an overlay, mark the store based on the layer id
@@ -78,6 +79,7 @@
                 this={component}
                 id={layerConfig.property.id}
                 property={layerConfig.property}
+                controlProperties={layerConfig.controlProperties}
                 on:create-layer={addLayer}
                 on:remove-layer={removeLayer} />
         {/each}

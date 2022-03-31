@@ -54,10 +54,22 @@ export interface SliderProperties {
   initialValue: any,
 }
 
+export interface SliderRangeProperties {
+  min?: number,
+  max: number,
+  step: number,
+  start: number,
+  stop: number,
+}
+
 // a union type of available layer property arguments
 export type LayerArgs = LayerByValueListArgs | GenericLayerArgs
 
-export interface GenericLayerArgs { }
+export interface GenericLayerArgs {
+  fillColor: string,
+  color: string,
+  opacity?: string,
+}
 
 // args for layer types
 export interface LayerByValueListArgs {

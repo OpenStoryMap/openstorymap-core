@@ -3,11 +3,12 @@
     import chroma from "chroma-js";
 	import L from 'leaflet';
 
-    import type { LayerProperty } from '../../config';
+    import type { LayerProperty, GenericLayerArgs } from '../../config';
 
     export let id: string;
     export let property: LayerProperty;
     export let layer: L.Layer;
+    export let args: GenericLayerArgs;
     // FIXME typing
     export let onStyle = undefined;
     let data = undefined;

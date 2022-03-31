@@ -3,6 +3,8 @@
     import type { Layer } from '../config';
     import GeoJsonLayer from './GeoJsonLayer.svelte';
     import GeotiffLayer from './GeotiffLayer.svelte';
+    import GeoJsonOpacityLayer from './GeoJsonOpacityLayer.svelte';
+    import LayerFilter from './LayerFilter.svelte';
 
     // FIXME this should be dynamic
     import LayerByValueList from './LayerByValueList.svelte';
@@ -24,6 +26,12 @@
                 break;
             case 'raster':
                 component = GeotiffLayer;
+                break;
+            case 'geojson-opacity':
+                component = GeoJsonOpacityLayer;
+                break;
+            case 'layer-with-filters':
+                component = LayerFilter;
                 break;
             case 'layerByValueList':
                 component = LayerByValueList;

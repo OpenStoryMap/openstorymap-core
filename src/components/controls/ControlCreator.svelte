@@ -1,6 +1,7 @@
 <script context="module" lang="ts">
     import Control from './Control.svelte';
     import Slider from './Slider.svelte';
+    import SliderRange from './SliderRange.svelte';
     import type { Layer, ControlProperty, LayerProperty } from '../config';
     // NOTE: this is async in antication for dynamically loading components. that feature is async.
     export async function CreateControl(controlProperty: ControlProperty, layerProperty: LayerProperty) {
@@ -8,6 +9,9 @@
         switch (controlProperty.type) {
             case 'slider':
                 component = Slider;
+                break;
+            case 'slider-range':
+                component = SliderRange;
                 break;
             default:
                 component = Control;
