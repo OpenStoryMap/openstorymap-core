@@ -52,8 +52,11 @@
             const value = x;
             key = getMaxKey(value);
 
+            // FIXME this should run in the top layer post-mount,
+            // but that depends on lifecycle as child runs first
             if (layer != null) {
                 layer.setStyle(onStyle);
+                L.setOptions(layer, {...layer.options, style: onStyle});
             }
         });
     });

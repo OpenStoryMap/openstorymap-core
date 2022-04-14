@@ -7,6 +7,8 @@
     import { CreateLayer } from './LayerCreator.svelte';
     import { layersStore } from '../../stores';
 
+    import _ from '../../plugins/L.Control.Opacity';
+
     export let config: Config|undefined = undefined;
 
     // FIXME types, but need to figure out leaflet types here
@@ -14,6 +16,8 @@
     let layers: L.Layer[] = [];
     let layersMap: {[key: string]: L.Layer} = {};
     let layerIdByNameMap: {[key: string]: string} = {};
+
+    let opacityControl = null;
 
     const map = getContext('map');
 
@@ -32,12 +36,37 @@
     const overlayAdd = (layer) => {
         const layerId = layerIdByNameMap[layer.name];
         $layersStore[layerId] = true;
+
+        const leafletMap = map();
+        if (opacityControl != null) {
+            leafletMap.removeControl(opacityControl);
+        }
+
+        const layersDisplayed = Object.entries($layersStore)
+            .filter(([name, displayed]) => displayed)
+            .map(([name, _]) => name);
+        const _layersMap = Object.fromEntries(
+            Object.entries(layersMap)
+                .filter(([name, layer]) => layersDisplayed.indexOf(layerIdByNameMap[name]) != -1));
+        opacityControl = L.control.opacity(_layersMap, {label: 'Opacity'}).addTo(leafletMap);
     }
 
     // when removing an overlay, mark the store based on the layer id
     const overlayRemove = (layer) => {
         const layerId = layerIdByNameMap[layer.name];
         $layersStore[layerId] = false;
+
+        const leafletMap = map();
+        if (opacityControl != null) {
+            leafletMap.removeControl(opacityControl);
+        }
+        const layersDisplayed = Object.entries($layersStore)
+            .filter(([name, displayed]) => displayed)
+            .map(([name, _]) => name);
+        const _layersMap = Object.fromEntries(
+            Object.entries(layersMap)
+                .filter(([name, layer]) => layersDisplayed.indexOf(layerIdByNameMap[name]) != -1));
+        opacityControl = L.control.opacity(_layersMap, {label: 'Opacity'}).addTo(leafletMap);
     }
 
     const createControl = async (container) => {

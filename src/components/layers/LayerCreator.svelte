@@ -3,7 +3,6 @@
     import type { Layer } from '../config';
     import GeoJsonLayer from './GeoJsonLayer.svelte';
     import GeotiffLayer from './GeotiffLayer.svelte';
-    import GeoJsonOpacityLayer from './GeoJsonOpacityLayer.svelte';
     import LayerFilter from './LayerFilter.svelte';
     import LayerPlurality from './LayerPlurality.svelte';
 
@@ -27,9 +26,6 @@
                 break;
             case 'raster':
                 component = GeotiffLayer;
-                break;
-            case 'geojson-opacity':
-                component = GeoJsonOpacityLayer;
                 break;
             case 'layer-with-filters':
                 component = LayerFilter;
