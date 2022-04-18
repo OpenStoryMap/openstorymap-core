@@ -13,11 +13,21 @@
     export let onStyle = undefined;
     let data = undefined;
 
-    //const map = getContext('map');
-    const colorChroma = chroma.scale(['#fff', '#000']);
-
     // to let the layer control know we made the layer
     const dispatch = createEventDispatcher();
+
+    const defaultOnStyle = (feature) => {
+        const colors = ({
+                ...(args?.fillColor != null && {fillColor: args.fillColor}),
+                ...(args?.color != null && {color: args.color}),
+            })
+        const opacity = args?.opacity != null ? feature.properties[args.opacity] : 1;
+        return {
+            ...colors,
+            fillOpacity: opacity * opacity,
+            opacity: opacity,
+        };
+    }
 
     const createLayer = async (container) => {
         const response = await fetch(property.url);
@@ -27,7 +37,9 @@
         data = await response.json();
         dispatch('preprocess-data', {data, url: property.url, name: property.name, id});
 
-        layer = onStyle == null ? L.geoJSON(data) : L.geoJSON(data, {style: onStyle});
+        layer = onStyle == null
+            ? L.geoJSON(data, {style: defaultOnStyle})
+            : L.geoJSON(data, {style: onStyle});
         dispatch('create-layer', {layer, url: property.url, name: property.name, id});
 
         return () => {

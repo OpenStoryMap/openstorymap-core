@@ -1,5 +1,16 @@
 <script lang="ts">
     /*
+        Arguments
+
+        colorFeatureProperty:   Feature argument for the fill color
+        minColor:               Minimum color to used based on the domain of the colorFeatureProperty
+        maxColor:               Maximum color to used based on the domain of the colorFeatureProperty
+        null:                   Value used to filter domain values for min and max
+        fillColor:              A static color to use for the fill color
+                                The colorFeatureProperty property takes precedent if set
+        color:                  Color for the outline of the shapes
+        opacity:                Property for determining opacity
+
     */
     import { onMount, onDestroy } from 'svelte';
     import { derived } from 'svelte/store';
@@ -27,10 +38,9 @@
     let colorChroma: any;
 
     onMount(() => {
-        args = property.args;
-        colorChroma = chroma.scale([args?.colorStart ?? '#fff', args?.colorEnd ?? '#000']);
+        colorChroma = chroma.scale([args?.minColor ?? '#fff', args?.maxColor ?? '#000']);
         let stores = []
-        controlProperties.forEach((c: any) => {
+        controlProperties?.forEach((c: any) => {
             const id = `${property.id}.${c.id}`;
             stores.push(GetOrCreateControlStore(id));
             valueMapKeys.push(c.id);
@@ -80,10 +90,14 @@
     *     https://stackoverflow.com/questions/16148598/leaflet-update-geojson-filter
     */
     const onStyle = (feature) => {
-        const colors = {
-            ...(args?.fillColor != null && {fillColor: args.fillColor}),
-            ...(args?.color != null && {color: args.color}),
-        }
+        const fillColor = args?.colorFeatureProperty != null
+            ? colorChroma(feature.properties[args.colorFeatureProperty])
+            : args?.fillColor;
+
+        const colors = ({
+                ...(fillColor != null && {fillColor: fillColor}),
+                ...(args?.color != null && {color: args.color}),
+            })
         const hide = shouldHide(feature);
         const opacity = hide 
             ? 0
@@ -96,12 +110,29 @@
             opacity: opacity,
         };
     }
+
+    /**
+    *   Preprocess the data to grab all available unique keys.
+    *   This might use a little bit too much memory, but can be optimized later
+    */
+    const preprocessData = (event: any) => {
+        const { data, url, name, id } = event.detail;
+        if (args.colorFeatureProperty == null) return;
+
+        const values = data.features
+            .map(x => x.properties[args.colorFeatureProperty])
+            .filter(x => x != (args?.null ?? null));
+
+        colorChroma = colorChroma.domain([Math.min(...values), Math.max(...values)]);
+    }
 </script>
 
 <GeoJsonLayer
     bind:layer={layer}
     id={id}
     property={property}
+    onStyle={onStyle}
     on:create-layer
     on:remove-layer
+    on:preprocess-data={preprocessData}
 />

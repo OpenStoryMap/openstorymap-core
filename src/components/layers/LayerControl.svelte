@@ -109,6 +109,7 @@
                 id={layerConfig.property.id}
                 property={layerConfig.property}
                 controlProperties={layerConfig.controlProperties}
+                args={layerConfig.property.args}
                 on:create-layer={addLayer}
                 on:remove-layer={removeLayer} />
         {/each}

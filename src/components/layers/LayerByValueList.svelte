@@ -41,7 +41,6 @@
     onMount(() => {
         // FIXME hard-coded to connect to a slider.
         const id = `${property.id}.slider`;
-        args = property.args;
         store = GetOrCreateControlStore(id);
         if (args.initialValue != null) {
             store.set(args.initialValue)
