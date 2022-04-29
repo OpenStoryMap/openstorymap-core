@@ -3,6 +3,7 @@
     import L from 'leaflet';
 
     import LayersControl from './layers/LayerControl.svelte';
+    import Popup from './Popup.svelte';
     import type { Config } from '../config';
     import { mapStore } from '../stores.js';
 
@@ -85,6 +86,7 @@
     {#if map}
         <slot {map}>
         <LayersControl {config} />
+        <Popup />
         </slot>
     {/if}
 </div>

@@ -26,3 +26,6 @@ export const GetOrCreateControlStore = (id: string, initialValue: any): Writable
 
   return store;
 }
+
+export const popupFeatureStore = writable([]);
+export const popupLatlngStore = writable({});
