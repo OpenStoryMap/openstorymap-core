@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher, setContext } from 'svelte';
-    import L from 'leaflet';
+    import L, { LatLng } from 'leaflet';
 
     import LayersControl from './layers/LayerControl.svelte';
     import type { Config } from '../config';
@@ -58,7 +58,9 @@
         if(bounds) {
             map.fitBounds(bounds)
         } else {
-            map.setView(view, zoom);
+            const mapState = config.mapState;
+            const view = new LatLng(mapState.lat, mapState.lng)
+            map.setView(view, mapState.zoom);
         }
 
         const destroyLayer = setupBaseLayer(map, config);
@@ -70,14 +72,6 @@
                 map = undefined;
             },
         };
-    }
-
-    $: if(map) {
-        if(bounds) {
-            map.fitBounds(bounds)
-        } else {
-            map.setView(view, zoom);
-        }
     }
 </script> 
 

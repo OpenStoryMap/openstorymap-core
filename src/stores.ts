@@ -1,5 +1,7 @@
 import { writable, Writable } from 'svelte/store';
 
+import config, { MapState } from './config';
+
 export const mapStore = writable(null);
 
 // the layers that are currently open
@@ -26,3 +28,28 @@ export const GetOrCreateControlStore = (id: string, initialValue: any): Writable
 
   return store;
 }
+
+
+export function setupMapStateStore(initialState: MapState) {
+  const { subscribe, set, update } = writable(initialState);
+
+  return {
+    subscribe,
+    update,
+    set,
+    addLayer: (layerId: string) => update(s => {
+      if (s.layers == null) return {...s, layers: [layerId]};
+
+      return {...s, layers: [...s.layers, layerId]}
+    }),
+    removeLayer: (layerId: string) => update(s => {
+      // FIXME do we want to make this null if removing means an empty list?
+      if (s.layers == null) return {...s, layers: [layerId]};
+
+      return {...s, layers: s.layers.filter(x => x != layerId)};
+    }),
+    reset: () => set(initialState),
+  };
+}
+
+export const mapStateStore = setupMapStateStore(config.mapState);
