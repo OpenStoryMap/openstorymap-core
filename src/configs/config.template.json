@@ -1,11 +1,21 @@
 {
   "mapboxAccessToken": "add map box access token here",
-  "latLng": [40.689656366699694, -74.04497587916974],
-  "zoom": 13,
+  "mapState": {
+    "lat": 40.689656366699694,
+    "lng": -74.04497587916974,
+    "zoom": 13
+  },
   "layers": [
     {
-      "id": "statueOfLiberty",
+      "id": "StatueOfLiberty",
       "name": "Statue of Liberty",
+      "type": "geojson",
+      "url": "layers/statue-of-liberty.geojson"
+    },
+    {
+      "id": "AfternoonHigh",
+      "name": "NYC - Afternoon High",
+      "type": "raster",
       "url": "layers/statue-of-liberty.geojson"
     }
   ]

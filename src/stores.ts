@@ -52,4 +52,4 @@ export function setupMapStateStore(initialState: MapState) {
   };
 }
 
-export const mapStateStore = setupMapStateStore(config.mapState);
+export const mapStateStore = setupMapStateStore(config.initialMapState);

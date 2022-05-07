@@ -58,7 +58,7 @@
         if(bounds) {
             map.fitBounds(bounds)
         } else {
-            const mapState = config.mapState;
+            const mapState = config.initialMapState;
             const view = new LatLng(mapState.lat, mapState.lng)
             map.setView(view, mapState.zoom);
         }

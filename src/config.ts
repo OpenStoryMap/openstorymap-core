@@ -3,7 +3,7 @@ import config from './configs/config.json';
 
 export interface Config {
     mapboxAccessToken: string,
-    mapState: MapState,
+    initialMapState: MapState,
     layers: Layer[],
     stories: Story[]
 }
