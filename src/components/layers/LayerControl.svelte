@@ -96,16 +96,25 @@
         createOpacityControl($mapStateStore.layers);
     }
 
-    const createOpacityControl = (layers) => {
+    const createOpacityControl = (_layers) => {
         const leafletMap = map();
         if (opacityControl != null) {
             leafletMap.removeControl(opacityControl);
         }
-        if (layers == null || layers.length == 0) return;
+        if (_layers == null || _layers.length == 0) return;
+
+        // use this mapping to add human readable names to the opacity control
+        const layerIdToName = layers
+            .map(l => l.layerConfig.property)
+            .reduce((m, l) => {m[l.id] = l.name; return m;}, {});
+
         // the opacity control will only show the layers that are visible
         const _layersMap = Object.fromEntries(
             Object.entries(layersMap)
-                .filter(([name, layer]) => layers.indexOf(layer.options.oym_id) != -1));
+                .filter(([_, layer]: [string, L.Layer]) => _layers.indexOf(layer.options.oym_id) != -1)
+                .map(([id, layer]: [string, L.Layer]) => [layerIdToName[id], layer])
+            );
+
         opacityControl = L.control.opacity(_layersMap, {label: 'Opacity'}).addTo(leafletMap);
     }
 
