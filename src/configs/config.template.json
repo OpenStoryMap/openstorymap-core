@@ -1,6 +1,6 @@
 {
   "mapboxAccessToken": "add map box access token here",
-  "mapState": {
+  "initialMapState": {
     "lat": 40.689656366699694,
     "lng": -74.04497587916974,
     "zoom": 13
