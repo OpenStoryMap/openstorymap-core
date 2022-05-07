@@ -16,6 +16,7 @@
     let layers: L.Layer[] = [];
     let layersMap: {[key: string]: L.Layer} = {};
     let layerOrder: {[key: number]: string} = {};
+    let layersPrevious: string[] = [];
 
     let opacityControl = null;
 
@@ -39,6 +40,21 @@
     // when adding an overlay, mark the store based on the layer id
     const overlayAdd = (layer) => {
         mapStateStore.addLayer(layer.layer.options.oym_id)
+
+        // preserve order by bringing all layers to the front in reverse order
+        // FIXME use panes
+        const leafletMap = map();
+        const layersCurrent = [];
+        leafletMap?.eachLayer((l: L.Layer) => {
+            if (l.options?.oym_id != null) {
+                layersCurrent.push(l);
+            }
+        });
+
+        layersCurrent
+            .sort((a, b) => layerOrder[a.options.oym_id] - layerOrder[b.options.oym_id])
+            .reverse();
+        layersCurrent.forEach(l => l.bringToFront());
     }
 
     // when removing an overlay, mark the store based on the layer id
@@ -46,7 +62,39 @@
         mapStateStore.removeLayer(layer.layer.options.oym_id)
     }
 
-    $: createOpacityControl($mapStateStore.layers);
+    // update the layers by checking what layers exist vs what we want to exist
+    const updateLayers = (layers: string[]) => {
+        const leafletMap = map();
+        const layersCurrent = [];
+        leafletMap?.eachLayer((l: L.Layer) => {
+            if (l.options?.oym_id != null) {
+                layersCurrent.push(l);
+            }
+        });
+        const layersCurrentIds = layersCurrent.map(l => l.options.oym_id);
+
+        // remove everything currently showing not included in the new list
+        const layersToRemove =  layersCurrentIds.filter(oym_id => !layers.includes(oym_id));
+
+        // add everything not currently showing from the new list
+        const layersToAdd =  layers.filter(oym_id => !layersCurrentIds.includes(oym_id));
+
+        layersToRemove.forEach(l =>
+            leafletMap.removeLayer(layersMap[l])
+        );
+        layersToAdd.forEach(l =>
+            leafletMap.addLayer(layersMap[l])
+        );
+    }
+
+    $: {
+        const layers = $mapStateStore.layers;
+        if (layers != null) {
+            updateLayers(layers);
+        }
+
+        createOpacityControl($mapStateStore.layers);
+    }
 
     const createOpacityControl = (layers) => {
         const leafletMap = map();
@@ -63,6 +111,7 @@
 
     const createControl = async (container) => {
         control = L.control.layers({}, {}, {
+            autoZIndex: false,
             sortLayers: true,
             // the sort function will match the order of the config file
             sortFunction: (a, b) => {
@@ -88,15 +137,16 @@
         // immutably, so mutably it is for now.
         layer.options.name = name;
         layer.options.oym_id = id;
+
         control.addOverlay(layer, name);
 
-        layersMap[name] = layer;
+        layersMap[id] = layer;
     };
 
     const removeLayer = (event: any) => {
-        const { name, url } = event.detail;
-        control.removeLayer(layersMap[name]);
-        delete layersMap[name];
+        const { name, url, id } = event.detail;
+        control.removeLayer(layersMap[id]);
+        delete layersMap[id];
     }
 
 </script>
