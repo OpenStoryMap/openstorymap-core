@@ -40,7 +40,10 @@ export function setupMapStateStore(initialState: MapState) {
         store.set(value);
       });
     }
-    set(mapState);
+
+    // when setting the mapState, if we don't have layers set explicity,
+    // then use the layers that already exist
+    update(m => {return {...mapState, layers: mapState.layers ?? m.layers}});
   }
 
   return {
