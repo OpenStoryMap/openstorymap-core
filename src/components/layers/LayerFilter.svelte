@@ -121,7 +121,7 @@
 
         const values = data.features
             .map(x => x.properties[args.colorFeatureProperty])
-            .filter(x => x != (args?.null ?? null));
+            .filter(x => x && x != args?.null);
 
         colorChroma = colorChroma.domain([Math.min(...values), Math.max(...values)]);
     }
