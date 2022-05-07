@@ -19,7 +19,7 @@
 
 {#if config}
     {#each controls as {component, layerProperty, controlProperty}}
-        {#if $mapStateStore.layers?.indexOf(layerProperty.id) != -1}
+        {#if $mapStateStore.layers?.indexOf(layerProperty.id) > -1}
             <div class="panel">
                 <svelte:component
                     this={component}

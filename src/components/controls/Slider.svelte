@@ -1,6 +1,6 @@
 <script lang="ts">
   import Slider from '@smui/slider';
-  import { Writable } from "svelte/store"
+  import { Writable, get } from "svelte/store"
   import { onMount, onDestroy } from 'svelte';
   import type { ControlProperty, LayerProperty, SliderProperties } from '../../config';
   import Control from './Control.svelte';
@@ -18,7 +18,13 @@
     const id = `${layerProperty.id}.${controlProperty.id}`;
     store = GetOrCreateControlStore(id);
     args = controlProperty.args as SliderProperties;
-    value = args.initialValue;
+
+    const storeValue = get(store);
+    if (storeValue != null) {
+        value = storeValue / (args.multiplier ?? 1);
+    } else {
+        value = args.initialValue;
+    }
   });
 
   $: {

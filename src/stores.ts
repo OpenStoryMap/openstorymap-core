@@ -33,10 +33,20 @@ export const GetOrCreateControlStore = (id: string, initialValue: any): Writable
 export function setupMapStateStore(initialState: MapState) {
   const { subscribe, set, update } = writable(initialState);
 
+  const _set = (mapState: MapState) => {
+    if (mapState.controlValues != null) {
+      Object.entries(mapState?.controlValues).forEach(([key, value]) => {
+        const store = GetOrCreateControlStore(key, value);
+        store.set(value);
+      });
+    }
+    set(mapState);
+  }
+
   return {
     subscribe,
     update,
-    set,
+    set: _set,
     addLayer: (layerId: string) => update(s => {
       if (s.layers == null) return {...s, layers: [layerId]};
 

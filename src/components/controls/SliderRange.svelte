@@ -1,6 +1,6 @@
 <script lang="ts">
   import Slider from '@smui/slider';
-  import { Writable } from "svelte/store"
+  import { Writable, get } from "svelte/store"
   import { onMount, onDestroy } from 'svelte';
   import type { ControlProperty, LayerProperty, SliderRangeProperties } from '../../config';
   import Control from './Control.svelte';
@@ -18,14 +18,19 @@
   onMount(() => {
     // FIXME move this function somewhere else
     const storeId = `${layerProperty.id}.${controlProperty.id}`;
-    console.log(storeId);
     store = GetOrCreateControlStore(storeId);
     args = controlProperty.args as SliderRangeProperties;
-    start = args.start;
-    end = args.end;
 
-    // initial value will be a list
-    store.set([start, end]);
+    const storeValue = get(store);
+    if (storeValue != null) {
+        start = storeValue[0];
+        end = storeValue[1];
+    } else {
+        // this means we just initialized, so set up the initial store value
+        start = args.start;
+        end = args.end;
+        store.set([start, end]);
+    }
   });
 
   // on changes, set the start and stop values

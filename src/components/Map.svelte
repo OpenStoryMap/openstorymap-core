@@ -10,8 +10,6 @@
 
     // Must set either bounds, or view and zoom.
     export let bounds = undefined;
-    export let view = undefined;
-    export let zoom: number = undefined;
     export let config: Config = undefined;
     let mapProp: L.Map|undefined = undefined;
     export { mapProp as map };
