@@ -5,6 +5,44 @@
  * But then tweaked to work with GeoJSON
  *
  */
+
+const setOpacity = (layer, opacityFactor) => {
+    if (layer.setOpacity === undefined) {
+        // if we have a styling function, then we want to use
+        // what we already have, then add the opacity
+        /*
+        const { opacity, opacityFactory } = layer.options.style != null
+            ? {
+                opacity: (options.opacity ?? 1) * opacityFactor,
+                fillOpacity: (options.fillOpacity ?? 1) * opacityFactor,
+            } : {
+                opacity: opacityFactor,
+                fillOpacity: opacityFactor,
+            };
+        */
+        const styleFunc = layer.options.style != null
+            ? (feature) => {
+                const options = layer.options.style(feature);
+                return {
+                    ...options,
+                    // if the style function has opacity, then multiply to either
+                    // raise or lower that opacity
+                    opacity: (options.opacity ?? 1) * opacityFactor,
+                    fillOpacity: (options.fillOpacity ?? 1) * opacityFactor,
+                };
+            } : (feature) => {
+                return {
+                    opacity: opacityFactor,
+                    fillOpacity: opacityFactor,
+                };
+            };
+        layer.setStyle(styleFunc);
+    } else {
+        layer.setOpacity(opacityFactor);
+    }
+}
+
+
 L.Control.Opacity = L.Control.extend({
     options: {
         collapsed: false,
@@ -127,11 +165,15 @@ L.Control.Opacity = L.Control.extend({
         const label = document.createElement('label');
         const input = document.createElement('input');
         if (obj.overlay) {
+            const opacityFactor = (this.options.opacityMap[obj.layer.options.name] * 100
+                || obj.layer.options.opacity * 100
+                || 100);
             input.type = 'range';
             input.className = 'leaflet-control-layers-range';
             input.min = 0;
             input.max = 100;
-            input.value = obj.layer.options.opacity * 100 || 100;
+            input.value = opacityFactor;
+            setOpacity(obj.layer, opacityFactor / 100.0)
         } else {
             input = this._createRadioElement('leaflet-base-layers', checked);
         }
@@ -142,30 +184,7 @@ L.Control.Opacity = L.Control.extend({
             // this is the scaling factor for the opacity
             const opacityFactor = Number(rgValue / 100);
             const layer = this._getLayer(input.layerId).layer;
-            // this section is custom code
-            if (layer.setOpacity === undefined) {
-                // if we have a styling function, then we want to use
-                // what we already have, then add the opacity
-                const styleFunc = layer.options.style != null
-                    ? (feature) => {
-                        const options = layer.options.style(feature);
-                        return {
-                            ...options,
-                            // if the style function has opacity, then multiply to either
-                            // raise or lower that opacity
-                            opacity: (options.opacity ?? 1) * opacityFactor,
-                            fillOpacity: (options.fillOpacity ?? 1) * opacityFactor,
-                        };
-                    } : (feature) => {
-                        return {
-                            opacity: opacityFactor,
-                            fillOpacity: opacityFactor,
-                        };
-                    };
-                layer.setStyle(styleFunc);
-            } else {
-                layer.setOpacity(opacityFactor);
-            }
+            setOpacity(layer, opacityFactor);
         });
         const name = document.createElement('span');
         name.innerHTML = ' ' + obj.name;

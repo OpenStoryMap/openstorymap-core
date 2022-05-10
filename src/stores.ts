@@ -34,10 +34,13 @@ export function setupMapStateStore(initialState: MapState) {
   const { subscribe, set, update } = writable(initialState);
 
   const _set = (mapState: MapState) => {
-    if (mapState.controlValues != null) {
-      Object.entries(mapState?.controlValues).forEach(([key, value]) => {
-        const store = GetOrCreateControlStore(key, value);
-        store.set(value);
+    if (mapState.controlPropertyValues != null) {
+      mapState?.controlPropertyValues.forEach(item => {
+        item.controlProperties?.forEach(c => {
+          const id = `${item.layerId}.${c.controlPropertyId}`;
+          const store = GetOrCreateControlStore(id, c.value);
+          store.set(c.value);
+        });
       });
     }
 

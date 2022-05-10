@@ -18,5 +18,33 @@
       "type": "raster",
       "url": "layers/statue-of-liberty.geojson"
     }
+  ],
+  "stories": [
+    {
+      "title": "Hot in the Heights",
+      "content": "Its very hot in the heights",
+      "mapState": {
+        "lat": 40.745493,
+        "lng": -74.043362,
+        "zoom": 15
+      },
+      "layers": []
+    },
+    {
+      "title": "Dr. Jason B",
+      "content": "I am Jason. I like to sing, dance, pretend AND I like to have fun fun fun fun fun fun. I just want to say.... KAZOO",
+      "mapState": {
+        "lat": 40.8240192,
+        "lng": -73.8804113,
+        "zoom": 15,
+        "layers": ["LayerId1", "LayerId2"],
+        "controlPropertyValues": [
+            {"layerId": "LayerId1",
+             "opacity": 0.5,
+             "controlProperties": [{"controlPropertyId": "controlProperty1", "value": [0, 0.5]}]
+            }
+        ]
+      }
+    }
   ]
 }

@@ -93,10 +93,10 @@
             updateLayers(layers);
         }
 
-        createOpacityControl($mapStateStore.layers);
+        createOpacityControl($mapStateStore.layers, $mapStateStore.controlPropertyValues);
     }
 
-    const createOpacityControl = (_layers) => {
+    const createOpacityControl = (_layers, _controlPropertyValues) => {
         const leafletMap = map();
         if (opacityControl != null) {
             leafletMap.removeControl(opacityControl);
@@ -115,7 +115,13 @@
                 .map(([id, layer]: [string, L.Layer]) => [layerIdToName[id], layer])
             );
 
-        opacityControl = L.control.opacity(_layersMap, {label: 'Opacity'}).addTo(leafletMap);
+        const opacityMap = _controlPropertyValues == null
+            ? {}
+            : _controlPropertyValues?.filter(x => x.opacity != null)
+            .reduce((m, x) => {m[layerIdToName[x.layerId]] = x.opacity; return m;}, {});
+        opacityControl = L.control
+            .opacity(_layersMap, { label: 'Opacity', opacityMap: opacityMap })
+            .addTo(leafletMap);
     }
 
     const createControl = async (container) => {
