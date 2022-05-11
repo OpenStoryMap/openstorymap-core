@@ -8,11 +8,18 @@ export interface Config {
     stories: Story[]
 }
 
+export interface DisplayPropertyArg {
+  id: string,
+  type?: string,
+  displayName?: string,
+}
+
 export interface Layer {
   property: LayerProperty,
   controlProperties?: ControlProperty[],
   // args depending on the type
-  args?: LayerArgs
+  args?: LayerArgs,
+  displayProperties?: DisplayPropertyArg[]
 }
 
 export interface LayerProperty {

@@ -1,9 +1,10 @@
 <script lang="ts">
     import { getContext, createEventDispatcher } from 'svelte';
+    import { get } from 'svelte/store';
     import chroma from "chroma-js";
 	import L from 'leaflet';
 
-    import { popupFeatureStore } from '../../stores.js';
+    import { mouseOverLayerId, popupFeatureStore } from '../../stores.js';
     import type { LayerProperty, GenericLayerArgs } from '../../config';
 
     export let id: string;
@@ -31,36 +32,19 @@
     }
 
     const onEachFeature = (feature, layer) => {
-        layer.on('mouseenter', (e: any) => {
-            const name = property.name;
-            popupFeatureStore.update(s => {
-                return {...s, [name]: feature};
-            });
-            console.log(`mouseenter on ${id}`);
-            console.log(feature);
-            console.log(layer);
-            console.log(e);
-        });
         layer.on('mouseover', (e: any) => {
             const name = property.name;
             popupFeatureStore.update(s => {
-                return {...s, [name]: feature};
+                return {...s, feature, layer};
             });
-            console.log(`mouseover on ${id}`);
-            console.log(feature);
-            console.log(layer);
-            console.log(e);
         });
         layer.on('mouseout', (e: any) => {
             popupFeatureStore.update(s => {
                 const sNew = {...s};
-                delete sNew[property.name];
+                delete sNew['feature'];
+                delete sNew['layer'];
                 return sNew;
             });
-            console.log(`mouseout on ${id}`);
-            console.log(feature);
-            console.log(layer);
-            console.log(e);
         });
     }
 

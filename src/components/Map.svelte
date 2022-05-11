@@ -5,7 +5,7 @@
     import LayersControl from './layers/LayerControl.svelte';
     import Popup from './Popup.svelte';
     import type { Config } from '../config';
-    import { mapStore } from '../stores.js';
+    import { popupLatlngStore, mapStore } from '../stores.js';
 
     import 'leaflet/dist/leaflet.css';
 
@@ -53,6 +53,11 @@
     function createLeaflet(node) {
         map = L.map(node, {preferCanvas: true}).on('zoom', (e) => dispatch('zoom', e));
         mapStore.set(map);
+
+        map.on('mousemove', (e: any) => {
+            var latlng = e.latlng;
+            popupLatlngStore.set(e.latlng);
+        });
 
         if(bounds) {
             map.fitBounds(bounds)
