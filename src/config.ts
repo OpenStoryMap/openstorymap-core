@@ -40,6 +40,7 @@ export interface ControlProperty {
   type: 'slider',  // FIXME add more
   name?: string,
   subtitle?: string,
+  tooltip?: string,  // more info
   key?: string,
   args?: ControlPropertyArgs
 }
