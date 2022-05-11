@@ -18,7 +18,7 @@
     import L from 'leaflet';
 
 	import GeoJsonLayer from './GeoJsonLayer.svelte';
-    import { GetOrCreateControlStore } from '../../stores';
+    import { GetOrCreateControlStore, mapStateStore } from '../../stores';
     import type { ControlProperty, Layer, LayerProperty, LayerByValueListArgs } from '../config';
 
     export let id: string;
@@ -28,7 +28,7 @@
 
     // these are things we can only load once mounted
     let layer: L.GeoJSON;
-    let store: any;  // FIXME what is this type?
+    let storeMap: {[key: string]: any};  // FIXME what is this type?
     let valueStore: any;
     let valueMap: {[key: string]: number|[number, number]} = {};
     let valueMapKeys: string[] = [];
@@ -39,20 +39,21 @@
 
     onMount(() => {
         colorChroma = chroma.scale([args?.minColor ?? '#fff', args?.maxColor ?? '#000']);
-        let stores = []
+        storeMap = {};
         controlProperties?.forEach((c: any) => {
             const id = `${property.id}.${c.id}`;
-            stores.push(GetOrCreateControlStore(id));
+            storeMap[id] = GetOrCreateControlStore(id);
             valueMapKeys.push(c.id);
         });
         // this has two args. I think the second one is some sort of set function
-        valueStore = derived(stores, (data, _) => {
+        valueStore = derived(Object.values(storeMap), (data, _) => {
             data.forEach((value, index) => {
                 valueMap[valueMapKeys[index]] = value;
             });
 
             // FIXME this should run in the top layer post-mount,
             // but that depends on lifecycle as child runs first
+            // FIXME need to add the opacity here
             if (layer != null) {
                 layer.setStyle(onStyle);
                 L.setOptions(layer, {...layer.options, style: onStyle});
@@ -121,7 +122,7 @@
 
         const values = data.features
             .map(x => x.properties[args.colorFeatureProperty])
-            .filter(x => x != (args?.null ?? null));
+            .filter(x => x && x != args?.null);
 
         colorChroma = colorChroma.domain([Math.min(...values), Math.max(...values)]);
     }

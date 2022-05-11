@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import Slider from '@smui/slider';
-  import { layersStore, incomeSlider } from '../stores.js';
+  import { layersStore, mapStateStore } from '../stores.js';
   import Paper, { Title, Subtitle, Content } from '@smui/paper';
   import config from '../config';
   import { CreateControls } from './controls/ControlCreator.svelte';
@@ -19,7 +19,7 @@
 
 {#if config}
     {#each controls as {component, layerProperty, controlProperty}}
-        {#if $layersStore[layerProperty.id] == true}
+        {#if $mapStateStore.layers?.indexOf(layerProperty.id) > -1}
             <div class="panel">
                 <svelte:component
                     this={component}

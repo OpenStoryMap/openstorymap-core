@@ -3,7 +3,7 @@
     import { onDestroy } from 'svelte';
     import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
 
-    import { mapStore } from '../stores';
+    import { mapStore, mapStateStore } from '../stores';
     import config, { MapState } from '../config';
 
 
@@ -18,6 +18,7 @@
     onDestroy(unsubscribe);
 
     function setMapState(mapState: MapState): void {
+        mapStateStore.set(mapState);
         map?.flyTo(new LatLng(mapState.lat, mapState.lng), mapState.zoom);
     }
 </script>

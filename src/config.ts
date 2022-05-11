@@ -3,9 +3,7 @@ import config from './configs/config.json';
 
 export interface Config {
     mapboxAccessToken: string,
-    // FIXME typescript was unhappy with [number, number]
-    latLng: number[],
-    zoom: number,
+    initialMapState: MapState,
     layers: Layer[],
     stories: Story[]
 }
@@ -87,10 +85,21 @@ export interface LayerPluralityArgs {
   colorMap: {[key: string]: string}
 }
 
+// Control property settings that go in the map state
+export interface ControlPropertyValues {
+  layerId: string,
+  opacity?: number[],
+  controlProperties?: {controlPropertyId: string, value: number|[number, number]}[]
+}
+
 export interface MapState {
     lat: number,
     lng: number,
-    zoom: number
+    zoom: number,
+    // a list of the layers to show
+    layers?: string[],
+    // this is a mapping of control property id's to values
+    controlPropertyValues?: ControlPropertyValues[]
 }
 
 export default config as Config;
