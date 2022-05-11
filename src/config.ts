@@ -85,6 +85,13 @@ export interface LayerPluralityArgs {
   colorMap: {[key: string]: string}
 }
 
+// Control property settings that go in the map state
+export interface ControlPropertyValues {
+  layerId: string,
+  opacity?: number[],
+  controlProperties?: {controlPropertyId: string, value: number|[number, number]}[]
+}
+
 export interface MapState {
     lat: number,
     lng: number,
@@ -92,7 +99,7 @@ export interface MapState {
     // a list of the layers to show
     layers?: string[],
     // this is a mapping of control property id's to values
-    controlValues?: {[key: string]: number},
+    controlPropertyValues?: ControlPropertyValues[]
 }
 
 export default config as Config;
