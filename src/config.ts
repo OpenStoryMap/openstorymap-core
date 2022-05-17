@@ -19,14 +19,14 @@ export interface Layer {
   controlProperties?: ControlProperty[],
   // args depending on the type
   args?: LayerArgs,
-  displayProperties?: DisplayPropertyArg[]
 }
 
 export interface LayerProperty {
   name: string,
   url: string,
   // FIXME layerByValueList is temporary until dynamic imports work
-  type: 'geojson'|'raster'|'layerByValueList'
+  type: 'geojson'|'raster'|'layerByValueList',
+  displayProperties?: DisplayPropertyArg[]
 }
 
 export interface Story {
