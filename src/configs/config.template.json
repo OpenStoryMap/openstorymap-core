@@ -17,6 +17,26 @@
       "name": "NYC - Afternoon High",
       "type": "raster",
       "url": "layers/statue-of-liberty.geojson"
+    },
+    {
+      "property": {
+        "id": "heatAndDemographics",
+        "name": "Heat and Demographics",
+        "type": "layer-with-filters",
+        "url": "",
+        "args": {
+          "colorFeatureProperty": "afternoonMaxHeatIndex",    
+          "minColor": "white",
+          "maxColor": "red",
+          "null": -9999,
+          "fillColor": "black"
+        },
+        "displayProperties": [
+            {"id": "blackPercentage", "type": "percentage", "displayName": "Black Percentage"},
+            {"id": "eveningMaxHeatIndex", "displayName": "Max Heat Index - Evening"},
+            {"id": "medianHouseholdIncome", "type": "currency", "displayName": "Median Household Income"}
+        ]
+      }
     }
   ],
   "stories": [
