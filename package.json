@@ -48,7 +48,7 @@
     "@types/geojson": "^7946.0.8",
     "@types/leaflet": "^1.7.9",
     "chroma-js": "^2.4.2",
-    "geojson-utils": "^1.1.0",
+    "geojson-utils": "file:src/plugins/geojson-utils",
     "georaster": "^1.5.6",
     "georaster-layer-for-leaflet": "^3.5.0",
     "leaflet": "^1.7.1",
