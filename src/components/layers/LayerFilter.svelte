@@ -18,7 +18,7 @@
     import L from 'leaflet';
 
 	import GeoJsonLayer from './GeoJsonLayer.svelte';
-    import { GetOrCreateControlStore, mapStateStore } from '../../stores';
+    import { GetOrCreateControlStore, mapStateStore, styleFuncStore } from '../../stores';
     import type { ControlProperty, Layer, LayerProperty, LayerByValueListArgs } from '../config';
 
     export let id: string;
@@ -53,10 +53,8 @@
 
             // FIXME this should run in the top layer post-mount,
             // but that depends on lifecycle as child runs first
-            // FIXME need to add the opacity here
             if (layer != null) {
-                layer.setStyle(onStyle);
-                L.setOptions(layer, {...layer.options, style: onStyle});
+                styleFuncStore.updateStyleFunc(layer.options.oym_id, 'layerFilter', onStyle);
             }
         });
         unsubscribe = valueStore.subscribe((x: any) => { });

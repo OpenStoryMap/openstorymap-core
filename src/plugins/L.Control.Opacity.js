@@ -6,37 +6,20 @@
  *
  */
 
+import { styleFuncStore } from '../stores';
+
 const setOpacity = (layer, opacityFactor) => {
     if (layer.setOpacity === undefined) {
         // if we have a styling function, then we want to use
         // what we already have, then add the opacity
-        /*
-        const { opacity, opacityFactory } = layer.options.style != null
-            ? {
-                opacity: (options.opacity ?? 1) * opacityFactor,
-                fillOpacity: (options.fillOpacity ?? 1) * opacityFactor,
-            } : {
+        const styleFunc = (feature) => {
+            return {
                 opacity: opacityFactor,
                 fillOpacity: opacityFactor,
             };
-        */
-        const styleFunc = layer.options.style != null
-            ? (feature) => {
-                const options = layer.options.style(feature);
-                return {
-                    ...options,
-                    // if the style function has opacity, then multiply to either
-                    // raise or lower that opacity
-                    opacity: (options.opacity ?? 1) * opacityFactor,
-                    fillOpacity: (options.fillOpacity ?? 1) * opacityFactor,
-                };
-            } : (feature) => {
-                return {
-                    opacity: opacityFactor,
-                    fillOpacity: opacityFactor,
-                };
-            };
-        layer.setStyle(styleFunc);
+        };
+        //layer.setStyle(styleFunc);
+        styleFuncStore.updateStyleFunc(layer.options.oym_id, 'opacity', styleFunc);
     } else {
         layer.setOpacity(opacityFactor);
     }

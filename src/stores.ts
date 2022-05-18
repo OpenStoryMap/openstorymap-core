@@ -1,4 +1,4 @@
-import { writable, Writable } from 'svelte/store';
+import { writable, derived, Writable } from 'svelte/store';
 
 import config, { MapState } from './config';
 
@@ -74,3 +74,59 @@ export function setupMapStateStore(initialState: MapState) {
 
 export const mapStateStore = setupMapStateStore(config.initialMapState);
 
+/*
+ * A store to map layerId's to a mapping of style functions,
+ * this way we can do things like change opacity separately from other features
+ */
+function setupStyleStore() {
+  const _store = writable({});
+  const _derived = derived([_store], ([$store]) => {
+    return $store;
+  });
+
+  /*
+   *    The updateFunc adds a style func to a mapping of functions by name.
+   *    The functions are then combined with a reduce function to make a full
+   *    onStyle. The opacity function is run last, as other functions may override opacity.
+   *    For any function that sets opacity, the regular opacity function will multiply to
+   *    preserve the relative opacity of other functions
+   */
+  const updateStyleFunc = (layerId: string, funcName: string, styleFunc: any) => _store.update((m: any) => {
+      if (!(layerId in m) || !('onStyle' in m[layerId])) {
+        return {...m, [layerId]: {[funcName]: styleFunc, onStyle: styleFunc }};
+      } else {
+        // remove the old onStyle function. we will replace this function later
+        const { onStyle, ...mFuncs } = m[layerId];
+        const mFuncsNew = {...mFuncs, [funcName]: styleFunc}
+        // recreate the onStyle func here
+        const _onStyle = (feature: any) => {
+            // run all funcs from the mappings, but split out opacity to run later
+            const { opacity, ...funcs } = mFuncsNew;
+            let value = Object.entries(funcs).reduce((result: any, [_, func]: [any, any]) => {
+              return {...result, ...func(feature)};
+            }, {});
+
+            // handle the opacity last, and use it as a multiplying factor
+            if (opacity != null) {
+              const opacityValues = opacity(feature);
+
+              value = {...value,
+                opacity: opacityValues.opacity * (value.opacity ?? 1),
+                fillOpacity: opacityValues.fillOpacity * (value.fillOpacity ?? 1)
+              };
+            }
+            return value;
+        };
+        return {...m, [layerId]: {...mFuncsNew, onStyle: _onStyle}};
+      }
+  });
+
+  return {
+    subscribe: _derived.subscribe,
+    update: _store.update,
+    set: _store.set,
+    updateStyleFunc
+  };
+}
+
+export const styleFuncStore = setupStyleStore();

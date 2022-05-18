@@ -4,7 +4,7 @@
     import chroma from "chroma-js";
 	import L from 'leaflet';
 
-    import { mouseOverLayerId, popupFeatureStore } from '../../stores.js';
+    import { popupFeatureStore, styleFuncStore } from '../../stores';
     import type { LayerProperty, GenericLayerArgs } from '../../config';
 
     export let id: string;
@@ -17,6 +17,14 @@
 
     // to let the layer control know we made the layer
     const dispatch = createEventDispatcher();
+
+    $: {
+        const _styleFuncs = $styleFuncStore;
+        if (layer?.options?.oym_id in _styleFuncs) {
+            layer.setStyle(_styleFuncs[layer.options.oym_id].onStyle);
+            L.setOptions(layer, {...layer.options, style: onStyle});
+        }
+    }
 
     const defaultOnStyle = (feature) => {
         const colors = ({
