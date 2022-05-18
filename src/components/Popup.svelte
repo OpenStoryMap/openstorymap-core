@@ -4,6 +4,7 @@
   import leafletPip from '@mapbox/leaflet-pip';
 
   import { popupFeatureStore, popupLatlngStore } from '../stores.js';
+  import { formatValue } from '../utils';
   import config from '../config';
 
   const map = getContext('map');
@@ -15,23 +16,6 @@
   let displayMap = {}; // map from the config
   export let latlng;
 
-  const convertValue = (value, type) => {
-    if (type == null) return value;
-
-    switch(type) {
-    case 'percentage':
-        return `${(value * 100).toFixed(2)}%`;
-    case 'currency':
-        // code block
-        return value.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        });
-    default:
-        return value;
-    }
-  }
-
   // FIXME add types
   const layerInfoToHtml = (value) => {
     const _displayMap = displayMap[value.id];
@@ -42,7 +26,7 @@
     // update the name and value type based on the display map
     const featureTable = Object.entries(value.feature.properties)
         .filter(x => x[0] in _displayMap)
-        .map(x => [_displayMap[x[0]]?.displayName ?? x[0], convertValue(x[1], _displayMap[x[0]]?.type)])
+        .map(x => [_displayMap[x[0]]?.displayName ?? x[0], formatValue(x[1], _displayMap[x[0]]?.type)])
         .map(x => `<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`);
 
     return `<h3>${value['name']}</h3><br /><table>${featureTable.join('')}</table>`;

@@ -41,6 +41,7 @@ export interface ControlProperty {
   name?: string,
   subtitle?: string,
   tooltip?: string,  // more info
+  valueDisplayType?: string,
   key?: string,
   args?: ControlPropertyArgs
 }

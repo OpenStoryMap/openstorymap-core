@@ -40,6 +40,8 @@
 <Control layerProperty={layerProperty} controlProperty={controlProperty}>
     <!-- FIXME this is hacky and because of life cycle issues.
          the slider complains if this is undefined -->
+    <span slot="values"> </span>
+    <span slot="control">
     {#if value != null}
     <Slider
         bind:value={value}
@@ -51,5 +53,6 @@
         color="secondary"
     />
     {/if}
+    </span>
 </Control>
 

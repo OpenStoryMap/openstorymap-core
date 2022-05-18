@@ -2,9 +2,11 @@
   import Slider from '@smui/slider';
   import { Writable, get } from "svelte/store"
   import { onMount, onDestroy } from 'svelte';
-  import type { ControlProperty, LayerProperty, SliderRangeProperties } from '../../config';
   import Control from './Control.svelte';
+
+  import type { ControlProperty, LayerProperty, SliderRangeProperties } from '../../config';
   import { GetOrCreateControlStore } from '../../stores';
+  import { formatValue } from '../../utils';
 
   export let layerProperty: LayerProperty;
   export let controlProperty: ControlProperty;
@@ -40,24 +42,33 @@
     }
   };
 
+  const displayValue = (value: number) => controlProperty.valueDisplayType != null
+    ? formatValue(value, controlProperty.valueDisplayType)
+    : value;
+
 </script>
 
 
 <Control layerProperty={layerProperty} controlProperty={controlProperty}>
     <!-- FIXME this is hacky and because of life cycle issues.
          the slider complains if this is undefined -->
-    {#if start != null && end != null}
-    <Slider
-        bind:start={start}
-        bind:end={end}
-        range
-        min={args?.min || 0}
-        max={args?.max}
-        step={args?.step}
-        discrete
-        input$aria-label=""
-        color="secondary"
-    />
-    {/if}
+    <span slot="values">
+        Showing values between {displayValue(start)} and {displayValue(end)}
+    </span>
+    <span slot="control">
+        {#if start != null && end != null}
+        <Slider
+            bind:start={start}
+            bind:end={end}
+            range
+            min={args?.min || 0}
+            max={args?.max}
+            step={args?.step}
+            discrete
+            input$aria-label=""
+            color="secondary"
+        />
+        {/if}
+    </span>
 </Control>
 

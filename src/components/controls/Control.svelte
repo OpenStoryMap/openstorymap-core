@@ -16,11 +16,15 @@
 </script>
 
 <Paper>
+    <span class="header">
     {#if controlProperty.tooltip != null}
     <Wrapper rich>
         <span role="button" tabindex="0">
             <Title>{controlProperty.title || layerProperty.name}</Title>
-            <Subtitle>{controlProperty.subtitle ?? ''}</Subtitle>
+                <Subtitle>
+                    {controlProperty.subtitle ?? ''}
+                    <slot name="values"/>
+                </Subtitle>
             <span class="w3-badge">click for info</span>
         </span>
 
@@ -32,11 +36,19 @@
     {:else}
         <Title>{controlProperty.title || layerProperty.name}</Title>
         <Subtitle>{controlProperty.subtitle ?? ''}</Subtitle>
+        <slot name="values"/>
     {/if}
+    </span>
     <Content>
-        <slot />
+        <slot name="control"/>
     </Content>
 </Paper>
 
+
 <style>
+    header {
+		padding: 0 0 0.2em 0;
+		margin: 0 0 1em 0;
+		border-bottom: 1px solid #ff3e00
+	}
 </style>
