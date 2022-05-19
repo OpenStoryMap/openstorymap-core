@@ -110,6 +110,29 @@
         };
     }
 
+
+    const legendFunc = () => {
+        if (args.colorFeatureProperty != null) {
+            if (args.minColor != null && args.maxColor != null) {
+                const legend = '<span style="'
+                    + `background-image: linear-gradient(to right, ${args.minColor}, ${args.maxColor});`
+                    + 'height: 20px; width: 100%;'
+                    + 'display: block; background-repeat: no-repeat;'
+                    + '"></span>' + property.name;
+            return legend;
+            }
+        } else {
+            const legend = '<span style="'
+                + 'border-radius: 50%;'
+                + 'height: 20px; width: 20px;'
+                + 'display: inline-block; margin-right: 0.5rem;'
+                + `background: ${args.fillColor};`
+                + `border-width: 1px; border-color: ${args.color};`
+                + '"></span>' + property.name;
+            return legend;
+        }
+    }
+
     /**
     *   Preprocess the data to grab all available unique keys.
     *   This might use a little bit too much memory, but can be optimized later
@@ -131,6 +154,7 @@
     id={id}
     property={property}
     onStyle={onStyle}
+    legendFunc={legendFunc}
     on:create-layer
     on:remove-layer
     on:preprocess-data={preprocessData}

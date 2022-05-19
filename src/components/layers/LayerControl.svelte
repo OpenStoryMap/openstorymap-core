@@ -8,6 +8,7 @@
     import { mapStateStore } from '../../stores';
 
     import _ from '../../plugins/L.Control.Opacity';
+    import _ from '../../plugins/Legend';
 
     export let config: Config|undefined = undefined;
 
@@ -20,10 +21,9 @@
     let layerOrder: {[key: number]: string} = {};
 
     let opacityControl = null;
+    let legendControl = null;
 
     const map = getContext('map');
-
-    let mapMouseTimer: number = 1;
 
     /**
     *   onMount creates promises that then resolve to create all configured layers
@@ -99,6 +99,29 @@
         }
 
         createOpacityControl($mapStateStore.layers, $mapStateStore.controlPropertyValues);
+        createLegendControl($mapStateStore.layers, $mapStateStore.controlPropertyValues);
+    }
+
+    const createLegendControl = (_layers, _controlPropertyValues) => {
+        const leafletMap = map();
+        if (legendControl != null) {
+            leafletMap.removeControl(legendControl);
+        }
+        if (_layers == null || _layers.length == 0) return;
+
+        const layerIdToName = layers
+            .map(l => l.layerConfig.property)
+            .reduce((m, l) => {m[l.id] = l.name; return m;}, {});
+
+        const _layersMap = Object.fromEntries(
+            Object.entries(layersMap)
+                .filter(([_, layer]: [string, L.Layer]) => _layers.indexOf(layer.options.oym_id) != -1)
+                .map(([id, layer]: [string, L.Layer]) => [layerIdToName[id], layer])
+            );
+
+        legendControl = L.control
+            .legend(_layersMap, { label: 'Legend', properties: layers.map(l => l.layerConfig.property) })
+            .addTo(leafletMap);
     }
 
     const createOpacityControl = (_layers, _controlPropertyValues) => {
@@ -152,14 +175,14 @@
     };
 
     const addLayer = (event: any) => {
-        const { layer, name, url, id } = event.detail;
+        const { layer, name, url, id, legendFunc } = event.detail;
         // add our custom options. there is no good function to recreate these
         // immutably, so mutably it is for now.
         layer.options.name = name;
         layer.options.oym_id = id;
+        layer.options.legendFunc = legendFunc;
 
         control.addOverlay(layer, name);
-
         layersMap[id] = layer;
     };
 

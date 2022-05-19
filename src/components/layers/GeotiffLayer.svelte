@@ -17,6 +17,15 @@
     let data: any = undefined;
     const map = getContext('map');
 
+    const legendFunc = () => {
+            const legend = '<span style="'
+                + `background-image: linear-gradient(to right, #0f0, #f00);`
+                + 'height: 20px; width: 100%;'
+                + 'display: block; background-repeat: no-repeat;'
+                + '"></span>' + property.name;
+        return legend;
+    }
+
     const createLayer = async (container) => {
         const response = await fetch(property.url);
         if (!response.ok) {
@@ -35,7 +44,7 @@
               }         
           });
 
-        dispatch('create-layer', {layer, url: property.url, name: property.name, id});
+        dispatch('create-layer', {layer, url: property.url, name: property.name, id, legendFunc});
 
         return () => {
             dispatch('remove-layer', {url: property.url, name: property.name, id});
