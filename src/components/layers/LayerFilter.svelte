@@ -110,27 +110,17 @@
         };
     }
 
-
     const legendFunc = () => {
-        if (args.colorFeatureProperty != null) {
-            if (args.minColor != null && args.maxColor != null) {
-                const legend = '<span style="'
-                    + `background-image: linear-gradient(to right, ${args.minColor}, ${args.maxColor});`
-                    + 'height: 20px; width: 100%;'
-                    + 'display: block; background-repeat: no-repeat;'
-                    + '"></span>' + property.name;
-            return legend;
-            }
-        } else {
-            const legend = '<span style="'
-                + 'border-radius: 50%;'
-                + 'height: 20px; width: 20px;'
-                + 'display: inline-block; margin-right: 0.5rem;'
-                + `background: ${args.fillColor};`
-                + `border-width: 1px; border-color: ${args.color};`
-                + '"></span>' + property.name;
-            return legend;
-        }
+        const backgroundCss = (args.colorFeatureProperty != null
+                && args.minColor != null && args.maxColor != null)
+            ? `background-image: linear-gradient(to right, ${args.minColor}, ${args.maxColor});`
+            : `background: ${args.fillColor}; border-width: 1px; border-color: ${args.color};`
+        const legend = '<span style="'
+            + backgroundCss
+            + 'height: 20px; width: 100%;'
+            + 'display: block; background-repeat: no-repeat;'
+            + '"></span>' + property.name;
+        return legend;
     }
 
     /**

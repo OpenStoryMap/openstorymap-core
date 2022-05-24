@@ -18,6 +18,7 @@ const setOpacity = (layer, opacityFactor) => {
                 fillOpacity: opacityFactor,
             };
         };
+        //layer.setStyle(styleFunc);
         styleFuncStore.updateStyleFunc(layer.options.oym_id, 'opacity', styleFunc);
     } else {
         layer.setOpacity(opacityFactor);

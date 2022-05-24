@@ -16,13 +16,13 @@
     let data = undefined;
     export let legendFunc = () => {
         const legend = '<span style="'
-            + 'border-radius: 50%;'
-            + 'height: 20px; width: 20px;'
-            + 'display: inline-block; margin-right: 0.5rem;'
             + `background: ${args.fillColor};`
             + `border-width: 1px; border-color: ${args.color};`
+            + 'height: 20px; width: 100%;'
+            + 'display: block; background-repeat: no-repeat;'
             + '"></span>' + property.name;
         return legend;
+
     }
 
     // to let the layer control know we made the layer
