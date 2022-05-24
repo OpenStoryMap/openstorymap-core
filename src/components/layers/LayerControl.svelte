@@ -124,8 +124,14 @@
             ? {}
             : _controlPropertyValues?.filter(x => x.opacity != null)
             .reduce((m, x) => {m[layerIdToName[x.layerId]] = x.opacity; return m;}, {});
+
+        // everytime we change a layer, we recreate the opacity control. we also want to pull
+        // some of the options from the old one
         opacityControl = L.control
-            .opacity(_layersMap, { label: 'Opacity', opacityMap: opacityMap })
+            .opacity(
+                _layersMap,
+                { label: 'Opacity',
+                  opacityMap: {...opacityMap, ...opacityControl?.options?.opacityMap }})
             .addTo(leafletMap);
     }
 

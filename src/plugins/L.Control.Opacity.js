@@ -148,15 +148,16 @@ L.Control.Opacity = L.Control.extend({
         const label = document.createElement('label');
         const input = document.createElement('input');
         if (obj.overlay) {
-            const opacityFactor = (this.options.opacityMap[obj.layer.options.name] * 100
-                || obj.layer.options.opacity * 100
-                || 100);
+            const opacityFactor = (this.options.opacityMap[obj.layer.options.name]
+                ?? obj.layer.options.opacity
+                ?? 1);
             input.type = 'range';
             input.className = 'leaflet-control-layers-range';
             input.min = 0;
             input.max = 100;
-            input.value = opacityFactor;
-            setOpacity(obj.layer, opacityFactor / 100.0)
+            input.value = opacityFactor * 100;
+            this.options.opacityMap[obj.layer.options.name] = opacityFactor;
+            setOpacity(obj.layer, opacityFactor)
         } else {
             input = this._createRadioElement('leaflet-base-layers', checked);
         }
@@ -167,6 +168,7 @@ L.Control.Opacity = L.Control.extend({
             // this is the scaling factor for the opacity
             const opacityFactor = Number(rgValue / 100);
             const layer = this._getLayer(input.layerId).layer;
+            this.options.opacityMap[obj.layer.options.name] = opacityFactor;
             setOpacity(layer, opacityFactor);
         });
         const name = document.createElement('span');
