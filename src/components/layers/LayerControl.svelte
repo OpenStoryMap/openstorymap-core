@@ -21,6 +21,12 @@
 
     let opacityControl = null;
 
+    // keep track of the original number of layers, then run a post-setup
+    // function once we have loaded all layers.
+    // we want to keep track of this layerCount here in case the number of layers changes
+    let layersCount: number = 0;
+    let finishedPostSetup: boolean = false;
+
     const map = getContext('map');
 
     let mapMouseTimer: number = 1;
@@ -34,12 +40,11 @@
             .reduce((m, l) => {m[l[1]] = l[0]; return m;}, {});
 
         const layerPromises = config.layers.map((layerConfig: Layer) => CreateLayer(layerConfig));
+        layersCount = config.layers.length;
 
         // await everything here, otherwise the components will try to load before they
         // are properly setup. For now, we will filter out any bad layers.
         layers = (await Promise.all(layerPromises)).filter(l => l.component !== undefined);
-
-        // FIXME this is the popup
     });
 
     // when adding an overlay, mark the store based on the layer id
@@ -94,11 +99,13 @@
 
     $: {
         const layers = $mapStateStore.layers;
-        if (layers != null) {
-            updateLayers(layers);
-        }
+        if (finishedPostSetup) {
+            if (layers != null) {
+                updateLayers(layers);
+            }
 
-        createOpacityControl($mapStateStore.layers, $mapStateStore.controlPropertyValues);
+            createOpacityControl($mapStateStore.layers, $mapStateStore.controlPropertyValues);
+        }
     }
 
     const createOpacityControl = (_layers, _controlPropertyValues) => {
@@ -161,7 +168,26 @@
         control.addOverlay(layer, name);
 
         layersMap[id] = layer;
+
+        // once all the layers have loaded, run our post-setup script
+        // and mark that we have finished running the post setup
+        if (!finishedPostSetup && Object.values(layersMap).length == layersCount) {
+            postSetup();
+            finishedPostSetup = true;
+        }
     };
+
+    const postSetup = () => {
+        const initialLayers = config.initialMapState?.layers;
+        if (initialLayers && initialLayers.length > 0) {
+            mapStateStore.addLayers(initialLayers);
+        }
+
+        const initialControlPropertyValues = config.initialMapState?.controlPropertyValues;
+        if (initialControlPropertyValues && initialControlPropertyValues.length > 0) {
+            mapStateStore.setControlProperties(initialControlPropertyValues);
+        }
+    }
 
     const removeLayer = (event: any) => {
         const { name, url, id } = event.detail;
