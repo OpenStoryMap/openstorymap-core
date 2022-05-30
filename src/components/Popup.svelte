@@ -109,20 +109,29 @@
 
   });
 
+  const clearPopup = () => {
+    if (popup != null) {
+        const leafletMap = map();
+        popup.removeFrom(leafletMap);
+        popup = null;
+    }
+  }
+
   $: {
     layer = $popupFeatureStore.layer;
     feature = $popupFeatureStore.feature;
 
     latlng = $popupLatlngStore;
-    if (layer != null) {
+    if (layer == null || layer?.options?.fillOpacity == null || layer?.options?.fillOpacity == 0) {
+        // placeholder to do nothing because this isn't technically a function
+        clearPopup();
+    } else if (layer != null) {
         checkIntersection();
         if (popup != null) {
             popup.setLatLng(latlng);
         }
     } else if (popup != null) {
-        const leafletMap = map();
-        popup.removeFrom(leafletMap);
-        popup = null;
+        clearPopup();
     }
   }
 
