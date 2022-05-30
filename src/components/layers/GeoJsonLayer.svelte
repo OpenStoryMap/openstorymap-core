@@ -14,6 +14,16 @@
     // FIXME typing
     export let onStyle = undefined;
     let data = undefined;
+    export let legendFunc = () => {
+        const legend = '<span style="'
+            + `background: ${args.fillColor};`
+            + `border-width: 1px; border-color: ${args.color};`
+            + 'height: 20px; width: 100%;'
+            + 'display: block; background-repeat: no-repeat;'
+            + '"></span>' + property.name;
+        return legend;
+
+    }
 
     // to let the layer control know we made the layer
     const dispatch = createEventDispatcher();
@@ -67,11 +77,9 @@
         layer = onStyle == null
             ? L.geoJSON(data, {style: defaultOnStyle, onEachFeature})
             : L.geoJSON(data, {style: onStyle, onEachFeature});
-        dispatch('create-layer', {layer,url: property.url, name: property.name, id});
+        dispatch('create-layer', {layer,url: property.url, name: property.name, id, legendFunc});
 
         return () => {
-            //const leafletMap = map();
-            //leafletMap.removeFrom(layer);
             dispatch('remove-layer', {url: property.url, name: property.name, id});
         }
     };

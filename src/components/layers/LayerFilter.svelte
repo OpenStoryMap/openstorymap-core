@@ -110,6 +110,19 @@
         };
     }
 
+    const legendFunc = () => {
+        const backgroundCss = (args.colorFeatureProperty != null
+                && args.minColor != null && args.maxColor != null)
+            ? `background-image: linear-gradient(to right, ${args.minColor}, ${args.maxColor});`
+            : `background: ${args.fillColor}; border-width: 1px; border-color: ${args.color};`
+        const legend = '<span style="'
+            + backgroundCss
+            + 'height: 20px; width: 100%;'
+            + 'display: block; background-repeat: no-repeat;'
+            + '"></span>' + property.name;
+        return legend;
+    }
+
     /**
     *   Preprocess the data to grab all available unique keys.
     *   This might use a little bit too much memory, but can be optimized later
@@ -131,6 +144,7 @@
     id={id}
     property={property}
     onStyle={onStyle}
+    legendFunc={legendFunc}
     on:create-layer
     on:remove-layer
     on:preprocess-data={preprocessData}
