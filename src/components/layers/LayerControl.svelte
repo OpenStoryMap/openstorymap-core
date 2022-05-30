@@ -143,10 +143,15 @@
             .map(l => l.layerConfig.property)
             .reduce((m, l) => {m[l.id] = l.name; return m;}, {});
 
+        const filteredLayers = layers
+            .map(l => l.layerConfig.property)
+            .reduce((m, l) => {m[l.id] = l.ignoreOpacity ?? false; return m;}, {});
+
         // the opacity control will only show the layers that are visible
         const _layersMap = Object.fromEntries(
             Object.entries(layersMap)
                 .filter(([_, layer]: [string, L.Layer]) => _layers.indexOf(layer.options.oym_id) != -1)
+                .filter(([id, _]: [string, any]) => filteredLayers[id] !== true)
                 .map(([id, layer]: [string, L.Layer]) => [layerIdToName[id], layer])
             );
 
