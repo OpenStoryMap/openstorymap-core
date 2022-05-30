@@ -20,8 +20,6 @@ L.Control.Legend = L.Control.extend({
         this._layers = layers;
     },
     onAdd: function (map) {
-        var div = L.DomUtil.create('div', 'info legend ');
-        L.DomUtil.addClass(div, 'leaflet-control-layers-expanded');
         const htmls = Object.entries(this._layers).map(([label, layer]) => {
             return layer.options?.legendFunc != null
                 ? layer.options.legendFunc()
@@ -31,9 +29,17 @@ L.Control.Legend = L.Control.extend({
                     + 'background: green;'
                     + '"></span>'
                     + label;
-        });
+        }).filter(x => x != '');
+
+
+        if (!htmls.length) {
+            return L.DomUtil.create('div', '');
+        }
+
+        var div = L.DomUtil.create('div', 'info legend ');
+        L.DomUtil.addClass(div, 'leaflet-control-layers-expanded');
         div.innerHTML = '<fieldset><legend>Legend</legend>' + htmls.join('<br>') + '</fieldset>';
-    return div;
+        return div;
     }
 });
 

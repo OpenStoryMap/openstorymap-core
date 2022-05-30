@@ -15,6 +15,9 @@
     export let onStyle = undefined;
     let data = undefined;
     export let legendFunc = () => {
+        if (args?.fillColor == null) {
+            return '';
+        }
         const legend = '<span style="'
             + `background: ${args.fillColor};`
             + `border-width: 1px; border-color: ${args.color};`
