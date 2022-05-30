@@ -13,7 +13,6 @@
         const storyImages = document.querySelectorAll('#story-container img');
         if (storyImages) {
             for (const storyImage of Array.from(storyImages)) {
-                console.log('test');
                 storyImage.addEventListener('click', (event: Event) => {
                     initImagePopup(event);
                 });
