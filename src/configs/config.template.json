@@ -31,11 +31,14 @@
           "null": -9999,
           "fillColor": "black"
         },
-        "displayProperties": [
-            {"id": "blackPercentage", "type": "percentage", "displayName": "Black Percentage"},
-            {"id": "eveningMaxHeatIndex", "displayName": "Max Heat Index - Evening"},
-            {"id": "medianHouseholdIncome", "type": "currency", "displayName": "Median Household Income"}
-        ]
+        "displayProperties": {
+            "missingDisplay": "No data to be found",
+            "displayPropertyArgs": [
+                {"id": "blackPercentage", "type": "percentage", "displayName": "Black Percentage"},
+                {"id": "eveningMaxHeatIndex", "displayName": "Max Heat Index - Evening"},
+                {"id": "medianHouseholdIncome", "type": "currency", "displayName": "Median Household Income"}
+            ]
+        }
       },
       "controlProperties": [
         {

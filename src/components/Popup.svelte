@@ -13,23 +13,34 @@
   let contentHtml: string = null;
   let layer: L.Layer = null;
   let feature = null;
-  let displayMap = {}; // map from the config
+  let displayPropertiesMap = {}; // map from the config
   export let latlng;
 
   // FIXME add types
   const layerInfoToHtml = (value) => {
-    const _displayMap = displayMap[value.id];
-    if (_displayMap == null) {
+    const displayProperties = displayPropertiesMap[value.id];
+    if (displayProperties == null || value == null) {
         return '';
     }
 
+    const displayPropertyArgs = displayProperties.displayPropertyArgs.reduce((m, x) => {
+        m[x.id] = x;
+        return m;
+    }, {});
+
     // update the name and value type based on the display map
     const featureTable = Object.entries(value.feature.properties)
-        .filter(x => x[0] in _displayMap)
-        .map(x => [_displayMap[x[0]]?.displayName ?? x[0], formatValue(x[1], _displayMap[x[0]]?.type)])
+        .filter(x => x[0] in displayPropertyArgs)
+        .map(x => [displayPropertyArgs[x[0]]?.displayName ?? x[0], formatValue(x[1], displayPropertyArgs[x[0]]?.type)])
         .map(x => `<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`);
 
-    return `<h3>${value['name']}</h3><br /><table>${featureTable.join('')}</table>`;
+    if (!featureTable.length || !featureTable.length) {
+        const missingDisplay = displayProperties.missingDisplay;
+        return missingDisplay != null
+            ? `<h3>${value['name']}</h3>${missingDisplay}`
+            : '';
+    }
+    return `<h3>${value['name']}</h3><table>${featureTable.join('')}</table>`;
   }
 
   /*
@@ -51,7 +62,7 @@
         const oym_id = _layer.options.oym_id;
 
         // only check intersections if we are going to display something
-        if (displayMap[oym_id] == null) {
+        if (displayPropertiesMap[oym_id] == null) {
             return;
         }
 
@@ -69,8 +80,14 @@
 
     // only make changes if we have to
     if (intersections.length > 0) {
-        const contentHtmlNew = intersections.map(v => layerInfoToHtml(v)).join('<br />');
-        if (contentHtmlNew != contentHtml) {
+        const contentHtmlNew = intersections
+            .map(v => layerInfoToHtml(v))
+            .filter(x => x != '')
+            .join('<br>');
+        if (contentHtmlNew == '') {
+            contentHtml = null;
+        }
+        else if (contentHtmlNew != contentHtml) {
             contentHtml = contentHtmlNew;
             updatedContent = true;
         }
@@ -97,16 +114,11 @@
   }
 
   onMount(() => {
-    // make a nested map of our properties
-    displayMap = config.layers?.filter(x => x.property.displayProperties != null)
+    displayPropertiesMap = config.layers?.filter(x => x.property.displayProperties != null)
         .reduce((m, x) => {
-            m[x.property.id] = x.property.displayProperties.reduce((m2, d) => {
-                m2[d.id] = d;
-                return m2;
-            }, {});
+            m[x.property.id] = x.property.displayProperties;
             return m;
         }, {});
-
   });
 
   $: {
