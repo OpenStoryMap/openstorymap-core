@@ -57,13 +57,18 @@
 
         // this is our main layer, so we are good
         if (Object.keys(layer._eventParents)[0] == _layer._leaflet_id) {
-            intersections = intersections.concat({id: _layer.options.oym_id, name: _layer.options.name, feature: feature});
+            if (layer.options?.fillOpacity) {
+                intersections = intersections.concat({id: _layer.options.oym_id, name: _layer.options.name, feature: feature});
+            }
             return;
         }
         
         const intersection = leafletPip.pointInLayer(latlng, _layer);
         if (intersection.length > 0) {
-            intersections = intersections.concat({id: _layer.options.oym_id, name: _layer.options.name, feature: intersection[0].feature});
+            const _feature = intersection[0];
+            if (_feature.options?.fillOpacity) {
+                intersections = intersections.concat({id: _layer.options.oym_id, name: _layer.options.name, feature: _feature.feature});
+            }
         }
     });
 
@@ -109,29 +114,22 @@
 
   });
 
-  const clearPopup = () => {
-    if (popup != null) {
-        const leafletMap = map();
-        popup.removeFrom(leafletMap);
-        popup = null;
-    }
-  }
-
   $: {
     layer = $popupFeatureStore.layer;
     feature = $popupFeatureStore.feature;
 
     latlng = $popupLatlngStore;
-    if (layer == null || layer?.options?.fillOpacity == null || layer?.options?.fillOpacity == 0) {
-        // placeholder to do nothing because this isn't technically a function
-        clearPopup();
-    } else if (layer != null) {
+    if (layer != null) {
         checkIntersection();
         if (popup != null) {
             popup.setLatLng(latlng);
         }
     } else if (popup != null) {
-        clearPopup();
+        if (popup != null) {
+            const leafletMap = map();
+            popup.removeFrom(leafletMap);
+            popup = null;
+        }
     }
   }
 
