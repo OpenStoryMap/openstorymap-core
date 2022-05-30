@@ -1,6 +1,6 @@
 import { writable, derived, Writable } from 'svelte/store';
 
-import config, { MapState } from './config';
+import config, { ControlPropertyValues, MapState } from './config';
 
 export const mapStore = writable(null);
 
@@ -37,15 +37,19 @@ export const mouseOverLayerId = writable('');
 export function setupMapStateStore(initialState: MapState) {
   const { subscribe, set, update } = writable(initialState);
 
+  const updateStoreValues = (controlPropertyValues: ControlPropertyValues[]) => {
+    controlPropertyValues.forEach(item => {
+      item.controlProperties?.forEach(c => {
+        const id = `${item.layerId}.${c.controlPropertyId}`;
+        const store = GetOrCreateControlStore(id, c.value);
+        store.set(c.value);
+      });
+    });
+  }
+
   const _set = (mapState: MapState) => {
     if (mapState.controlPropertyValues != null) {
-      mapState?.controlPropertyValues.forEach(item => {
-        item.controlProperties?.forEach(c => {
-          const id = `${item.layerId}.${c.controlPropertyId}`;
-          const store = GetOrCreateControlStore(id, c.value);
-          store.set(c.value);
-        });
-      });
+      updateStoreValues(mapState.controlPropertyValues);
     }
 
     // when setting the mapState, if we don't have layers set explicity,
@@ -62,12 +66,21 @@ export function setupMapStateStore(initialState: MapState) {
 
       return {...s, layers: [...s.layers, layerId]}
     }),
+    addLayers: (layerIds: string[]) => update(s => {
+      if (s.layers == null) return {...s, layers: layerIds};
+
+      return {...s, layers: [...s.layers, ...layerIds]}
+    }),
     removeLayer: (layerId: string) => update(s => {
       // FIXME do we want to make this null if removing means an empty list?
       if (s.layers == null) return {...s, layers: [layerId]};
 
       return {...s, layers: s.layers.filter(x => x != layerId)};
     }),
+    setControlProperties: (controlPropertyValues: ControlPropertyValues[]) => {
+      updateStoreValues(controlPropertyValues);
+      update(m => {return {...m, controlPropertyValues}});
+    },
     reset: () => set(initialState),
   };
 }

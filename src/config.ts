@@ -97,7 +97,7 @@ export interface LayerPluralityArgs {
 // Control property settings that go in the map state
 export interface ControlPropertyValues {
   layerId: string,
-  opacity?: number[],
+  opacity?: number,
   controlProperties?: {controlPropertyId: string, value: number|[number, number]}[]
 }
 
