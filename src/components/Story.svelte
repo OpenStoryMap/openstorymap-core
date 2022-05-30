@@ -1,7 +1,25 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import Accordion from '@smui-extra/accordion';
     import StoryPanel from './StoryPanel.svelte';
     import config, { MapState } from '../config';
+    import initImagePopup from '../popup';
+
+    onMount(async () => {
+        initImageZoom();
+    });
+
+    function initImageZoom() {
+        const storyImages = document.querySelectorAll('#story-container img');
+        if (storyImages) {
+            for (const storyImage of Array.from(storyImages)) {
+                console.log('test');
+                storyImage.addEventListener('click', (event: Event) => {
+                    initImagePopup(event);
+                });
+            }
+        }
+    }
 
 </script>
 
