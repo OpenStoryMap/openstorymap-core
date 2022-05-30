@@ -64,6 +64,7 @@ button:focus {
 
 #story-container img {
 	max-width: 100%;
+	cursor: pointer;
 }
 
 
