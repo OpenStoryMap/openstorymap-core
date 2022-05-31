@@ -57,7 +57,8 @@
 
         // this is our main layer, so we are good
         if (Object.keys(layer._eventParents)[0] == _layer._leaflet_id) {
-            if (layer.options?.fillOpacity) {
+            // only ignore if the opacity is explicitly set to 0
+            if (layer.options?.fillOpacity !== 0) {
                 intersections = intersections.concat({id: _layer.options.oym_id, name: _layer.options.name, feature: feature});
             }
             return;
