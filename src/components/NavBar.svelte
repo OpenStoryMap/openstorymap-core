@@ -10,6 +10,9 @@
     <Section>
         <Title>OpenStoryMap</Title>
     </Section>
+    <Section>
+        <a href="about.html">About</a>
+    </Section>
     <Section align="end" toolbar>
         <img src="images/logo.png" style="width: 64px; height: 64px" at="A logo" />
     </Section>
