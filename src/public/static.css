@@ -1,0 +1,27 @@
+.content{
+  max-width:650px;
+  margin:40px auto;
+  padding:0 10px;
+  font:18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color:#444
+}
+
+h1,h2,h3{
+  line-height:1.2
+}
+
+img {
+  max-width: 100%;
+}
+
+.twoPerRow {
+  display: inline-block;
+  max-width: 40%;
+  padding: 0 .5em;
+}
+
+.threePerRow {
+  display: inline-block;
+  max-width: 25%;
+  padding: 0 .5em;
+}

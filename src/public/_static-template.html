@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+  <title>About</title>
+
+  <link rel='icon' type='image/png' href='/favicon.png'>
+  <link rel='stylesheet' href='/global.css'>
+  <link rel='stylesheet' href='/static.css'>
+</head>
+
+<body>
+  <nav><div class="inner"><div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()"><div class="middle-line"></div></div> <ul id="navbar-list" class="navbar-list"><li><a href="/">2021 NYC HeatWatch Results</a> </li><li><a href="about.html">About</a> </li><li><a href="resources.html">Resources</a> </li><li><a href="media.html">Media Coverage</a> </li></ul></div></nav>
+
+  <div class="content">
+    <p>
+      fucking website
+    </p>
+  </div>
+
+
+  <script>
+    const mobileIcon = document.getElementById('mobile-icon');
+    const navbarList = document.getElementById('navbar-list');
+
+    function toggleMobileMenu() {
+      mobileIcon.classList.toggle('active');
+      navbarList.classList.toggle('mobile');
+    }
+  </script>
+</body>
+</html>
