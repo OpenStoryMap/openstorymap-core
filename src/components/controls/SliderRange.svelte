@@ -68,7 +68,11 @@
     <!-- FIXME this is hacky and because of life cycle issues.
          the slider complains if this is undefined -->
     <span slot="values">
-        Showing values between {displayValue(start)} and {displayValue(end)}
+        {#if start == end}
+            Showing values equal to {displayValue(start)}
+        {:else}
+            Showing values between {displayValue(start)} and {displayValue(end)}
+        {/if}
     </span>
     <span slot="control">
         {#if start != null && end != null}

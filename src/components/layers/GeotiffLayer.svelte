@@ -36,11 +36,11 @@
 
         const colorChroma = chroma.scale(['#0f0', '#f00']).domain([data.mins[0], data.maxs[0]]);
         layer = new GeoRasterLayer({    
-              georaster: data,    
-              opacity: 0.7,    
-              resolution: 64,    
-              pixelValuesToColorFn: values => {    
-                  return values[0] > 1 ? colorChroma(values[0]) : null;    
+              georaster: data,
+              opacity: 0.7,
+              resolution: 64,
+              pixelValuesToColorFn: values => {
+                  return values[0] > 0.0001 ? colorChroma(values[0]) : null;
               }         
           });
 
