@@ -8,16 +8,311 @@
 
 	<link rel='icon' type='image/png' href='/favicon.png'>
   <link rel='stylesheet' href='/global.css'>
-	<link rel='stylesheet' href='/fuckingstyle.css'>
+	<link rel='stylesheet' href='/static.css'>
 </head>
 
 <body>
-  <nav><div class="inner"><div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()"><div class="middle-line"></div></div> <ul id="navbar-list" class="navbar-list"><li><a href="/">2021 NYC HeatWatch Results</a> </li><li><a href="about.html">About</a> </li><li><a href="data.html">Data</a> </li><li><a href="resources.html">Resources</a> </li><li><a href="media.html">Media Coverage</a> </li></ul></div></nav>
+  <nav><div class="inner"><div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()"><div class="middle-line"></div></div> <ul id="navbar-list" class="navbar-list"><li><a href="/">2021 NYC HeatWatch Results</a> </li><li><a href="about.html">About</a> </li><li><a href="resources.html">Resources</a> </li><li><a href="media.html">Media Coverage</a> </li></ul></div></nav>
 
   <div class="content">
+
+    <h2>PROJECT INTRODUCTION</h2>
+
     <p>
-      fucking website
+      "Addressing the Urban Heat Island Effect through an Equity Lens: A Community Science Project" is a campaign that focuses on the intersections of extreme heat, health, and social inequities. The goal of this project is to make heat and its disproportionate impacts visible through mapping how impacts of extreme heat are compounded by various axes of inequities, including historic and ongoing systemic racism, poverty, health disparities, and more.
     </p>
+
+    <p>
+      The project was part of a multi-year nationwide campaign, part of the <a href="https://cpo.noaa.gov/Interagency-Programs/NIHHIS/About-NIHHIS" target="_blank">NIHHIS (National Integrated Heat Health Information System)</a> jointly developed by NOAA (National Oceanic and Atmospheric Administration) and the CDC (Centers for Disease Control and Prevention), and partnered with CAPA Strategies. New York and New Jersey were part of the 2021 campaign, which included 12 cities across the US. The New York campaign partnered with <a href="https://www.southbronxunite.org/" target="_blank">South Bronx Unite</a>, a local grassroots community organization working to improve and protect the social, environmental, and economic future of Mott Haven and Port Morris area of the Bronx.
+    </p>
+
+    <p>
+      <strong>What geographical area does this project cover?</strong>
+    </p>
+    <p>
+      NYC: Northern Manhattan (Harlem, West Harlem, East Harlem, Washington Heights, Inwood) and the South Bronx (Mott Haven-Port Morris, Hunts Point, Longwood, High Bridge, Concourse, Claremont Village, Melrose).
+      <br>NJ: the cities of Jersey City, Newark, and Elizabeth.
+    </p>
+
+    <p>
+      <strong>How does this differ from existing data?</strong>
+    </p>
+    <p>
+      <ul>
+        <li>
+          <strong>Measures ambient temperature:</strong> Previous models have been based on satellite data, which record the temperature of the ground itself, while our campaign measured air temperatures and humidity close to the ground, which is the heat people actually feel.
+        </li>
+        <li>
+          <strong>Finer spatial resolution:</strong> Our map outputs are in higher resolution (1 meter - 10 meters), meaning a finer spatial resolution than most public satellite products related to land surface temperature and air temperature (which are at scales ranging from 30 meters to 1 kilometer). These more granular maps are more conducive to designing targeted local mitigation efforts.
+        </li>
+        <li>
+          <strong>Real-time, mobile data collection:</strong> Data are collected in real time across several different locations, while most existing air temperature data is collected in one stationary location.
+        </li>
+        <li>
+          <strong>Capture variance throughout the day:</strong> Data are collected multiple times in the day (morning, afternoon, and evening) to capture how heat may vary throughout the day.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <strong>Why is an equity-oriented approach to heat so important?</strong>
+    </p>
+    <p>
+      As anthropogenic climate change worsens, extreme heat is a recurring issue that is increasing in frequency and intensity<sup>1</sup>. Extreme heat can negatively impact people's health, ranging from triggering temporary acute conditions to exacerbating existing illnesses and causing death<sup>2</sup>. In the United States, more people each year from heat than from all other weather-related disasters combined<sup>3</sup>, demonstrating the significant morbidity and mortality burden extreme heat carries.
+    </p>
+
+    <p>
+      What must be noted, however, is that these negative health consequences disproportionately impact those marginalized along race and class lines<sup>456</sup>. For example, in NYC, almost half of the heat-related deaths are in Black/African-American neighborhoods even though they make up only 25% of the city's population<sup>78</sup>. These disproportionate impacts are a reflection and consequence of long-standing and ongoing social inequities and discriminatory policies and development patterns, and can be seen in three main pathways: disparities in exposure, sensitivity, and resiliency before, during and after climate disasters, including extreme heat events<sup>9</sup>.
+    </p>
+
+    <h2>WHAT IS THE URBAN HEAT ISLAND EFFECT (UHIE)?</h2>
+
+    <p>
+      The urban heat island effect is a phenomenon in which cities maintain higher temperatures than their rural surroundings. These higher temperatures are due to reasons including:
+
+      <ul>
+        <li>Higher absorption and trapping of heat by building materials like asphalt, concrete, brick, dark roofs, and pavement</li>
+        <li>Tall buildings densely packed together</li>
+        <li>High traffic</li>
+        <li>Carbon-emitting infrastructure</li>
+        <li>High total energy usage</li>
+      </ul>
+
+      This effect does not only occur in the day but also at night &#8212; when our bodies need to cool down to recuperate from a hot day, the difference can be even starker: with urban centers ranging as much as 22 degrees warmer than rural areas nearby.
+    </p>
+
+    <p>
+      Global temperatures and urban populations continue to rise, which makes this an ever-urgent problem. A study involving 13,000 urban areas found that city dwellers' exposure to life-threatening heat and humidity has increased threefold since the 1980s<sup>10</sup>. 
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/01.jpg" alt="A line graph showing how downtown areas are the hottest followed by commercial and urban areas, then suburban, then rural"/>
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/02.jpg" alt="Demonstrating that urban areas are 3 to 10 degree celsius hotter than rural areas"/>
+    </p>
+
+    <p>
+      <strong>Why Focus on Greater New York City?</strong>
+    </p>
+    <p>
+      Our area of study (NY: Northern Manhattan & the Bronx; NJ: Jersey City, Newark & Elizabeth) is an excellent case study for demonstrating that heat doesn't affect all neighborhoods equally. This is due to the wide range in demographic factors within a small geographic area, which reveals that consequences of UHIE go beyond temperature and humidity.
+    </p>
+
+    <h2>METHODS</h2>
+
+    <p>
+      <strong>What is “community-science”? How was it key to this project?</strong>
+    </p>
+    <p>
+      Because environmental justice was a core element to our project, the NYC campaign partnered with the community-based organization, South Bronx Unite, who already had ongoing advocacy efforts around extreme heat, air pollution, and greenspace (among others), making the collaboration a good fit for both parties.
+    </p>
+
+    <p>
+      Community-scientists in this project are residents of the areas most-affected by heat who participated in data collection. Overall, 81 community scientists participated in data collection for NY and NJ combined, traversing along 22 different routes, collecting almost 100,000 total data points. The goal was to have diverse participation from local community members who are disproportionately impacted by extreme heat. Participants were compensated for their time, which was for about 1 hour of training before the day and 3.5 hours on average on campaign day.
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/03.jpg" alt="Volunteering posing with CAPA sensor"/>
+    </p>
+
+    <p>
+      <strong>How were the data collected?</strong>
+    </p>
+    <p>
+      The traverse routes for collecting data were designed together with SBU as well as other local groups (WE ACT for Environmental Justice based in Harlem, and Community Boards 9-12 in Northern Manhattan) in order to include areas of concern that matter to local residents. These points included major intersections, frequented bus stops, common corridors of activity, as well as areas with public housing. These points were then sent to CAPA Strategies, who designed the traverse routes based on them.
+    </p>
+
+    <p>
+      On Saturday July 24, 2021, community scientists traversed along the predetermined 1-hr long routes with the heat sensor in cars or bicycles. Data collection took place three times: morning (6am-7am), afternoon (3pm-4pm), and evening (7pm-8pm). Most routes and vehicles were accompanied by a member of the media, with representation from Science Magazine, the Guardian, Scientific American, the New York Times, Inside Climate, and more. There were 10 different routes in total (9 driving routes and 1 bicycling route).
+    </p>
+
+    <p>
+      <strong>How do the sensors work?</strong>
+    </p>
+    <p>
+      CAPA Strategies provided sensors called 'Type T Thermocouples'. These sensors fired off every second and captured block-by-block differences in heat and humidity while using a GPS to track geospatial data as well.
+    </p>
+
+    <p>
+      <img class="twoPerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/04.jpg" alt="CAPA sensor" />
+      <img class="twoPerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/05.jpg" alt="CAPA sensor" />
+    </p>
+
+    <p>
+      <img class="twoPerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/06_v2.jpg" alt="CAPA sensor" />
+      <img class="twoPerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/07.jpg" alt="CAPA sensor" />
+    </p>
+
+    <p>
+      <strong>Where did funding come from?</strong>
+    </p>
+    <p>
+      The NY project was funded by NOAA, as part of the multi-year nationwide campaign with the National Integrated Heat Health Information System (NIHHIS) jointly developed by NOAA and the CDC. The NY project had additional funding from Earth Institute at Columbia University. The NJ project was funded by Unilever as part of their Change Makers and Do-Gooders Community Challenge program. The data collection and analysis were made possible from a partnership with the private firm CAPA Strategies based in Oregon and their Heat Watch campaign. New York and New Jersey were 2 of 12 locations participating in the 2021 NIHHIS-CAPA Urban Heat Island mapping campaign. (The map below shows all cities that have taken part in this initiative so far).
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/08.png" alt="Image of the USA with cities that have had HeatWatch campaigns completed from 2017 to 2021"/>
+    </p>
+
+    <p>
+      <img class="threePerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/09.png" alt="NOAA" />
+      <img class="threePerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/10.jpg" alt="NIHHIS" />
+      <img class="threePerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/11.png" alt="CAPA" />
+    </p>
+
+    <p>
+      <img class="threePerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/12.png" alt="HeatWatch" />
+      <img class="threePerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/13.png" alt="CDC" />
+      <img class="threePerRow" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/about/14.png" alt="Columbia Climate School" />
+    </p>
+
+    <h2>NEXT STEPS</h2>
+
+    <p>
+      <strong>What can be done to fix this issue?</strong>
+    </p>
+    <p>
+      Ultimately, to rectify urban heat inequality, we need to undo centuries of urban development that have put many marginalized communities along race and class lines at risk. Some mitigation measures include more trees, vegetation and greenspaces, having lighter color rooftops, and having buildings more spread out. Any strategies need to take into account community input and also need to be employed equitably, implemented first in vulnerable communities disproportionately at risk.
+    </p>
+
+    <p>
+      <strong>Where do we see this project going? What's ahead for this project?</strong>
+    </p>
+    <p>
+      In addition to the creation of this story map, Columbia researchers will continue to support South Bronx Unite's steadfast work in green and blue space advocacy as our community partner. For anyone interested in getting involved in their efforts, please email Ashley Fontanilla at <a href="mailto:ashley@southbronxunite.org">ashley@southbronxunite.org</a>.
+    </p>
+
+    <p>
+      Because shade trees help so much with heat mitigation, efforts will be made to prioritize the planting and maintenance of street trees in areas found to be urban heat islands from the 2021 HeatWatch campaign. Newly planted street trees need more attention than normal in their first few years after being planted. The newly planted trees must be watered when it has not rained enough to keep them healthy. If you live in the NYC area and would like to receive emails about when and how to water newly planted street trees in your neighborhood, sign up at <a href="http://workfornature.org" target="_blank">WorkForNature.org</a>
+    </p>
+
+    <p>
+      CAPA Strategies hosts all resulting data maps on the <a href="https://osf.io/9neka/" target="_blank">Open Science Framework</a> to provide broad and reliable access to all. Data is available in both traverse point and raster form, and there is also a full synthesis report available as well. Additionally, data will be configured into the next Assessment for the NYC Panel on Climate Change (NPCC).
+    </p>
+
+    <p>
+      Lastly, we aim to coordinate with decision makers in NYC and NJ to combat inequities in heat exposure and associated health disparities. This could include locating future cooling centers or green spaces in most-affected areas, introducing programs such as allocation of free A/C for disproportionately affected communities or social resilience measures like neighbors and community members doing wellness checks that could reduce disproportionate hospitalizations and deaths. Ultimately, heat inequity cannot be addressed only through targeting heat alone, so we aim for a holistic approach that goes beyond temperature and humidity to center the health and wellness of the most affected communities.
+    </p>
+
+    <h2>Team</h2>
+
+    <p>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/liv.jpg" alt="Liv Yoon" />
+    </p>
+    <p>
+      <strong>Liv Yoon</strong>
+      <br>Dr. Liv Yoon's research is at the intersection of climate change, social inequities, and health, with a focus on community engagement work. As a social scientist, she approaches climate change as a sociopolitical crisis. Her research is focused on taking climate change as an opportunity to challenge the status quo and promote structural changes that alleviate social inequities that both led to, and are exacerbated by, the climate crisis. She is a Fellow with the New York City Panel on Climate Change (NPCC), and a member of Columbia's Environmental Justice and Climate Just Cities (EJCJC) Network. Dr. Yoon obtained her Ph.D. at The University of British Columbia (UBC) in Vancouver, Canada, in Sociocultural Kinesiology. Her training in socio-cultural studies informs her to think about bodies in sociopolitical context. Applied to climate change, this means thinking about how some bodies are considered more 'dispensable', and in turn, rendered more vulnerable to climate-related risks and pollution.
+    </p>
+    
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/christian.jpg" alt="Christian Braneon" />
+    </p>
+    <p>
+      <strong>Christian Braneon</strong>
+      <br>Dr. Christian Braneon is a climate scientist at NASA Goddard Institute for Space Studies and Co-Director of the Environmental Justice and Climate Just Cities (EJCJC) Network at the Earth Institute. He previously served as Co-Director of USEPA's inaugural Environmental Justice Academy for community leaders. Dr. Braneon is particularly known for integrating satellite data and climate science into urban planning and civil engineering practice. In 2013, he developed an approach for integrating climate change projections into the City of Dallas Long Range Water Supply Plan. Recently, he advised New York City Council's Data Operations Unit on their data science strategy as they integrated Landsat 8 satellite imagery into their temperature mapping initiatives. Dr. Braneon received an AXA Award for Climate Science in 2021. He holds degrees in applied physics and civil engineering from Morehouse College and the Georgia Institute of Technology.
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/jolie.jpg" alt="Jolie Villegas" />
+    </p>
+    <p>
+      <strong>Jolie Villegas</strong>
+      <br>Jolie Villegas is in the inaugural class of Columbia University's Climate School pursuing an M.A. in Climate and Society. As a 2022 Environmental Defense Fund Climate Corps Fellow, she is helping the Harris County Office of Sustainability develop their first ever Climate Justice Action Plan. Jolie is currently a Graduate Research Assistant working with Dr. Liv Yoon and Dr. Christian Braneon on addressing the urban heat island effect through an equity lens in Northern Manhattan and the South Bronx. She has previously researched environmentally-just wildfire mitigation strategies in her home state of California, Acropora coral resilience in Belize, and Polygonum plant phenotypic plasticity. A member of the MeshEd Collective, Jolie develops curricula for their Climate Action, Sustainable Fashion, and Food Justice programs. She received her Bachelor's in Environmental Studies and Biology from Wesleyan University.
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/kemuning.jpg" alt="Kemuning Adiputri" />
+    </p>
+    <p>
+      <strong>Kemuning Adiputri</strong>
+      <br>Kemuning Adiputri is an architecture graduate and a master's student at the Graduate School of Architecture, Planning, and Preservation, Columbia University, pursuing an M.S. in Historic Preservation. She contributed to research on environmental injustice in Harlem, New York, during her participation in the Historic Preservation Studio II course, instructed by Professor Erica Avrami and Professor Morgan O'Hara, focusing her findings on the temperature injustice in this neighborhood conducting a heat prostration research based on historical newspapers. Her previous studies focused on community-driven tangible and intangible heritage preservation, and she worked as a junior architect at a cultural tourism architecture consultancy.
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/jason.jpg" alt="Jason Biegel" />
+    </p>
+    <p>
+      <strong><a href="http://jasonbiegel.com" target="_blank">Jason Biegel</a></strong>
+      <br>Jason Biegel is a software engineer with a passion for environmental and social justice. He helped organize the 2021 HeatWatch campaign in Jersey City, Newark, and Elizabeth. Jason strives to utilize his computer programming skills to raise awareness and educate others on the causes and effects of urban heat islands. Jason has a strong connection with nature and works to promote healthy ecosystems where they are needed the most, urban areas. Jason is a member of the Jersey City Shade Tree Committee which is an advisory board for the street trees. Jason is also an avid urban farmer and is a board member at Riverview Community Garden. Jason has a bachelor's degree in computer science from Stevens Institute of Technology, a certificate in urban forestry from NJ DEP and is working towards a horticulture certificate at NY Botanical Garden.
+    </p>
+
+    <h3>South Bronx Unite</h3>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/melissa.jpg" alt="Melissa Barber" />
+    </p>
+    <p>
+      <strong>Melissa Barber</strong>
+      <br><strong>Founding Member and Advisory Board Member, SBU</strong> Dr. Melissa Barber is the author of "Thirty Days of Thanks: A Journey Towards Healing and Deliverance" and the CEO of the consulting company, Thirty Days of Thanks. She completed her medical training at the Latin American School of Medicine (LASM) or La Escuela Latinoamericana de Medicina (ELAM) in Havana, Cuba, which focuses on community and social medicine. She is currently one of the Principal Investigators of the COVID-19 Community Pesquisa Project, which seeks to investigate the impacts of COVID-19 on South Bronx communities. She is a co-founder of South Bronx Unite and a founding Executive Board Member of the Mott Haven-Port Morris Community Land Stewards, the first ever community land trust in The Bronx. She also serves on the Community Advisory Board of Columbia University's NIEHS Center for Environmental Health in Northern Manhattan. Dr. Barber is an ambassador and advocate for the international maternal-infant organization, the Birthing Project USA: the Underground Railroad for New Life, where she promotes health and wellness, and fights for the lives of women and babies of color. Dr. Barber is a member and co-organizer for the Bronx Parents Autism Support Circle, which educates, provides resources, and supports families with loved ones on the autism spectrum.  Dr. Barber oversees 6am Morning Glory Prayer, a ministry of Jesus Juice. Her passion for youth of color led Dr. Barber to work as Program Coordinator for the ELAM Medical School scholarship program for ten years, facilitating the gifting of free medical education scholarships to over 300 BIPOC students. Dr. Barber is a single mother to an amazingly gifted autistic daughter and currently resides where she was born, in the best place on this planet, the South Bronx. Her dreams include creating a one-stop shop, social medicine clinic/wellness center that will bring holistic healing to her community. She would also love to use her book to heal and deliver people from health and social inequities.
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/ashley.jpg" alt="Ashley Fontilla" />
+    </p>
+    <p>
+      <strong>Ashley Fontilla</strong>
+      <br><strong>Project Coordinator, SBU</strong> Ashley is a first-generation college graduate - in May 2021, she received her B.A. in urban studies and a certificate in human rights from Hunter College, CUNY. During college, to gain experience with advocacy, she interned with South Bronx Unite and the New York Public Interest Research Group. In February 2020, she joined SBU as a project coordinator, becoming its first staff person. In this role, she supports the organization with a variety of activities, ranging from being the in-house Salsa CRM expert to outreach and administrative duties. Ashley is a member of Havemeyer Community Garden in Castle Hill, The Bronx, where she grows food and works with other gardeners to provide fresh garden produce to her community. She is also the doting mother of two very lively and vocal birds, Georgie,  a quaker parrot and Penny, a pineapple conure. Showering Georgie with kisses is one of her favorite pastimes. Currently, she is reading "Silent Spring" by Rachel Carson, which provides a simplified explanation of the harms caused by toxins that humans use to control the environment.
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/mychal.jpg" alt="Mychal Johnson" />
+    </p>
+    <p>
+      <strong>Mychal Johnson</strong>
+      <br><strong>Founding Member and Advisory Board Member, SBU</strong> Mychal is a community-based advocate for environmental, economic and social justice in the South Bronx. He is a co-founder of South Bronx Unite and a founding member of the Mott Haven-Port Morris Community Land Stewards, where is also a board member. He serves on the board of directors of the NYC Community Land Initiative (NYCCLI), the Bronx Council for Environmental Quality, and the Community Advisory Board of Columbia University’s NIEHS Center for Environmental Health in Northern Manhattan. Mychal was also appointed as a civil society voting member of the New York State Department of Environmental Conservation Open Space Committee. He has been a member of Bronx Community Board 1 and was notably selected by the United Nations to serve as one of 38 global civil society appointees to the historic UN Climate Summit in 2014. He is a long-time activist organizing for greater access to open green space, truly affordable housing, a healthier quality of life, and community-focused development that supports rather than displaces neighborhood residents.
+    </p>
+
+    <p>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/team/arif.jpg" alt="Arif Ullah" />
+    </p>
+    <p>
+      <strong>Arif Ullah</strong>
+      <br><strong>Executive Director, SBU</strong> Arif is a social and environmental justice advocate, grassroots urban planner, and community activist with more than 15 years of experience in designing and managing community development programs, establishing diverse alliances, and co-creating campaign strategies around local, state, and national issues. Prior to joining South Bronx Unite, Arif was Director of Programs at Citizens Committee for New York City where he and his team supported hundreds of grassroots groups every year in their self-determined efforts to improve the quality of life in under-resourced neighborhoods across NYC. Before that, he worked as an immigrants’ rights advocate with American Friends Service Committee where he helped establish a local alliance of immigrant advocates, contributed to a national campaign for immigration reform, and designed and led workshops on community organizing. He is a co-founder of Bangladeshi Americans for Political Progress and a core member of Queens Climate Project and Malcolm X Community Garden. He has been on the boards of ioby, Farm School NYC, and NY Immigration Coalition. In his free time, Arif grows food and keeps honeybees at his community garden. Arif believes in the power of frontline communities, and he is committed to building systems that support their health, creativity, wisdom, leadership, and resilience.
+    </p>
+
+    <p>
+      <br><br>This web story was built with OpenStoryMap. All source code and data can be found on <a href="https://github.com/openstorymap">GitHub</a>
+    </p>
+
+    <p>
+      This web story is dedicated to <a href="https://obits.nj.com/us/obituaries/starledger/name/sonny-gaddy-obituary?id=13172319" target="_blank">Sonny Gaddy</a>
+    </p>
+
+    <hr>
+    <ul>
+      <li>
+        <sup>1</sup> Tuholske C, Caylor K, Funk C, Verdin A, Sweeney S, Grace K, Peterson P & Evans T (2021) Global urban population exposure to extreme heat. PNAS 118(41) e2024792118.
+      </li>
+      <li>
+        <sup>2</sup> Bi, P., Williams, S., Loughnan, M., Lloyd, G., Hansen, A., Kjellstrom, T., ... & Saniotis, A. (2011). The effects of extreme heat on human mortality and morbidity in Australia: implications for public health. Asia Pacific Journal of Public Health, 23(2_suppl), 27S-36S.
+      </li>
+      <li>
+        <sup>3</sup> Cheng W, Li D, Liu Z & Brown RD (2021) Approaches for identifying heat-vulnerable populations and locations: A systematic review. Science of the Total Environment 799: 149417.
+      </li>
+      <li>
+        <sup>4</sup> Balbus JM & Malina C (2009) Identifying vulnerable subpopulations for climate change health effects in the United States. J Occup Environ Med 51(1): 33-37.
+      </li>
+      <li>
+        <sup>5</sup> Nayak SG, Shrestha S, Kinney PL, Ross Z, Sheridan SC, Pantea CI, Hsu WH, Muscatiello N & Hwang SA (2018) Development of a heat vulnerability index for New York State. Public Health 161: 127-137.
+      </li>
+      <li>
+        <sup>6</sup> Balbus, J.M. and C. Malina, Identifying vulnerable subpopulations for climate change health effects in the United States. Journal of Occupational and Environmental Medicine, 2009. 51(1): p. 33-37
+      </li>
+      <li>
+        <sup>7</sup> NYC Dept of Health and Mental Hygiene (2014) Heat-related deaths in New York City, 2013. Accessed 10 May 2022. Available at https://www1.nyc.gov/assets/doh/downloads/pdf/epi/datatable47.pdf
+      </li>
+      <li>
+        <sup>8</sup> United States Census Bureau (2022) New York City, New York. Accessed 10 May 2022. Available at https://www.census.gov/quickfacts/newyorkcitynewyork
+      </li>
+      <li>
+        <sup>9</sup> Smith, G. S., Anjum, E., Francis, C., Deanes, L., & Acey, C. (2022). Climate change, environmental disasters, and health inequities: the underlying role of structural inequalities. Current environmental health reports, 1-10.
+      </li>
+      <li>
+        <sup>10</sup> Tuholske C, Caylor K, Funk C, Verdin A, Sweeney S, Grace K, Peterson P & Evans T (2021) Global urban population exposure to extreme heat. PNAS 118(41) e2024792118.
+      </li>
+    </ul>
   </div>
 
 

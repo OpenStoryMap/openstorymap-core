@@ -8,7 +8,6 @@
     const navItems = [
       { label: "2021 NYC HeatWatch Results", href: "/" },
       { label: "About", href: "about.html" },
-      { label: "Data", href: "data.html" },
       { label: "Resources", href: "resources.html" },
       { label: "Media Coverage", href: "media.html" },
     ];

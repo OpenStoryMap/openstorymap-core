@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width,initial-scale=1'>
+
+	<title>About</title>
+
+	<link rel='icon' type='image/png' href='/favicon.png'>
+  <link rel='stylesheet' href='/global.css'>
+	<link rel='stylesheet' href='/static.css'>
+</head>
+
+<body>
+  <nav><div class="inner"><div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()"><div class="middle-line"></div></div> <ul id="navbar-list" class="navbar-list"><li><a href="/">2021 NYC HeatWatch Results</a> </li><li><a href="about.html">About</a> </li><li><a href="resources.html">Resources</a> </li><li><a href="media.html">Media Coverage</a> </li></ul></div></nav>
+
+  <div class="content">
+    <p>
+      <ul>
+        <li>Politico E&E - <a href="https://www.scientificamerican.com/article/meet-the-new-yorkers-mapping-the-citys-heat-islands/" target="_blank">Scientific American</a> (Aug 4, 2021)</li>
+        <li><a href="https://citylimits.org/2021/08/12/to-measure-nycs-heat-islands-scientists-recruit-residents-in-hardest-hit-neighborhoods/" target="_blank">City Limits</a> (Aug 12, 2021)</li>
+        <li><a href="https://www.science.org/content/article/scientists-map-urban-heat-islands-and-track-how-communities-are-affected" target="_blank">Science Magazine</a> (Aug 17, 2021)</li>
+        <li><a href="https://www.nytimes.com/2021/08/20/nyregion/climate-inequality-nyc.html" target="_blank">New York Times</a> (Aug 20, 2021)</li>
+        <li><a href="https://insideclimatenews.org/news/18082021/new-york-city-heat-neighborhoods-bronx/" target="_blank">nside Climate News</a> (Aug 18, 2021)</li>
+        <li>CNN Podcast - <a href="https://www.cnn.com/audio/podcasts/chasing-life?episodeguid=9ee6b0be-8213-46cb-96c2-ad9f01650108" target="_blank">Chasing Life with Dr. Sanjay Gupta</a> (Sep 7, 2021)</li>
+        <li><a href="https://www.wnyc.org/story/how-scientists-are-tracking-down-hottest-parts-new-york-city/" target="_blank">WNYC</a> (Oct 11, 2021) and <a href="https://gothamist.com/news/how-citizen-scientists-are-mapping-hottest-parts-new-york-city" target="_blank">Gothamist article</a> (Oct 14, 2021)</li>
+        <li><a href="https://news.climate.columbia.edu/2021/08/26/study-maps-urban-heat-islands-with-focus-on-environmental-justice/" target="_blank">Earth Institute's State of the Planet Blog</a> (Aug 26, 2021)</li>
+        <li><a href="https://as-she-rises.simplecast.com/episodes/the-city-A_7XROTV" target="_blank">The City</a> (Nov 8, 2021)</li>
+        <li>CNBC - <a href="https://www.cnbc.com/2021/12/10/urban-heat-mapping-project-in-nyc-finds-poor-neighborhoods-hotter.html?__source=sharebar%7Clinkedin&par=sharebar" target="_blank">Rising Risks</a> (Dec 10, 2021)</li>
+        <li><a href="https://www.youtube.com/watch?app=desktop&v=gR-AR9ZLoAk" target="_blank">CUNY TV</a> (March 10, 2022)</li>
+        <li>Earth Institute's <a href="https://news.climate.columbia.edu/2022/04/08/heat-mapping-new-york-city-environmental-justice/" target="_blank">DataDive</a> (April 8, 2022)</li>
+      </ul>
+    </p>
+  </div>
+
+
+  <script>
+    const mobileIcon = document.getElementById('mobile-icon');
+    const navbarList = document.getElementById('navbar-list');
+
+    function toggleMobileMenu() {
+      mobileIcon.classList.toggle('active');
+      navbarList.classList.toggle('mobile');
+    }
+  </script>
+</body>
+</html>

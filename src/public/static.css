@@ -9,3 +9,19 @@
 h1,h2,h3{
   line-height:1.2
 }
+
+img {
+  max-width: 100%;
+}
+
+.twoPerRow {
+  display: inline-block;
+  max-width: 40%;
+  padding: 0 .5em;
+}
+
+.threePerRow {
+  display: inline-block;
+  max-width: 25%;
+  padding: 0 .5em;
+}
