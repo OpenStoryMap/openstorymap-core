@@ -43,7 +43,8 @@ export interface ControlProperty {
   tooltip?: string,  // more info
   valueDisplayType?: string,
   key?: string,
-  args?: ControlPropertyArgs
+  hideNull?: boolean,
+  args?: ControlPropertyArgs,
 }
 
 // a union type of available control property arguments

@@ -4,6 +4,9 @@
   import { onMount, onDestroy } from 'svelte';
   import Control from './Control.svelte';
 
+  import Checkbox from '@smui/checkbox';
+  import FormField from '@smui/form-field';
+
   import type { ControlProperty, LayerProperty, SliderRangeProperties } from '../../config';
   import { GetOrCreateControlStore } from '../../stores';
   import { formatValue } from '../../utils';
@@ -11,8 +14,10 @@
   export let layerProperty: LayerProperty;
   export let controlProperty: ControlProperty;
 
+  let hideNull: boolean = true;
   let args: SliderRangeProperties;
   let store: Writable;
+  let storeForNull: Writable;
 
   let start: number;
   let end: number;
@@ -33,6 +38,11 @@
         end = args.end;
         store.set([start, end]);
     }
+
+    if (controlProperty.hideNull === true) {
+        const storeForNullId = `${storeId}.hideNull`;
+        storeForNull = GetOrCreateControlStore(storeForNullId);
+    }
   });
 
   // on changes, set the start and stop values
@@ -41,6 +51,11 @@
       store.set([start, end]);
     }
   };
+
+  const toggleHideNull = (e) => {
+    hideNull = !hideNull;
+    storeForNull.set(hideNull);
+  }
 
   const displayValue = (value: number) => controlProperty.valueDisplayType != null
     ? formatValue(value, controlProperty.valueDisplayType)
@@ -68,6 +83,13 @@
             input$aria-label=""
             color="secondary"
         />
+        {/if}
+
+        {#if controlProperty.hideNull === true}
+        <FormField>
+            <Checkbox bind:hideNull on:change={toggleHideNull} />
+            <span slot="label">hide missing data</span>
+        </FormField>
         {/if}
     </span>
 </Control>

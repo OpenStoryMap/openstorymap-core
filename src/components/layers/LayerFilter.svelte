@@ -31,6 +31,7 @@
     let storeMap: {[key: string]: any};  // FIXME what is this type?
     let valueStore: any;
     let valueMap: {[key: string]: number|[number, number]} = {};
+    let includeNullMap: {[key: string]: boolean|null} = {};
     let valueMapKeys: string[] = [];
     let unsubscribe: (() => void);
 
@@ -44,11 +45,22 @@
             const id = `${property.id}.${c.id}`;
             storeMap[id] = GetOrCreateControlStore(id);
             valueMapKeys.push(c.id);
+            if (c.hideNull === true) {
+                const idForNulls = `${id}.hideNull`;
+                storeMap[idForNulls] = GetOrCreateControlStore(idForNulls);
+                valueMapKeys.push(`${c.id}.hideNull`);
+            }
         });
+
         // this has two args. I think the second one is some sort of set function
         valueStore = derived(Object.values(storeMap), (data, _) => {
             data.forEach((value, index) => {
-                valueMap[valueMapKeys[index]] = value;
+                const key = valueMapKeys[index];
+                if (key.endsWith('.hideNull')) {
+                    includeNullMap[key] = value;
+                } else {
+                    valueMap[key] = value;
+                }
             });
 
             // FIXME this should run in the top layer post-mount,
@@ -66,6 +78,10 @@
         const properties = feature.properties;
         // return true if we should filter the layer
         const filtered = valueMapKeys.filter((k: string) => {
+            if (k.endsWith('.hideNull')) {
+                const key = k.replace('.hideNull', '');
+                return (includeNullMap[k] === false && properties[key] == null);
+            }
             const value = properties[k];
             const constraint = valueMap[k];
             if (constraint == null) return false;
