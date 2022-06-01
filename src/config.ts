@@ -31,7 +31,8 @@ export interface LayerProperty {
   url: string,
   // FIXME layerByValueList is temporary until dynamic imports work
   type: 'geojson'|'raster'|'layerByValueList',
-  displayProperties?: DisplayProperties
+  displayProperties?: DisplayProperties,
+  ignoreOpacity?: boolean
 }
 
 export interface Story {
