@@ -8,6 +8,11 @@ export interface Config {
     stories: Story[]
 }
 
+export interface DisplayProperties {
+  missingDisplay?: string,
+  displayPropertyArgs: DisplayPropertyArg[],
+}
+
 export interface DisplayPropertyArg {
   id: string,
   type?: string,
@@ -26,7 +31,7 @@ export interface LayerProperty {
   url: string,
   // FIXME layerByValueList is temporary until dynamic imports work
   type: 'geojson'|'raster'|'layerByValueList',
-  displayProperties?: DisplayPropertyArg[]
+  displayProperties?: DisplayProperties
 }
 
 export interface Story {
