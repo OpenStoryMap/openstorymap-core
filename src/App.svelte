@@ -16,7 +16,7 @@
 <main>
     <NavBar />
     <LayoutGrid>
-        <Cell span={3}>
+        <Cell span={4}>
             <TabBar tabs={['Story', 'Controls']} let:tab bind:active>
                 <!-- Note: the `tab` and `active` properties are required! -->
                 <Tab {tab}>
@@ -32,7 +32,7 @@
                 {/if}
             </div>
         </Cell>
-        <Cell span={9}>
+        <Cell span={8}>
             <MapMain />
         </Cell>
     </LayoutGrid>
