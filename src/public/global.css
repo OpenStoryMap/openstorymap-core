@@ -236,3 +236,10 @@ nav {
 	}
 }
 /**** MENU - END****/
+
+@media only screen and (min-width: 840px) {
+	.map-container {
+		position: fixed;
+		width: 65% !important;
+	}
+}
