@@ -6,9 +6,10 @@
   
     // List of navigation items
     const navItems = [
-      { label: "2021 NYC HeatWatch Results", href: "/" },
+      { label: "Heat Story NYC", href: "/" },
       { label: "About", href: "about.html" },
       { label: "Resources", href: "resources.html" },
+      { label: "Team", href: "team.html" },
       { label: "Media Coverage", href: "media.html" },
     ];
   
