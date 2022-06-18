@@ -127,10 +127,17 @@
     }
 
     const legendFunc = () => {
+        if (!args?.fillColor && !args?.color && !args?.minColor && !args.maxColor) {
+            return '';
+        }
+
+        const background = args?.fillColor ? `background: ${args?.fillColor};` : '';
+        const borderColor = args?.color ? `border-width: 2px; border-color: ${args?.color}; border-style: solid;` : '';
         const backgroundCss = (args?.colorFeatureProperty != null
                 && args?.minColor != null && args?.maxColor != null)
             ? `background-image: linear-gradient(to right, ${args.minColor}, ${args?.maxColor});`
-            : `background: ${args?.fillColor}; border-width: 1px; border-color: ${args?.color};`
+            : ('' + background + borderColor);
+        console.log(backgroundCss);
         const legend = '<span style="'
             + backgroundCss
             + 'height: 20px; width: 100%;'

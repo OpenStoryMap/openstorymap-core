@@ -23,12 +23,7 @@ L.Control.Legend = L.Control.extend({
         const htmls = Object.entries(this._layers).map(([label, layer]) => {
             return layer.options?.legendFunc != null
                 ? layer.options.legendFunc()
-                : '<span style="'
-                    + 'height: 20px; width: 20px;'
-                    + 'border-radius: 50%; display: inline-block;'
-                    + 'background: green;'
-                    + '"></span>'
-                    + label;
+                : '';
         }).filter(x => x != '');
 
 

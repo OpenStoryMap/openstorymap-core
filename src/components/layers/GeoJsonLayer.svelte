@@ -15,12 +15,13 @@
     export let onStyle = undefined;
     let data = undefined;
     export let legendFunc = () => {
-        if (args?.fillColor == null) {
+        if (!args?.fillColor && !args?.color) {
             return '';
         }
+        const background = args?.fillColor ? `background: ${args?.fillColor};` : '';
+        const borderColor = args?.color ? `border-color: ${args?.color};` : '';
         const legend = '<span style="'
-            + `background: ${args.fillColor};`
-            + `border-width: 1px; border-color: ${args.color};`
+            + 'border-width: 1px; ' +  background + borderColor
             + 'height: 20px; width: 100%;'
             + 'display: block; background-repeat: no-repeat;'
             + '"></span>' + property.name;

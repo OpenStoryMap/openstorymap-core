@@ -77,12 +77,22 @@ export interface SliderRangeProperties {
 }
 
 // a union type of available layer property arguments
-export type LayerArgs = LayerByValueListArgs | GenericLayerArgs
+export type LayerArgs = LayerByValueListArgs | GenericLayerArgs | GeoTiffArgs
 
 export interface GenericLayerArgs {
   fillColor: string,
   color: string,
-  opacity?: string,
+  opacity?: number,
+  fillOpacity?: number,
+  colorStart?: string,
+  colorStop?: string
+}
+
+export interface GeoTiffArgs {
+  opacity?: number,
+  colorStart?: string,
+  colorStop?: string,
+  resolution?: number
 }
 
 // args for layer types

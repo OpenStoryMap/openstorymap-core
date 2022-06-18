@@ -48,7 +48,7 @@ export function setupMapStateStore(initialState: MapState) {
   }
 
   const _set = (mapState: MapState) => {
-    if (mapState.controlPropertyValues != null) {
+    if (mapState?.controlPropertyValues != null) {
       updateStoreValues(mapState.controlPropertyValues);
     }
 
