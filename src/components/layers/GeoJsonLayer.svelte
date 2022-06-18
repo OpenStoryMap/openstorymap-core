@@ -47,7 +47,7 @@
         const opacity = args?.opacity != null ? feature.properties[args.opacity] : 1;
         return {
             ...colors,
-            fillOpacity: opacity * opacity,
+            fillOpacity: args?.fillOpacity != null ? args.fillOpacity : opacity * opacity,
             opacity: opacity,
         };
     }

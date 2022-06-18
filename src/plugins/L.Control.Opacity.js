@@ -13,9 +13,10 @@ const setOpacity = (layer, opacityFactor) => {
         // if we have a styling function, then we want to use
         // what we already have, then add the opacity
         const styleFunc = (feature) => {
+            const style = layer.options.style != null ? layer.options.style(feature) : null;
             return {
-                opacity: opacityFactor,
-                fillOpacity: opacityFactor,
+                opacity: (style?.opacity ?? 1) * opacityFactor,
+                fillOpacity: (style?.fillOpacity ?? 1) * opacityFactor,
             };
         };
         //layer.setStyle(styleFunc);

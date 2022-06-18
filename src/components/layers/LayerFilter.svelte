@@ -121,16 +121,16 @@
             : 1;
         return {
             ...colors,
-            fillOpacity: opacity * opacity,
+            fillOpacity: args?.fillOpacity != null ? args.fillOpacity : opacity * opacity,
             opacity: opacity,
         };
     }
 
     const legendFunc = () => {
-        const backgroundCss = (args.colorFeatureProperty != null
-                && args.minColor != null && args.maxColor != null)
-            ? `background-image: linear-gradient(to right, ${args.minColor}, ${args.maxColor});`
-            : `background: ${args.fillColor}; border-width: 1px; border-color: ${args.color};`
+        const backgroundCss = (args?.colorFeatureProperty != null
+                && args?.minColor != null && args?.maxColor != null)
+            ? `background-image: linear-gradient(to right, ${args.minColor}, ${args?.maxColor});`
+            : `background: ${args?.fillColor}; border-width: 1px; border-color: ${args?.color};`
         const legend = '<span style="'
             + backgroundCss
             + 'height: 20px; width: 100%;'
@@ -145,7 +145,7 @@
     */
     const preprocessData = (event: any) => {
         const { data, url, name, id } = event.detail;
-        if (args.colorFeatureProperty == null) return;
+        if (args?.colorFeatureProperty == null) return;
 
         const values = data.features
             .map(x => x.properties[args.colorFeatureProperty])

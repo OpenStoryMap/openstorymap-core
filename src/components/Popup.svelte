@@ -19,19 +19,23 @@
   // FIXME add types
   const layerInfoToHtml = (value) => {
     const displayProperties = displayPropertiesMap[value.id];
-    if (displayProperties == null || value == null) {
+    if (displayProperties == null || value == null || displayProperties?.displayPropertyArgs == null) {
         return '';
     }
 
-    const displayPropertyArgs = displayProperties.displayPropertyArgs.reduce((m, x) => {
+    const displayPropertyArgs = displayProperties?.displayPropertyArgs?.reduce((m, x) => {
         m[x.id] = x;
         return m;
     }, {});
 
-    // update the name and value type based on the display map
-    const featureTable = Object.entries(value.feature.properties)
+    // create a map of unique keys to values
+    const featureMap = Object.entries(value.feature.properties)
         .filter(x => x[0] in displayPropertyArgs)
         .map(x => [displayPropertyArgs[x[0]]?.displayName ?? x[0], formatValue(x[1], displayPropertyArgs[x[0]]?.type)])
+        .reduce((m, [k, v]) => {m[k] = v ?? m[k]; return m;}, {});
+
+    // then create that into a table
+    const featureTable = Object.entries(featureMap)
         .map(x => `<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`);
 
     if (!featureTable.length || !featureTable.length) {
@@ -69,7 +73,7 @@
         // this is our main layer, so we are good
         if (Object.keys(layer._eventParents)[0] == _layer._leaflet_id) {
             // only ignore if the opacity is explicitly set to 0
-            if (layer.options?.fillOpacity !== 0) {
+            if (layer.options?.fillOpacity || layer.options?.opacity) {
                 intersections = intersections.concat({id: _layer.options.oym_id, name: _layer.options.name, feature: feature});
             }
             return;
@@ -78,7 +82,7 @@
         const intersection = leafletPip.pointInLayer(latlng, _layer);
         if (intersection.length > 0) {
             const _feature = intersection[0];
-            if (_feature.options?.fillOpacity) {
+            if (_feature.options?.fillOpacity || _feature.options?.opacity) {
                 intersections = intersections.concat({id: _layer.options.oym_id, name: _layer.options.name, feature: _feature.feature});
             }
         }
