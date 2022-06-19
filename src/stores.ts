@@ -54,7 +54,7 @@ export function setupMapStateStore(initialState: MapState) {
 
     // when setting the mapState, if we don't have layers set explicity,
     // then use the layers that already exist
-    update(m => {return {...mapState, layers: mapState.layers ?? m.layers}});
+    update(m => {return {...mapState, layers: mapState?.layers ?? m.layers}});
   }
 
   return {
@@ -123,9 +123,13 @@ function setupStyleStore() {
             if (opacity != null) {
               const opacityValues = opacity(feature);
 
+              // if we get a nan or a null, handle it cleanly assuming that it is not set
+              const fillOpacityValue = isNaN(value?.fillOpacity) || value?.fillOpacity == null ? 1 : value?.fillOpacity;
+              const opacityValue = isNaN(value?.opacity) || value?.opacity == null ? 1 : value?.opacity;
+
               value = {...value,
-                opacity: opacityValues.opacity * (value.opacity ?? 1),
-                fillOpacity: opacityValues.fillOpacity * (value.fillOpacity ?? 1)
+                opacity: opacityValues.opacity * opacityValue,
+                fillOpacity: opacityValues.fillOpacity * fillOpacityValue
               };
             }
             return value;

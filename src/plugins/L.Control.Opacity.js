@@ -14,9 +14,11 @@ const setOpacity = (layer, opacityFactor) => {
         // what we already have, then add the opacity
         const styleFunc = (feature) => {
             const style = layer.options.style != null ? layer.options.style(feature) : null;
+            const fillOpacity = isNaN(style?.fillOpacity) || style?.fillOpacity == null ? 1 : style?.fillOpacity;
+            const opacity = isNaN(style?.opacity) || style?.opacity == null ? 1 : style?.opacity;
             return {
-                opacity: (style?.opacity ?? 1) * opacityFactor,
-                fillOpacity: (style?.fillOpacity ?? 1) * opacityFactor,
+                opacity: opacity * opacityFactor,
+                fillOpacity: fillOpacity * opacityFactor,
             };
         };
         //layer.setStyle(styleFunc);

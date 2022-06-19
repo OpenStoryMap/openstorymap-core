@@ -137,7 +137,6 @@
                 && args?.minColor != null && args?.maxColor != null)
             ? `background-image: linear-gradient(to right, ${args.minColor}, ${args?.maxColor});`
             : ('' + background + borderColor);
-        console.log(backgroundCss);
         const legend = '<span style="'
             + backgroundCss
             + 'height: 20px; width: 100%;'
