@@ -27,6 +27,7 @@
     // function once we have loaded all layers.
     // we want to keep track of this layerCount here in case the number of layers changes
     let layersCount: number = 0;
+    let initalLayers: string[] = [];
     let finishedPostSetup: boolean = false;
 
     const map = getContext('map');
@@ -39,13 +40,22 @@
             .map((l, i) => [i, l.property.id])
             .reduce((m, l) => {m[l[1]] = l[0]; return m;}, {});
 
-        const layerPromises = config.layers.map((layerConfig: Layer) => CreateLayer(layerConfig));
+        const layerPromisesInitial = config.layers
+            .filter(x => config.initialMapState.layers.indexOf(x.property.id) > -1)
+            .map((layerConfig: Layer) => CreateLayer(layerConfig));
+
+        layers = (await Promise.all(layerPromisesInitial)).filter(l => l.component !== undefined);
+    });
+
+    const loadNonInitialLayers = async () => {
+        const layerPromises = config.layers.filter(x => config.initialMapState.layers.indexOf(x.property.id) == -1).map((layerConfig: Layer) => CreateLayer(layerConfig));
         layersCount = config.layers.length;
 
         // await everything here, otherwise the components will try to load before they
         // are properly setup. For now, we will filter out any bad layers.
-        layers = (await Promise.all(layerPromises)).filter(l => l.component !== undefined);
-    });
+        layers = [...layers, ...(await Promise.all(layerPromises)).filter(l => l.component !== undefined)];
+
+    };
 
     // when adding an overlay, mark the store based on the layer id
     const overlayAdd = (layer) => {
@@ -192,7 +202,7 @@
         }
     };
 
-    const addLayer = (event: any) => {
+    const addLayer = async (event: any) => {
         const { layer, name, url, id, legendFunc } = event.detail;
         // add our custom options. there is no good function to recreate these
         // immutably, so mutably it is for now.
@@ -205,9 +215,11 @@
 
         // once all the layers have loaded, run our post-setup script
         // and mark that we have finished running the post setup
-        if (!finishedPostSetup && Object.values(layersMap).length == layersCount) {
+        // afterwards, load all the other layers. This is for performance purposes
+        if (!finishedPostSetup && config.initialMapState.layers.every(x => x in layersMap)) {
             postSetup();
             finishedPostSetup = true;
+            await loadNonInitialLayers();
         }
     };
 
