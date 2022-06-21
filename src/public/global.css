@@ -250,3 +250,14 @@ nav {
 .mdc-layout-grid {
 	margin: 24px auto !important;
 }
+
+.leaflet-touch .leaflet-control-layers-toggle {
+    width: 150px !important;
+    height: 50px; !important;
+}
+
+.leaflet-control-layers-toggle:after {
+    margin-left: 20px;
+    content: 'test content';
+
+}
