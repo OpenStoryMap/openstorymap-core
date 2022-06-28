@@ -204,14 +204,9 @@ nav {
 	position: relative;
 }
 
-.navbar-list li:before {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 1px;
-	background-color: #424245;
+li .active {
+	border: 1px solid;
+	border-radius: 2px;
 }
 
 .navbar-list a {
@@ -225,6 +220,21 @@ nav {
 }
 
 @media only screen and (min-width: 767px) {
+    .navbar-list li.active {
+        border: 1px solid;
+        border-radius: 2px;
+    }
+
+    .navbar-list li:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #424245;
+    }
+
 	.mobile-icon {
 		display: none;
 	}
@@ -237,6 +247,81 @@ nav {
 	.navbar-list a {
 		display: inline-flex;
 	}
+
+    .navbar-list .dropdown {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        height: 45px;
+        align-items: center;
+        padding: 0 10px;
+        font-size: 1.25em;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 10px;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding-top: 20px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        font-size: 1em;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .navbar-list li:before {
+        display: none;
+    }
+
+    .dropdown-content {
+        padding-left: 25px;
+    }
+
+    .navbar-list .dropdown .label {
+        color: #fff;
+        text-decoration: none;
+        align-items: center;
+        padding: 0 10px;
+        font-size: 1.25em;
+    }
+
+    .dropdown-content a {
+        float: none;
+        color: #fff;
+        text-decoration: none;
+        text-align: left;
+        font-size: 1em;
+    }
+
+    .navbar-list li {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        font-size: 1.25em;
+    }
+
 }
 /**** MENU - END****/
 
@@ -250,3 +335,4 @@ nav {
 .mdc-layout-grid {
 	margin: 24px auto !important;
 }
+
