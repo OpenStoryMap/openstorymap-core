@@ -15,21 +15,28 @@
   <nav><div class="inner"><div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()"><div class="middle-line"></div></div> <ul id="navbar-list" class="navbar-list"><li><a href="/">Heat Story NYC</a> </li><li><a href="about.html">About</a> </li><li><a href="resources.html">Resources</a> </li><li><a href="team.html">Team</a> </li><li><a href="media.html">Media Coverage</a> </li></ul></div></nav>
 
   <div class="content">
-    <p>
-      <ul>
-        <li><a href="https://maps.nyc.gov/cooling-center/inactive.html?1650575400000" target="_blank">NYC Cooling Centers</a></li>
-        <li><a href="https://www.nj211.org/nj-cooling-centers" target="_blank">NJ Cooling Centers</a></li>
-        <li><a href="https://www.southbronxunite.org/" target="_blank">South Bronx Unite</a></li>
-        <li><a href="https://osf.io/pvd9f/" target="_blank">South Bronx and Northern Manhattan 2021 HeatWatch Results</a></li>
-        <li><a href="https://osf.io/byafe/" target="_blank">Jersey City, Newark, and Elizabeth 2021 HeatWatch Results</a></li>
-        <li><a href="https://nihhis.cpo.noaa.gov/Urban-Heat-Island-Mapping/Campaign-Cities-Detail?udt_7915_param_detail=7183" target="_blank">South Bronx and Northern Manhattan, NY 2021 NIHHIS City Page</a></li>
-        <li><a href="https://nihhis.cpo.noaa.gov/Urban-Heat-Island-Mapping/Campaign-Cities-Detail?udt_7915_param_detail=7192" target="_blank">Jersey City, Newark, and Elizabeth 2021 NIHHIS City Page</a></li>
-        <li><a href="https://storymaps.arcgis.com/stories/4f06e78ca6964a04b968d9b5781499ae" target="_blank">NYC Redlining story map</a></li>
-        <li><a href="https://council.nyc.gov/data/heat/" target="_blank">Heat and Cooling Equity</a></li>
-      </ul>
-    </p>
+    <div class="grid-3">
+        <div class="item">
+            <a href="https://maps.nyc.gov/cooling-center/inactive.html?1650575400000" target="_blank">
+            <img src="./images/cooling-centers.png" alt="Cooling Centers">
+            <div class="image-text">NYC Cooling Centers</div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="https://www.nj211.org/nj-cooling-centers" target="_blank">
+                <img src="./images/missing.png" alt="NJ Cooling Centers">
+                <div class="image-text">NJ Cooling Centers</div>
+            </a>
+        </div>
+        <div class="item"><a href="https://www.southbronxunite.org/" target="_blank">South Bronx Unite</a></div>
+        <div class="item"><a href="https://osf.io/pvd9f/" target="_blank">South Bronx and Northern Manhattan 2021 HeatWatch Results</a></div>
+        <div class="item"><a href="https://osf.io/byafe/" target="_blank">Jersey City, Newark, and Elizabeth 2021 HeatWatch Results</a></div>
+        <div class="item"><a href="https://nihhis.cpo.noaa.gov/Urban-Heat-Island-Mapping/Campaign-Cities-Detail?udt_7915_param_detail=7183" target="_blank">South Bronx and Northern Manhattan, NY 2021 NIHHIS City Page</a></div>
+        <div class="item"><a href="https://nihhis.cpo.noaa.gov/Urban-Heat-Island-Mapping/Campaign-Cities-Detail?udt_7915_param_detail=7192" target="_blank">Jersey City, Newark, and Elizabeth 2021 NIHHIS City Page</a></div>
+        <div class="item"><a href="https://storymaps.arcgis.com/stories/4f06e78ca6964a04b968d9b5781499ae" target="_blank">NYC Redlining story map</a></div>
+        <div class="item"><a href="https://council.nyc.gov/data/heat/" target="_blank">Heat and Cooling Equity</a></div>
+    </div>
   </div>
-
 
   <script>
     const mobileIcon = document.getElementById('mobile-icon');

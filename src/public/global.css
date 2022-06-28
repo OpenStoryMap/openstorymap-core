@@ -205,13 +205,13 @@ nav {
 }
 
 .navbar-list li:before {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 1px;
-	background-color: #424245;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #424245;
 }
 
 .navbar-list a {
@@ -237,7 +237,9 @@ nav {
 	.navbar-list a {
 		display: inline-flex;
 	}
+
 }
+
 /**** MENU - END****/
 
 @media only screen and (min-width: 840px) {
@@ -250,3 +252,68 @@ nav {
 .mdc-layout-grid {
 	margin: 24px auto !important;
 }
+
+/**** GRID ****/
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 45%);
+    grid-gap: 2rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 30%);
+    grid-gap: 1.2rem;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 22%);
+    grid-gap: 1rem;
+}
+
+@media only screen and (max-width: 767px) {
+    .grid-2 {
+        grid-template-columns: repeat(auto-fill, 90%);
+        grid-gap: 1rem;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(auto-fill, 90%);
+        grid-gap: 1rem;
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(auto-fill, 90%);
+        grid-gap: 1rem;
+    }
+}
+
+.item {
+    box-shadow: 2px 2px 6px 0px rgb(0 0 0 /10%);
+    padding: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+    height: 30vh;
+}
+
+.item a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.item img {
+    display: block;
+    max-width: 100%;
+    min-width: 80%;
+    max-height: 80%;
+    margin: auto;
+}
+
+.item .image-text {
+    display: block;
+    padding: 10px;
+}
+
+/**** GRID ****/
