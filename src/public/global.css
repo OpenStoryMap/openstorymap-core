@@ -256,8 +256,17 @@ nav {
     height: 50px; !important;
 }
 
-.leaflet-control-layers-toggle:after {
-    margin-left: 20px;
-    content: 'test content';
-
+/**** LAYER CONTROL ****/
+a.leaflet-control-layers-toggle {
+    background-position-x: 10%;
 }
+
+.leaflet-control-layers-toggle:after {
+    content: 'Add Layers';
+    color: black;
+    display: block;
+    font-size: 18px;
+    margin-left: 35px;
+    padding-top: 8px;
+}
+/**** LAYER CONTROL ****/
