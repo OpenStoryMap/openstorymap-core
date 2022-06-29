@@ -9,12 +9,53 @@
     import Controls from './components/Controls.svelte';
 
     let active = 'Story';
+
+    /*
+        This is the JS from all the other pages
+    */
+    function toggleMobileMenu() {
+      document.getElementById('mobile-icon').classList.toggle('active');
+      document.getElementById('navbar-list').classList.toggle('mobile');
+    }
 </script>
 
 <link rel="stylesheet" href="/svelte-material-ui/bare.css" />
 
+  <nav>
+    <div class="inner">
+        <div id="mobile-icon" class="mobile-icon" on:click={toggleMobileMenu}>
+        <div class="middle-line">
+        </div>
+    </div> <ul id="navbar-list" class="navbar-list">
+    <li class="active">
+        <a href="/">Heat Story NYC</a> </li>
+    <li>
+        <div class="dropdown">
+            <div class="label">
+                Project
+                <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+                <a href="intro.html">Project Intro</a>
+                <a href="what-is-uhei.html">What Is UHEI?</a>
+                <a href="intro.html">Project Intro</a>
+                <a href="intro.html">Project Intro</a>
+            </div>
+        </div>
+    </li>
+    <li>
+        <a href="resources.html">Resources</a>
+    </li>
+    <li>
+        <a href="team.html">Team</a> </li>
+    <li>
+        <a href="media.html">Media Coverage</a> </li>
+    </ul>
+    </div>
+  </nav>
+
 <main>
-    <NavBar />
+
     <LayoutGrid>
         <Cell span={4}>
             <TabBar tabs={['Story', 'Controls']} let:tab bind:active>
