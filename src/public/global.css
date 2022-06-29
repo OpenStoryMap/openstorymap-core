@@ -294,7 +294,7 @@ nav {
     padding: 20px;
     padding-bottom: 30px;
     text-align: center;
-    height: 30vh;
+    min-height: 30vh;
 }
 
 .item a {
