@@ -2,7 +2,6 @@
   max-width:80%;
   margin:60px auto;
   padding:0 10px;
-  font:18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color:#444
 }
 
@@ -40,9 +39,57 @@ img {
 
 .static-image {
   display: flex;
+  margin: auto;
   justify-content: center;
 }
 
 .citation {
   font-size: 0.75em;
+}
+
+.team-profile-image {
+  height: 370px;
+}
+
+.redlining-text {
+  color: #FF0000;
+}
+
+.redlining-section {
+  background-color: rgba(255, 0, 0, .5);
+}
+
+.health-text {
+  color: #BDA55D;
+}
+
+.health-section {
+  background-color: #FFE485;
+}
+
+.greenspace-text {
+  color: #00903A;
+}
+
+.greenspace-section {
+  background-color: #00903A;
+}
+
+.outlined {
+  margin: 1em 0;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.p-with-color {
+  padding: 1em 0;
+}
+
+.nyc-health-img {
+  height: 300px;
+  padding: 1em 0;
+}
+
+.submit-text {
+  text-align: center;
 }

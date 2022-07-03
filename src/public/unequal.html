@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+  <title>🔥🗽 Heat Story NYC</title>
+
+  <link rel='icon' type='image/png' href='/favicon.png'>
+  <link rel='stylesheet' href='/global.css'>
+  <link rel='stylesheet' href='/static.css'>
+</head>
+
+<body>
+  <nav>
+    <div class="inner">
+      <div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()">
+        <div class="middle-line">
+        </div>
+      </div>
+      <ul id="navbar-list" class="navbar-list">
+        <li>
+          <a href="/">Heat Story NYC</a>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a href="project.html">Project</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="project.html">Project Intro</a>
+              <a href="project.html#what-is-uhi" onclick="turnOffMobileMenu()">What is UHI?</a>
+              <a href="project.html#methods" onclick="turnOffMobileMenu()">Methods</a>
+              <a href="project.html#next-steps" onclick="turnOffMobileMenu()">Next Steps</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a href="team.html">Team</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="team.html">Columbia University</a>
+              <a href="team.html#sbu" onclick="turnOffMobileMenu()">South Bronx Unite</a>
+              <a href="team.html#webdev" onclick="turnOffMobileMenu()">Web Developers</a>
+            </div>
+          </div>
+        </li>
+        <li class="active">
+          <div class="dropdown">
+            <div class="label">
+              <a class="unequal" href="unequal.html">Unequal Impacts<br>of Heat</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="unequal.html#redlining" onclick="turnOffMobileMenu()">Redlining</a>
+              <a href="unequal.html#health-disparities" onclick="turnOffMobileMenu()">Health Disparities</a>
+              <a href="unequal.html#greenspace" onclick="turnOffMobileMenu()">Greenspace Access</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="resources.html">Resources</a>
+        </li>
+        <li>
+          <a href="submit.html">Submit Your Story</a>
+        </li>
+        <li>
+          <a href="media.html">Media Coverage</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <h3 class="section-header-team">EXTREME HEAT HAS UNEQUAL IMPACTS ON DIFFERENT NEIGHBORHOODS</h3>
+
+    <p>
+      Most of us know which parts of the city are hotter... so what? <a href="/">As our interactive maps show</a>, what matters is that <strong>the hotter areas also tend to be low-income neighborhoods with more people of color.</strong> Research shows that this overlap is not a coincidence. Factors like race, income level, housing, neighborhood status (including its history) all matter in making one more susceptible to extreme heat-related risks.
+    </p>
+
+    <p>
+      We've picked three examples - <span class="redlining-text">redlining</span>, <span class="health-text">health disparities</span>, and <span class="greenspace-text">greenspace access</span> - to show the intersecting and compounding factors that both contribute to, and exacerbate, the disproportionate heat-related health impacts on people already marginalized.
+    </p>
+
+    <div id="redlining"></div>
+    <div class="redlining-section">
+      <div class="section-header">Redlining</div>
+    </div>
+
+    <div class="grid-2 redlining-section">
+      <div>
+        <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/bronx-redlining.png" alt="bronx redlining"/>
+        <div class="image-copyright">Source: Nelson, Winling, Marciano, Connolly, et al.,  Mapping Inequality</div>
+      </div>
+
+      <div>
+        <p>
+          Research suggests that the historic, racist patterns of institutionalized discrimination and disinvestment - such as redlining - still manifest in the current landscape of vulnerability to heat across cities in the US.
+        </p>
+
+        <p>
+          Redlining refers to the federal government-led process in the 1930s by which Home Owners' Loan Corporation (HOLC) created 'residential security maps' delineating neighborhoods into different categories to indicate risk levels for giving out loans:
+        </p>
+
+        <ol type="A">
+          <li>most desirable (lighter red);</li>
+          <li>slightly less desirable;</li>
+          <li>declining neighborhoods;</li>
+          <li>undesirable (darker red).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="grid-first-long redlining-section">
+      <p>
+        The categories were assigned primarily based on the neighborhood's socio-demographic composition, and areas with high percentages of low-income immigrant or Black residents were marked as 'D' - 'undesirable', colored in dark red.
+      </p>
+
+      <p>
+        Redlining is associated with a wide range of present-day adverse outcomes, including disproportionate vulnerability to heat, adverse health outcomes, higher asthma rates, birth outcomes, and cancer diagnoses, among others.
+      </p>
+
+      <p>
+        For information specific to NYC, see <a href="https://storymaps.arcgis.com/stories/4f06e78ca6964a04b968d9b5781499ae" target="_blank">Gaffud, 2021</a>
+        <br>
+        For examples of other cities, see Schinasi et al., 2022; <a href="https://www.tandfonline.com/doi/full/10.1080/01944363.2020.1759127" target="_blank">Wilson, 2020</a>.
+      </p>
+    </div>
+
+    <div id="health-disparities"></div>
+    <div class="health-section">
+      <div class="section-header">Health Disparities</div>
+    </div>
+    
+
+    <div class="grid-2 health-section">
+      <div>
+        <div>
+          <img class="nyc-health-img static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/child-asthma.png" alt="child asthma rates NYC" />
+        </div>
+
+        <div>
+          <img class="nyc-health-img static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/diabetes.png" alt="diabetes rates NYC" />
+        </div>
+
+        <div>
+          <img class="nyc-health-img static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/hypertension.png" alt="hypertension rates NYC" />
+        </div>
+      </div>
+
+      <div>
+        <p>
+          In areas already marginalized along race and class lines, heat-related impacts are not only about temperature and humidity. Those with pre-existing conditions are more susceptible to heat-related illness and death, as high heat can contribute to deaths from heart attacks, strokes, and other forms of cardiovascular disease. High heat combined with air pollution can also be deadly, particularly for those with respiratory problems.
+        </p>
+
+        <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/ozone.jpeg" alt="ozone">
+        <div class="image-copyright">Source: ClimateCentral.org</div>
+
+        <div class="outlined">
+          <a href="https://www.airnow.gov/?city=New%20York&state=NY&country=USA" target="_blank">Check the air quality in your area here</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="p-with-color health-section">
+      Neighborhoods that are hotter also tend to have higher rates of pre-existing health conditions, leaving residents all the more susceptible to heat-related illness and death.
+    </div>
+
+    <div class="p-with-color health-section">
+      These stark health disparities are not coincidental. These areas are more likely to have higher rates of pollution due to a concentration of less-desirable infrastructure, such as industry, highways, and waste transfer facilities. A lower average income also means residents do not have access to good quality, consistent health care.
+    </div>
+
+    <div class="grid-second-long health-section">
+      <div>
+        <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/asthma.jpeg" alt="child using inhaler" />
+        <div class="image-copyright">Photo: CSULB Environmental Sociology</div>
+      </div>
+      <div>
+        The Mott Haven-Port Morris area of the South Bronx is one of these areas. <a href="https://www.theguardian.com/us-news/2019/apr/04/new-york-south-bronx-minorities-pollution-inequity" target="_blank">Known as 'Asthma Alley'</a>, it experiences some of the worst congestion in the US. This means that residents are more likely to have existing health conditions such as asthma, which is made worse by extreme heat. Extreme temperature can cause air to become stagnant, trapping pollutants in the air, which can cause an asthma flare-up, which causes your airways to swell, making it hard to breathe.
+      </div>
+    </div>
+
+    <div id="greenspace"></div>
+    <div class="greenspace-section">
+      <div class="section-header">Access to Greenspace</div>
+    </div>
+    
+
+    <div class="grid-first-long greenspace-section">
+      <div>
+        Having access to greenspace (tree canopy, parks) makes a significant difference in buffering again extreme heat. Trees and vegatation are effective in reducing the urban heat island effect by lowering surface and air temperatures by 20-45°F (Akbari, H., D. Kurn, et al. 1997. Peak power and cooling energy savings of shade trees. Energy and Buildings 25:139–148). However, low-income, people of color neighborhoods have less greenspace on average compared to the white, more affluent areas. This means yet another buffer against extreme heat that marginalized populations do not have access to. For information specific to NYC, see <a href="https://www.weact.org/2020/08/public-green-spaces-racism-heat-and-barriers-to-access/" target="_blank">Urofsky & Parks, 2020</a>
+      </div>
+
+      <div>
+        <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/no-greenspace.png" alt="no green space" />
+        <div class="image-copyright">Source: South Bronx Unite</div>
+      </div>
+    </div>
+
+    <div class="grid-second-long greenspace-section">
+      <div>
+        <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/bronx-waterfront.png" alt="bronx waterfront" />
+        <div class="image-copyright">Source: South Bronx Unite</div>
+      </div>
+
+      <div>
+        In the South Bronx, the waterfront along the Bronx Kill remains tremendously underutilized, taken up largely by industrial manufacturers and abandoned plots of land. Even inland, the neighborhoods of Mott Haven and Port Morris share a single park between some 90,000 residents, many of which are too distant to ever regularly utilize this single patch of greenspace. Not only does the lack of greenspace exacerbate heat-related risks, it also means that residents are unable to access the <a href="https://www.vice.com/en/article/884z9g/fight-for-bronx-green-spaces-coronavirus-death-rate-air-pollution" target="_blank">physical and mental health benefits that can be derived from greenspace access</a>.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Contact: admin  {at}  heatstorynyc.org
+  </div>
+
+
+  <script>
+    const mobileIcon = document.getElementById('mobile-icon');
+    const navbarList = document.getElementById('navbar-list');
+
+    function toggleMobileMenu() {
+      mobileIcon.classList.toggle('active');
+      navbarList.classList.toggle('mobile');
+    }
+
+    function turnOffMobileMenu() {
+      mobileIcon.classList.remove('active');
+      navbarList.classList.remove('mobile');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+  <title>🔥🗽 Heat Story NYC</title>
+
+  <link rel='icon' type='image/png' href='/favicon.png'>
+  <link rel='stylesheet' href='/global.css'>
+  <link rel='stylesheet' href='/static.css'>
+</head>
+
+<body>
+  <nav>
+    <div class="inner">
+      <div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()">
+        <div class="middle-line">
+        </div>
+      </div>
+      <ul id="navbar-list" class="navbar-list">
+        <li>
+          <a href="/">Heat Story NYC</a>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a href="project.html">Project</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="project.html">Project Intro</a>
+              <a href="project.html#what-is-uhi" onclick="turnOffMobileMenu()">What is UHI?</a>
+              <a href="project.html#methods" onclick="turnOffMobileMenu()">Methods</a>
+              <a href="project.html#next-steps" onclick="turnOffMobileMenu()">Next Steps</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a href="team.html">Team</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="team.html">Columbia University</a>
+              <a href="team.html#sbu" onclick="turnOffMobileMenu()">South Bronx Unite</a>
+              <a href="team.html#webdev" onclick="turnOffMobileMenu()">Web Developers</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a class="unequal" href="unequal.html">Unequal Impacts<br>of Heat</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="unequal.html#redlining">Redlining</a>
+              <a href="unequal.html#health-disparities" onclick="turnOffMobileMenu()">Health Disparities</a>
+              <a href="unequal.html#greenspace" onclick="turnOffMobileMenu()">Greenspace Access</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="resources.html">Resources</a>
+        </li>
+        <li class="active">
+          <a href="submit.html">Submit Your Story</a>
+        </li>
+        <li>
+          <a href="media.html">Media Coverage</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="grid-2">
+      <div class="submit-text">
+        <p>
+          <strong>We need your stories!
+          <br>Stories make data more meaningful.</strong>
+        </p>
+        <p>
+         <strong>Do you have experiences with extreme heat where you live (indoors or outdoors)? Submit your story here for the chance to win a $50 online gift card of your choice!</strong>
+        </p>
+        <p>
+          <strong>Please submit your story by September 30, 2022.</strong>
+        </p>
+      </div>
+
+      <div>
+        Form
+      </div>
+    </div>
+
+  </div>
+
+
+  <script>
+    const mobileIcon = document.getElementById('mobile-icon');
+    const navbarList = document.getElementById('navbar-list');
+
+    function toggleMobileMenu() {
+      mobileIcon.classList.toggle('active');
+      navbarList.classList.toggle('mobile');
+    }
+
+    function turnOffMobileMenu() {
+      mobileIcon.classList.remove('active');
+      navbarList.classList.remove('mobile');
+    }
+  </script>
+</body>
+</html>

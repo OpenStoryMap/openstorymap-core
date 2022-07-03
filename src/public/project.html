@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+
+  <title>🔥🗽 Heat Story NYC</title>
+
+  <link rel='icon' type='image/png' href='/favicon.png'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i'>
+  <link rel='stylesheet' href='/global.css'>
+  <link rel='stylesheet' href='/static.css'>
+</head>
+
+<body>
+  <nav>
+    <div class="inner">
+      <div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()">
+        <div class="middle-line">
+        </div>
+      </div>
+      <ul id="navbar-list" class="navbar-list">
+        <li>
+          <a href="/">Heat Story NYC</a>
+        </li>
+        <li class="active">
+          <div class="dropdown">
+            <div class="label">
+              <a href="project.html">Project</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="project.html">Project Intro</a>
+              <a href="project.html#what-is-uhi" onclick="turnOffMobileMenu()">What is UHI?</a>
+              <a href="project.html#methods" onclick="turnOffMobileMenu()">Methods</a>
+              <a href="project.html#next-steps" onclick="turnOffMobileMenu()">Next Steps</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a href="team.html">Team</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="team.html">Columbia University</a>
+              <a href="team.html#sbu" onclick="turnOffMobileMenu()">South Bronx Unite</a>
+              <a href="team.html#webdev" onclick="turnOffMobileMenu()">Web Developers</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a class="unequal" href="unequal.html">Unequal Impacts<br>of Heat</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="unequal.html#redlining">Redlining</a>
+              <a href="unequal.html#health-disparities" onclick="turnOffMobileMenu()">Health Disparities</a>
+              <a href="unequal.html#greenspace" onclick="turnOffMobileMenu()">Greenspace Access</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="resources.html">Resources</a>
+        </li>
+        <li>
+          <a href="submit.html">Submit Your Story</a>
+        </li>
+        <li>
+          <a href="media.html">Media Coverage</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div class="section-header">
+      PROJECT INTRODUCTION
+    </div>
+
+    <div class="grid-second-long">
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/uhi.png" alt="Picture showing how cities get hotter than the surrounding areas" />
+        <div class="image-copyright">
+          copyright: Kamyar Fuladlu
+        </div>
+      </div>
+      <div>
+        <p>
+          "Addressing the Urban Heat Island Effect through an Equity Lens: A Community Science Project" is a campaign that focuses on the intersections of extreme heat, health, and social inequities.
+        </p>
+        <p>
+          The goal of this project is to make heat and its disproportionate impacts visible through mapping <strong>how impacts of extreme heat are compounded by various axes of inequities, including historic and ongoing systemic racism, poverty, health disparities, and more.</strong>
+        </p>
+        <p>
+          As anthropogenic climate change worsens, extreme heat is a recurring issue that is increasing in frequency and intensity<sup>1</sup>. Extreme heat can negatively impact people's health, ranging from triggering temporary acute conditions to exacerbating existing illnesses and causing death<sup>2</sup>. In the United States, more people each year from heat than from all other weather-related disasters combined<sup>3</sup>, demonstrating the significant morbidity and mortality burden extreme heat carries.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-first-long">
+      <div>
+        <p>
+          The project was part of a multi-year nationwide campaign, part of the NIHHIS (National Integrated Heat Health Information System) jointly developed by NOAA (National Oceanic and Atmospheric Administration) and the CDC (Centers for Disease Control and Prevention), and partnered with CAPA Strategies. New York and New Jersey were part of the 2021 campaign, which included 12 cities across the US. The New York campaign partnered with South Bronx Unite, a local grassroots community organization working to improve and protect the social, environmental, and economic future of Mott Haven and Port Morris area of the Bronx.
+        </p>
+        <p>
+          The NYC campaign was funded by NOAA and Columbia University's Earth Frontiers Grant. The NJ campaign was funded by Unilever as part of their Change Makers and Do-Gooders Community Challenge program. The data collection and analysis were made possible from a partnership with the private firm CAPA Strategies based in Oregon and their Heat Watch campaign.
+        </p>
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/partners.png" alt="Partnering oganizations NOAA, CDC, CAPA, Columbia Climate School" />
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div>
+        <a href="https://osf.io/pvd9f/" target="_blank">
+          <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/nyc.png" alt="Bronx & Manhattan campaign results from CAPA" />
+        </a>
+      </div>
+      <div>
+        <a href="https://osf.io/byafe/" target="_blank">
+          <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/nj.png" alt="Jersey City, Newark, & Elizabeth campaign results from CAPA" />
+        </a>
+      </div>
+      <div>
+        <h3>
+          What geographical area does this project cover? 
+        </h3>
+        <p>
+          NYC: Northern Manhattan (Harlem, West Harlem, East Harlem, Washington Heights, Inwood) and the South Bronx (Mott Haven-Port Morris, Hunts Point, Longwood, High Bridge, Concourse, Claremont Village, Melrose).
+        </p>
+        <p>
+          NJ: the cities of Jersey City, Newark, and Elizabeth.
+        </p>
+        <h3 class="hide-on-mobile">
+          CLICK ON THE IMAGE TO SEE CAPA'S RESULTS REPORTS FOR EACH AREA
+        </h3>
+      </div>
+    </div>
+
+    <div id="what-is-uhi"></div>
+    <div class="section-header">
+      BUT WAIT... WHAT IS THE URBAN HEAT ISLAND EFFECT?
+    </div>
+
+    <div class="grid-first-long">
+      <div>
+        <p>
+          The urban heat island effect (UHIE) is a phenomenon in which cities maintain higher temperatures than their rural surroundings. These higher temperatures are due to reasons including:
+          <ul>
+            <li>Higher absorption and trapping of heat by building materials like asphalt, concrete, brick, dark roofs, and pavement</li>
+            <li>Tall buildings densely packed together</li>
+            <li>High traffic</li>
+            <li>Carbon-emitting infrastructure</li>
+            <li>High total energy usage</li>
+          </ul>
+        </p>
+        <p>
+          This effect does not only occur in the day but also at night &#8212; when our bodies need to cool down to recuperate from a hot day, the difference can be even starker: with urban centers ranging as much as 22 degrees warmer than rural areas nearby.
+        </p>
+        <p>
+          Global temperatures and urban populations continue to rise, which makes this an ever-urgent problem. A study involving 13,000 urban areas found that city dwellers' exposure to life-threatening heat and humidity has increased threefold since the 1980s.
+        </p>
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/rural-city.jpeg" alt="Rural vs City" />
+        <div class="image-copyright">
+          copyright: Landscape Architects Network
+        </div>
+      </div>
+    </div>
+
+    <div id="methods"></div>
+    <div class="section-header">
+      METHODS
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor4.jpeg" alt="Volunteers with sensors" />
+      </div>
+      <div>
+        <h3>
+          What is “community-science”? How was it key to this project?
+        </h3>
+        <p>
+          Because environmental justice was a core element to our project, the NYC campaign partnered with the community-based organization, South Bronx Unite, who already had ongoing advocacy efforts around extreme heat, air pollution, and greenspace (among others), making the collaboration a good fit for both parties.
+        </p>
+        <p>
+          Community-scientists in this project are residents of the areas most-affected by heat who participated in data collection. Overall, 81 community scientists participated in data collection for NY and NJ combined, traversing along 22 different routes, collecting almost 100,000 total data points. The goal was to have diverse participation from local community members who are disproportionately impacted by extreme heat. Participants were compensated for their time, which was for about 1 hour of training before the day and 3.5 hours on average on campaign day.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid-first-long-two-short">
+      <div>
+        <h3>
+          How were the data collected?
+        </h3>
+
+        <p>
+          The traverse routes for collecting data were designed together with SBU as well as other local groups (WE ACT for Environmental Justice based in Harlem, and Community Boards 9-12 in Northern Manhattan) in order to include areas of concern that matter to local residents. These points included major intersections, frequented bus stops, common corridors of activity, as well as areas with public housing. These points were then sent to CAPA Strategies, who designed the traverse routes based on them.
+        </p>
+
+        <p>
+          On Saturday July 24, 2021, community scientists traversed along the predetermined 1-hr long routes with the heat sensor in cars or bicycles. Data collection took place three times: morning (6am-7am), afternoon (3pm-4pm), and evening (7pm-8pm). Most routes and vehicles were accompanied by a member of the media, with representation from Science Magazine, the Guardian, Scientific American, the New York Times, Inside Climate, and more. There were 10 different routes in total (9 driving routes and 1 bicycling route).
+        </p>
+
+        <h3>
+          How do the sensors work?
+        </h3>
+
+        <p>
+          CAPA Strategies provided sensors called 'Type T Thermocouples'. These sensors fired off every second and captured block-by-block differences in heat and humidity while using a GPS to track geospatial data as well.
+        </p>
+      </div>
+
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor1.jpeg" alt="CAPA sensor" />
+      </div>
+
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor5.jpeg" alt="CAPA sensor" />
+      </div>
+    </div>
+
+    <div class="grid-two-short-one-long">
+
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor2.jpeg" alt="Volunteer with CAPA sensor" />
+      </div>
+
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor3.jpeg" alt="Volunteer with CAPA sensor" />
+      </div>
+
+      <div>
+        <h3>
+          How do our methods and results differ from existing data?
+        </h3>
+  
+        <ul>
+          <li>
+            Measures ambient temperature: Previous models have been based on satellite data, which record the temperature of the ground itself, while our campaign measured air temperatures and humidity close to the ground, which is the heat people actually feel.
+          </li>
+          <li>
+            Finer spatial resolution: Our map outputs are in higher resolution (1 meter - 10 meters), meaning a finer spatial resolution than most public satellite products related to land surface temperature and air temperature (which are at scales ranging from 30 meters to 1 kilometer). These more granular maps are more conducive to designing targeted local mitigation efforts.
+          </li>
+          <li>
+            Real-time, mobile data collection: Data are collected in real time across several different locations, while most existing air temperature data is collected in one stationary location.
+          </li>
+          <li>
+            Capture variance throughout the day: Data are collected multiple times in the day (morning, afternoon, and evening) to capture how heat may vary throughout the day.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="next-steps"></div>
+    <div class="section-header">
+      NEXT STEPS
+    </div>
+
+    <div class="grid-first-long">
+      <div>
+        <h3>
+          What can be done to fix this issue?
+        </h3>
+
+        <p>
+          Ultimately, to rectify urban heat inequality, we need to undo centuries of urban development that have put many marginalized communities along race and class lines at risk. Some mitigation measures include more trees, vegetation and greenspaces, having lighter color rooftops, and having buildings more spread out. Any strategies need to take into account community input and also need to be employed equitably, implemented first in vulnerable communities disproportionately at risk.
+        </p>
+      </div>
+
+      <div>
+        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/uhi-mitigation.jpeg" alt="Urban heat island mitigation" />
+        <div class="image-copyright">
+          Source: EPA.gov
+        </div>
+      </div>
+    </div>
+
+    <h3>
+      Where do we see this project going? What's ahead for this project?
+    </h3>
+
+    <p>
+      In addition to the creation of this story map, Columbia researchers will continue to support South Bronx Unite's steadfast work in green and blue space advocacy as our community partner. For anyone interested in getting involved in their efforts, please email Ashley Fontanilla at <a href="mailto:ashley@southbronxunite.org">ashley@southbronxunite.org</a>.
+    </p>
+
+    <p>
+      Because shade trees help so much with heat mitigation, efforts will be made to prioritize the planting and maintenance of street trees in areas found to be urban heat islands from the 2021 HeatWatch campaign. Newly planted street trees need more attention than normal in their first few years after being planted. The newly planted trees must be watered when it has not rained enough to keep them healthy. If you live in the NYC area and would like to receive emails about when and how to water newly planted street trees in your neighborhood, sign up at <a href="http://workfornature.org" target="_blank">WorkForNature.org</a>
+    </p>
+
+    <p>
+      CAPA Strategies hosts all resulting data maps on the <a href="https://osf.io/9neka/" target="_blank">Open Science Framework</a> to provide broad and reliable access to all. Data is available in both traverse point and raster form, and there is also a full synthesis report available as well. Additionally, data will be configured into the next Assessment for the NYC Panel on Climate Change (NPCC).
+    </p>
+
+    <p>
+      Lastly, we aim to coordinate with decision makers in NYC and NJ to combat inequities in heat exposure and associated health disparities. This could include locating future cooling centers or green spaces in most-affected areas, introducing programs such as allocation of free A/C for disproportionately affected communities or social resilience measures like neighbors and community members doing wellness checks that could reduce disproportionate hospitalizations and deaths. Ultimately, heat inequity cannot be addressed only through targeting heat alone, so we aim for a holistic approach that goes beyond temperature and humidity to center the health and wellness of the most affected communities.
+    </p>
+
+    <div>
+      <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/greenspace.jpeg" alt="Greenspace" />
+    </div>
+
+    <p>
+      <br><br>This website was built with OpenStoryMap. All source code and data can be found on <a href="https://github.com/OpenStoryMap" target="_blank">GitHub</a>. Dedicated to <a href="https://obits.nj.com/us/obituaries/starledger/name/sonny-gaddy-obituary?id=13172319" target="_blank">Sonny Gaddy</a>.
+    </p>
+
+    <hr>
+    <ul class="citation">
+      <li>
+        <sup>1</sup> Tuholske C, Caylor K, Funk C, Verdin A, Sweeney S, Grace K, Peterson P & Evans T (2021) Global urban population exposure to extreme heat. PNAS 118(41) e2024792118.
+      </li>
+      <li>
+        <sup>2</sup> Bi, P., Williams, S., Loughnan, M., Lloyd, G., Hansen, A., Kjellstrom, T., ... & Saniotis, A. (2011). The effects of extreme heat on human mortality and morbidity in Australia: implications for public health. Asia Pacific Journal of Public Health, 23(2_suppl), 27S-36S.
+      </li>
+      <li>
+        <sup>3</sup> Cheng W, Li D, Liu Z & Brown RD (2021) Approaches for identifying heat-vulnerable populations and locations: A systematic review. Science of the Total Environment 799: 149417.
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    Contact: admin  {at}  heatstorynyc.org
+  </div>
+
+
+  <script>
+    const mobileIcon = document.getElementById('mobile-icon');
+    const navbarList = document.getElementById('navbar-list');
+
+    function toggleMobileMenu() {
+      mobileIcon.classList.toggle('active');
+      navbarList.classList.toggle('mobile');
+    }
+
+    function turnOffMobileMenu() {
+      mobileIcon.classList.remove('active');
+      navbarList.classList.remove('mobile');
+    }
+  </script>
+</body>
+</html>

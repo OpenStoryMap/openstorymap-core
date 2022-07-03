@@ -1,125 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width,initial-scale=1'>
-
-  <title>🔥🗽 Heat Story NYC</title>
-
-  <link rel='icon' type='image/png' href='/favicon.png'>
-  <link rel='stylesheet' href='/global.css'>
-  <link rel='stylesheet' href='/static.css'>
-</head>
-
-<body>
-  <nav>
-    <div class="inner">
-    <div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()">
-        <div class="middle-line">
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <title>🔥🗽 Heat Story NYC</title>
+    <link rel='icon' type='image/png' href='/favicon.png'>
+    <link rel='stylesheet' href='/global.css'>
+    <link rel='stylesheet' href='/static.css'>
+  </head>
+  <body>
+    <nav>
+      <div class="inner">
+        <div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()">
+          <div class="middle-line">
+          </div>
         </div>
-    </div> <ul id="navbar-list" class="navbar-list">
-    <li>
-        <a href="/">Heat Story NYC</a> </li>
-    <li>
-        <div class="dropdown">
-            <div class="label">
-                Project
+        <ul id="navbar-list" class="navbar-list">
+          <li>
+            <a href="/">Heat Story NYC</a>
+          </li>
+          <li>
+            <div class="dropdown">
+              <div class="label">
+                <a href="project.html">Project</a>
                 <i class="fa fa-caret-down"></i>
+              </div>
+              <div class="dropdown-content">
+                <a href="project.html">Project Intro</a>
+                <a href="project.html#what-is-uhi" onclick="turnOffMobileMenu()">What is UHI?</a>
+                <a href="project.html#methods" onclick="turnOffMobileMenu()">Methods</a>
+                <a href="project.html#next-steps" onclick="turnOffMobileMenu()">Next Steps</a>
+              </div>
             </div>
-            <div class="dropdown-content">
-                <a href="intro.html">Project Intro</a>
-                <a href="what-is-uhei.html">What Is UHEI?</a>
-                <a href="intro.html">Project Intro</a>
-                <a href="intro.html">Project Intro</a>
+          </li>
+          <li>
+            <div class="dropdown">
+              <div class="label">
+                <a href="team.html">Team</a>
+                <i class="fa fa-caret-down"></i>
+              </div>
+              <div class="dropdown-content">
+                <a href="team.html">Columbia University</a>
+                <a href="team.html#sbu" onclick="turnOffMobileMenu()">South Bronx Unite</a>
+                <a href="team.html#webdev" onclick="turnOffMobileMenu()">Web Developers</a>
+              </div>
             </div>
-        </div>
-    </li>
-    <li class="active">
-        <a href="resources.html">Resources</a>
-    </li>
-    <li>
-        <a href="team.html">Team</a> </li>
-    <li>
-        <a href="media.html">Media Coverage</a> </li>
-    </ul>
-    </div>
-  </nav>
-
-  <div class="content">
-    <div class="grid-4">
+          </li>
+          <li>
+            <div class="dropdown">
+              <div class="label">
+                <a class="unequal" href="unequal.html">Unequal Impacts<br>of Heat</a>
+                <i class="fa fa-caret-down"></i>
+              </div>
+              <div class="dropdown-content">
+                <a href="unequal.html#redlining">Redlining</a>
+                <a href="unequal.html#health-disparities" onclick="turnOffMobileMenu()">Health Disparities</a>
+                <a href="unequal.html#greenspace" onclick="turnOffMobileMenu()">Greenspace Access</a>
+              </div>
+            </div>
+          </li>
+          <li class="active">
+            <a href="resources.html">Resources</a>
+          </li>
+          <li>
+            <a href="submit.html">Submit Your Story</a>
+          </li>
+          <li>
+            <a href="media.html">Media Coverage</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="content">
+      <div class="grid-4">
         <div class="item">
-            <a href="https://maps.nyc.gov/cooling-center/inactive.html?1650575400000" target="_blank">
-            <img src="./images/resources/cooling-centers.png" alt="Cooling Centers">
+          <a href="https://maps.nyc.gov/cooling-center/inactive.html?1650575400000" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/cooling-centers.png" alt="NYC Cooling Centers">
             <div class="image-text">NYC Cooling Centers</div>
-            </a>
+          </a>
         </div>
         <div class="item">
             <a href="https://www.nj211.org/nj-cooling-centers" target="_blank">
-                <img src="./images/missing.png" alt="NJ Cooling Centers">
-                <div class="image-text">NJ Cooling Centers</div>
+              <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/cooling-centers.png" alt="NJ Cooling Centers">
+              <div class="image-text">NJ Cooling Centers</div>
             </a>
-        </div>
-
+          </div>
         <div class="item">
-            <a href="https://www.southbronxunite.org/" target="_blank">
-                <img src="./images/missing.png" alt="Missing image">
-                <div class="image-text">South Bronx Unite</div>
-            </a>
+          <a href="https://www.southbronxunite.org/" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/sbu-page.png" alt="South Bronx Unite">
+            <div class="image-text">South Bronx Unite</div>
+          </a>
         </div>
-
         <div class="item">
-            <a href="https://osf.io/pvd9f/" target="_blank">
-                <img src="./images/missing.png" alt="Missing image">
-                <div class="image-text">South Bronx and Northern Manhattan 2021 HeatWatch Results</div>
-            </a>
+          <a href="https://storymaps.arcgis.com/stories/4f06e78ca6964a04b968d9b5781499ae" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/nyc-redlining.png" alt="NYC redlining">
+            <div class="image-text">NYC Redlining story map</div>
+          </a>
         </div>
-
         <div class="item">
-            <a href="https://osf.io/byafe/" target="_blank">
-                <img src="./images/missing.png" alt="Missing image">
-                <div class="image-text">Jersey City, Newark, and Elizabeth 2021 HeatWatch Results</div>
-            </a>
+          <a href="https://council.nyc.gov/data/heat/" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/heat-and-cooling-equity.png" alt="Heat and Cooling Equity">
+            <div class="image-text">Heat and Cooling Equity</div>
+          </a>
         </div>
-
         <div class="item">
-            <a href="https://nihhis.cpo.noaa.gov/Urban-Heat-Island-Mapping/Campaign-Cities-Detail?udt_7915_param_detail=7183" target="_blank">
-                <img src="./images/missing.png" alt="Missing image">
-                <div class="image-text">South Bronx and Northern Manhattan, NY 2021 NIHHIS City Page</div>
-            </a>
+          <a href="https://osf.io/pvd9f/" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/nyc-report.png" alt="NYC CAPA report">
+            <div class="image-text">South Bronx and Northern Manhattan 2021 HeatWatch Results</div>
+          </a>
         </div>
-
         <div class="item">
-            <a href="https://nihhis.cpo.noaa.gov/Urban-Heat-Island-Mapping/Campaign-Cities-Detail?udt_7915_param_detail=7192" target="_blank">
-                <img src="./images/missing.png" alt="Missing image">
-                <div class="image-text">Jersey City, Newark, and Elizabeth 2021 NIHHIS City Page</div>
-            </a>
+          <a href="https://osf.io/byafe/" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/nj-report.png" alt="NJ CAPA report">
+            <div class="image-text">Jersey City, Newark, and Elizabeth 2021 HeatWatch Results</div>
+          </a>
         </div>
-
         <div class="item">
-            <a href="https://storymaps.arcgis.com/stories/4f06e78ca6964a04b968d9b5781499ae" target="_blank">
-                <img src="./images/missing.png" alt="Missing image">
-                <div class="image-text">NYC Redlining story map</div>
-            </a>
+          <a href="https://nihhis.cpo.noaa.gov/Urban-Heat-Island-Mapping/Campaign-Cities-Detail?udt_7915_param_detail=7183" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/bronx-manhattan.jpeg" alt="South Bronx and Northern Manhattan, NY 2021 NIHHIS City Page">
+            <div class="image-text">South Bronx and Northern Manhattan, NY 2021 NIHHIS City Page</div>
+          </a>
         </div>
-
         <div class="item">
-            <a href="https://council.nyc.gov/data/heat/" target="_blank">
-                <img src="./images/missing.png" alt="Missing image">
-                <div class="image-text">Heat and Cooling Equity</div>
-            </a>
+          <a href="https://nihhis.cpo.noaa.gov/Urban-Heat-Island-Mapping/Campaign-Cities-Detail?udt_7915_param_detail=7192" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/liberty-state-park.jpeg" alt="Jersey City, Newark, and Elizabeth 2021 NIHHIS City Page">
+            <div class="image-text">Jersey City, Newark, and Elizabeth 2021 NIHHIS City Page</div>
+          </a>
         </div>
-
+        <div class="item">
+          <a href="https://www.weact.org/campaigns/heat-health-equity/" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/weact-hhe.png" alt="WEACT's Heat, Health, & Equity in Northerm Manhattan page">
+            <div class="image-text">WEACT's "Heat, Health, & Equity in Northerm Manhattan" page</div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="https://www.weact.org/wp-content/uploads/2022/06/WE-ACT-2021-Cooling-Center-Report.pdf" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/weact-cooling-center.png" alt="WEACT's 2021 Cooling Center Report">
+            <div class="image-text">WEACT's 2021 Cooling Center Report</div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="https://www.weact.org/wp-content/uploads/2022/06/WE-ACT-2022-Extreme-Heat-Policy-Agenda.pdf" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/weact-policy.png" alt="WEACT's 2022 Extreme Heat Policy Agenda">
+            <div class="image-text">WEACT's 2022 Extreme Heat Policy Agenda</div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="https://www.youtube.com/watch?v=mcw1fFRXaAc" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/weact-webinar.png" alt="WEACT's 2022 Extreme Heat Webinar">
+            <div class="image-text">WEACT's 2022 Extreme Heat Webinar</div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="https://www.airnow.gov/?city=New%20York&state=NY&country=USA" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/air-quality-check.png" alt="EPA's 'Air Now': Check the real-time air quality of your area">
+            <div class="image-text">EPA's 'Air Now': Check the real-time air quality of your area</div>
+          </a>
+        </div>
+        <div class="item">
+          <a href="https://www.airnow.gov/?city=New%20York&state=NY&country=USA" target="_blank">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/resources/sbu-columbia.webp" alt="South Bronx Unite's collaborative research on air pollution with Columbia University">
+            <div class="image-text">South Bronx Unite's collaborative research on air pollution with Columbia University</div>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <script>
-    const mobileIcon = document.getElementById('mobile-icon');
-    const navbarList = document.getElementById('navbar-list');
+    <div class="footer">
+        Contact: admin  {at}  heatstorynyc.org
+      </div>
 
-    function toggleMobileMenu() {
-      mobileIcon.classList.toggle('active');
-      navbarList.classList.toggle('mobile');
-    }
-  </script>
-</body>
+    <script>
+      const mobileIcon = document.getElementById('mobile-icon');
+      const navbarList = document.getElementById('navbar-list');
+      
+      function toggleMobileMenu() {
+        mobileIcon.classList.toggle('active');
+        navbarList.classList.toggle('mobile');
+      }
+    </script>
+  </body>
 </html>

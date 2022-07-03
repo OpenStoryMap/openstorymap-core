@@ -8,7 +8,7 @@ body {
 	color: #333;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-family: 'Inter', sans-serif;
 }
 
 a {
@@ -22,6 +22,34 @@ a:hover {
 
 a:visited {
 	color: rgb(0,80,160);
+}
+
+.section-header {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+    padding: 0.4em;
+    background-color: #D9D9D9;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 2em;
+}
+
+.section-header-team {
+    text-align: center;
+    padding: 0.4em;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-top: 2em;
+}
+
+.footer {
+    height: 6em;
+    margin: auto;
+    text-align: center;
+    padding: 0.4em;
+    color: #fff;
+    background-color: rgb(207 75 75);
 }
 
 label {
@@ -66,6 +94,15 @@ button:focus {
 	cursor: pointer;
 }
 
+.image-copyright {
+    text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+    .hide-on-mobile {
+        display: none;
+    }
+}
 
 /**** IMAGE POP UP - START ****/
 
@@ -216,8 +253,14 @@ li .active {
 	height: 45px;
 	align-items: center;
 	padding: 0 10px;
-	font-size: 1.25em;
+	font-size: 1em;
 }
+
+.unequal {
+    text-align: center;
+}
+
+
 
 @media only screen and (min-width: 767px) {
     .navbar-list li.active {
@@ -256,6 +299,7 @@ li .active {
         align-items: center;
         padding: 0 10px;
         font-size: 1.25em;
+        cursor: pointer;
     }
 
     .dropdown-content {
@@ -342,7 +386,7 @@ li .active {
     height: 50px; !important;
 }
 
-/**** LAYER CONTROL ****/
+/**** LAYER CONTROL - START****/
 a.leaflet-control-layers-toggle {
     background-position-x: 10%;
 }
@@ -355,9 +399,9 @@ a.leaflet-control-layers-toggle {
     margin-left: 35px;
     padding-top: 8px;
 }
-/**** LAYER CONTROL ****/
+/**** LAYER CONTROL - END ****/
 
-/**** GRID ****/
+/**** GRID - START ****/
 .grid-2 {
     display: grid;
     grid-template-columns: repeat(auto-fill, 45%);
@@ -376,6 +420,30 @@ a.leaflet-control-layers-toggle {
     grid-gap: 1rem;
 }
 
+.grid-first-long {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 1rem;
+}
+
+.grid-second-long {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 1rem;
+}
+
+.grid-first-long-two-short {
+    display: grid;
+    grid-template-columns: 2fr .5fr .5fr;
+    grid-gap: 1rem;
+}
+
+.grid-two-short-one-long {
+    display: grid;
+    grid-template-columns: .5fr .5fr 2fr;
+    grid-gap: 1rem;
+}
+
 @media only screen and (max-width: 767px) {
     .grid-2 {
         grid-template-columns: repeat(auto-fill, 90%);
@@ -388,6 +456,27 @@ a.leaflet-control-layers-toggle {
     }
 
     .grid-4 {
+        grid-template-columns: repeat(auto-fill, 90%);
+        grid-gap: 1rem;
+    }
+
+    .grid-first-long {
+        grid-template-columns: repeat(auto-fill, 90%);
+        grid-gap: 1rem;
+    }
+    
+    .grid-second-long {
+        grid-template-columns: repeat(auto-fill, 90%);
+        grid-gap: 1rem;
+    }
+
+    .grid-first-long-two-short {
+        grid-template-columns: repeat(auto-fill, 90%);
+        grid-gap: 1rem;
+
+    }
+
+    .grid-two-short-one-long {
         grid-template-columns: repeat(auto-fill, 90%);
         grid-gap: 1rem;
     }
@@ -420,4 +509,4 @@ a.leaflet-control-layers-toggle {
     padding: 10px;
 }
 
-/**** GRID ****/
+/**** GRID - END ****/

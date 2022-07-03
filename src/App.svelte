@@ -21,36 +21,66 @@
 
 <link rel="stylesheet" href="/svelte-material-ui/bare.css" />
 
-  <nav>
+<nav>
     <div class="inner">
-        <div id="mobile-icon" class="mobile-icon" on:click={toggleMobileMenu}>
+      <div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()">
         <div class="middle-line">
         </div>
-    </div> <ul id="navbar-list" class="navbar-list">
-    <li class="active">
-        <a href="/">Heat Story NYC</a> </li>
-    <li>
-        <div class="dropdown">
+      </div>
+      <ul id="navbar-list" class="navbar-list">
+        <li class="active">
+          <a href="/">Heat Story NYC</a>
+        </li>
+        <li>
+          <div class="dropdown">
             <div class="label">
-                Project
-                <i class="fa fa-caret-down"></i>
+              <a href="project.html">Project</a>
+              <i class="fa fa-caret-down"></i>
             </div>
             <div class="dropdown-content">
-                <a href="intro.html">Project Intro</a>
-                <a href="what-is-uhei.html">What Is UHEI?</a>
-                <a href="intro.html">Project Intro</a>
-                <a href="intro.html">Project Intro</a>
+              <a href="project.html">Project Intro</a>
+              <a href="project.html#what-is-uhi" onclick="turnOffMobileMenu()">What is UHI?</a>
+              <a href="project.html#methods" onclick="turnOffMobileMenu()">Methods</a>
+              <a href="project.html#next-steps" onclick="turnOffMobileMenu()">Next Steps</a>
             </div>
-        </div>
-    </li>
-    <li>
-        <a href="resources.html">Resources</a>
-    </li>
-    <li>
-        <a href="team.html">Team</a> </li>
-    <li>
-        <a href="media.html">Media Coverage</a> </li>
-    </ul>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a href="team.html">Team</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="team.html">Columbia University</a>
+              <a href="team.html#sbu" onclick="turnOffMobileMenu()">South Bronx Unite</a>
+              <a href="team.html#webdev" onclick="turnOffMobileMenu()">Web Developers</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <div class="label">
+              <a class="unequal" href="unequal.html">Unequal Impacts<br>of Heat</a>
+              <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-content">
+              <a href="unequal.html#redlining">Redlining</a>
+              <a href="unequal.html#health-disparities" onclick="turnOffMobileMenu()">Health Disparities</a>
+              <a href="unequal.html#greenspace" onclick="turnOffMobileMenu()">Greenspace Access</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="resources.html">Resources</a>
+        </li>
+        <li>
+          <a href="submit.html">Submit Your Story</a>
+        </li>
+        <li>
+          <a href="media.html">Media Coverage</a>
+        </li>
+      </ul>
     </div>
   </nav>
 
