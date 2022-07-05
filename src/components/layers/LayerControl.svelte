@@ -175,7 +175,7 @@
         opacityControl = L.control
             .opacity(
                 _layersMap,
-                { label: 'Opacity',
+                { label: 'Opacity Control',
                   opacityMap: {...opacityMap, ...opacityControl?.options?.opacityMap }})
             .addTo(leafletMap);
     }

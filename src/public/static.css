@@ -59,6 +59,18 @@ img {
   background-color: rgba(255, 0, 0, .5);
 }
 
+.buffer {
+    height: 10px;
+}
+
+.header-buffer {
+    height: 4em;
+}
+
+.header-buffer-half {
+    height: 2em;
+}
+
 .health-text {
   color: #BDA55D;
 }
@@ -68,11 +80,11 @@ img {
 }
 
 .greenspace-text {
-  color: #00903A;
+  color: #99FF99;
 }
 
 .greenspace-section {
-  background-color: #00903A;
+  background-color: #99FF99;
 }
 
 .outlined {

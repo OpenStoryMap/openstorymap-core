@@ -32,7 +32,7 @@ a:visited {
     background-color: #D9D9D9;
     font-size: 1.5em;
     font-weight: 700;
-    margin-top: 2em;
+    border-radius: 0.3em;
 }
 
 .section-header-team {
@@ -113,7 +113,7 @@ button:focus {
   right: 0;
   top: 0;
   overflow: auto;
-	z-index: 1000;
+  z-index: 1000;
 }
 .popupContainer .popUpBackground {
   transition: all 0.3s ease-in-out;
@@ -228,12 +228,13 @@ nav {
 }
 
 .navbar-list.mobile {
-	background-color: rgb(207 75 75 / 80%);
+	background-color: rgb(207 75 75 / 90%);
 	position: fixed;
 	display: block;
 	height: calc(100% - 45px);
 	bottom: 0;
 	left: 0;
+    overflow-y: auto
 }
 
 .navbar-list li {
@@ -268,6 +269,10 @@ li .active {
         border-radius: 2px;
     }
 
+    .navbar-list li:hover {
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
     .navbar-list li:before {
         content: "";
         position: absolute;
@@ -298,7 +303,7 @@ li .active {
         height: 45px;
         align-items: center;
         padding: 0 10px;
-        font-size: 1.25em;
+        #font-size: 1.25em;
         cursor: pointer;
     }
 
@@ -316,11 +321,13 @@ li .active {
     .dropdown-content a {
         float: none;
         color: black;
-        padding-top: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
         text-decoration: none;
         display: block;
         text-align: left;
         font-size: 1em;
+        height: auto;
     }
 
     .dropdown-content a:hover {
@@ -341,7 +348,7 @@ li .active {
         padding-left: 25px;
     }
 
-    .navbar-list .dropdown .label {
+    .navbar-list .label {
         color: #fff;
         text-decoration: none;
         align-items: center;
@@ -387,6 +394,11 @@ li .active {
 }
 
 /**** LAYER CONTROL - START****/
+.leaflet-control-layers {
+    min-width: 150px;
+    min-height: 50px;
+}
+
 a.leaflet-control-layers-toggle {
     background-position-x: 10%;
 }
@@ -398,6 +410,14 @@ a.leaflet-control-layers-toggle {
     font-size: 18px;
     margin-left: 35px;
     padding-top: 8px;
+}
+
+.leaflet-control-layers-label {
+    color: black;
+    display: block;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
 }
 /**** LAYER CONTROL - END ****/
 
@@ -424,18 +444,24 @@ a.leaflet-control-layers-toggle {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .grid-second-long {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .grid-first-long-two-short {
     display: grid;
     grid-template-columns: 2fr .5fr .5fr;
     grid-gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .grid-two-short-one-long {
