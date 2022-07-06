@@ -23,7 +23,7 @@
 
 <nav>
     <div class="inner">
-      <div id="mobile-icon" class="mobile-icon" onclick="toggleMobileMenu()">
+    <div id="mobile-icon" class="mobile-icon" on:click={toggleMobileMenu}>
         <div class="middle-line">
         </div>
       </div>

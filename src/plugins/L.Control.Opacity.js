@@ -31,7 +31,7 @@ const setOpacity = (layer, opacityFactor) => {
 
 L.Control.Opacity = L.Control.extend({
     options: {
-        collapsed: false,
+        collapsed: true,
         position: 'topright',
         label: null,
     },
@@ -72,8 +72,10 @@ L.Control.Opacity = L.Control.extend({
         container.setAttribute('aria-haspopup', true);
         L.DomEvent.disableClickPropagation(container);
         L.DomEvent.disableScrollPropagation(container);
-        if (this.options.label) {
-            const labelP = L.DomUtil.create('p', className + '-label');
+        const labelP = this.options.label
+            ? L.DomUtil.create('p', className + '-label')
+            : null;
+        if (labelP != null) {
             labelP.innerHTML = this.options.label;
             container.appendChild(labelP);
         }
@@ -91,14 +93,24 @@ L.Control.Opacity = L.Control.extend({
                 );
             }
         }
-        const link = (this._layersLink = L.DomUtil.create('a', className + '-toggle', container));
+        const link = (this._layersLink = L.DomUtil.create('a', className + '-toggle-opacity', container));
         link.href = '#';
-        link.title = 'Layers';
+        link.title = 'Opacity';
+
         if (L.Browser.touch) {
             L.DomEvent.on(link, 'click', L.DomEvent.stop);
             L.DomEvent.on(link, 'click', this.expand, this);
+
+            if (labelP != null) {
+                L.DomEvent.on(labelP, 'click', L.DomEvent.stop);
+                L.DomEvent.on(labelP, 'click', this.expand, this);
+            }
         } else {
             L.DomEvent.on(link, 'focus', this.expand, this);
+
+            if (labelP != null) {
+                L.DomEvent.on(labelP, 'focus', this.expand, this);
+            }
         }
         if (!collapsed) {
             this.expand();
