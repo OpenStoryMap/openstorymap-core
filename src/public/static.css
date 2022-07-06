@@ -93,3 +93,7 @@ img {
 .submit-text {
   text-align: center;
 }
+
+.street-tree-image {
+  max-height: 300px;
+}
