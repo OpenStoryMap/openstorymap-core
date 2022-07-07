@@ -7,14 +7,15 @@
 
     export let story: Story = null;
     let map: Map|undefined = undefined;
-    let isOpen: boolean = false;
+    let isGettingStarted: boolean = story.title == 'Getting Started';
+    let isOpen: boolean = isGettingStarted;
 
     $: {
         map = $mapStore;
     }
 
     function setMapState(mapState: MapState): void {
-        if (!isOpen) {
+        if (!isOpen || mapState == null) {
             return;
         }
 
@@ -24,7 +25,7 @@
 
 </script>
 
-<Panel bind:open={isOpen} on:click={() => setMapState(story.mapState)}>
+<Panel variant={isGettingStarted ? "outlined" : ""} bind:open={isOpen} on:click={() => setMapState(story.mapState)}>
     <Header>{story.title}</Header>
     <Content class="story-content">{@html story.content}</Content>
 </Panel>
