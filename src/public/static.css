@@ -5,6 +5,12 @@
   color:#444
 }
 
+@media only screen and (min-width: 767px) {
+    .content.compress-on-desktop {
+        max-width: 50%;
+    }
+}
+
 h1,h2,h3{
   line-height:1.2
 }
@@ -94,13 +100,43 @@ img {
 }
 
 .p-with-color {
+  padding: 1em .5em;
+}
+
+/**** NYC Health Image Overlap - Start ****/
+.nyc-health-img {
+  height: 250px;
   padding: 1em 0;
 }
 
-.nyc-health-img {
-  height: 300px;
-  padding: 1em 0;
+@media only screen and (min-width: 767px) {
+  .nyc-health-img-grid {
+    height: 600px;
+  }
+
+  .nyc-health-img-container {
+    position: relative;
+  }
+
+  .nyc-health-img1 {
+    position: absolute;
+    left: 10px;
+  }
+
+  .nyc-health-img2 {
+    position: absolute;
+    left: 150px;
+    top: 150px;
+  }
+
+  .nyc-health-img3 {
+    position: absolute;
+    left: 10px;
+    top: 300px;
+  }
 }
+
+/**** NYC Health Image Overlap - End ****/
 
 .submit-text {
   text-align: center;

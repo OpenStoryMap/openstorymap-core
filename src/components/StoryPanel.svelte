@@ -25,7 +25,7 @@
 
 </script>
 
-<Panel variant={isGettingStarted ? "outlined" : ""} bind:open={isOpen} on:click={() => setMapState(story.mapState)}>
+<Panel variant="outlined" bind:open={isOpen} on:click={() => setMapState(story.mapState)}>
     <Header>{story.title}</Header>
     <Content class="story-content">{@html story.content}</Content>
 </Panel>
