@@ -145,3 +145,10 @@ img {
 .street-tree-image {
   max-height: 300px;
 }
+
+.jeremy-iframe {
+  display: block;
+  margin: auto;
+  height: 800px;
+  width: 90%;
+}
