@@ -1,14 +1,16 @@
-.content{
-  max-width:80%;
+.content {
+  max-width: 50%;
   margin:60px auto;
   padding:0 10px;
-  color:#444
+  color:#444;
+  text-align: justify;
 }
 
-@media only screen and (min-width: 767px) {
-    .content.compress-on-desktop {
-        max-width: 50%;
-    }
+@media only screen and (max-width: 767px) {
+  .content {
+    max-width: 90%;
+    text-align: inherit;
+  }
 }
 
 h1,h2,h3{
@@ -105,7 +107,6 @@ img {
 
 /**** NYC Health Image Overlap - Start ****/
 .nyc-health-img {
-  height: 250px;
   padding: 1em 0;
 }
 
@@ -151,4 +152,43 @@ img {
   margin: auto;
   height: 800px;
   width: 90%;
+}
+
+/** if the div starts with a p, then it has a margin-block-start of 1em **/
+.div-next-to-p {
+    margin-top: 1em;
+}
+
+
+input[type=checkbox] {
+  display: none;
+}
+
+/** image zoom only on desktop **/
+@media only screen and (min-width: 767px) {
+  .container-zoom img {
+    transition: transform 0.25s ease;
+    cursor: zoom-in;
+  }
+
+  input[type=checkbox]:checked ~ label > img {
+    transform: scale(2);
+    cursor: zoom-out;
+  }
+}
+
+.centered-img {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+.div-with-p {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.h3-above-grid {
+  padding-left: 1rem;
+  margin-bottom: 0rem;
 }

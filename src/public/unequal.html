@@ -108,10 +108,15 @@
       <div class="section-header">Redlining</div>
     </div>
     <div class="redlining-section buffer"></div>
-    <div class="grid-2 redlining-section">
-      <div>
-        <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/bronx-redlining.png" alt="bronx redlining"/>
-        <div class="image-copyright">Source: Nelson, Winling, Marciano, Connolly, et al.,  Mapping Inequality</div>
+    <div class="grid-2-row-1 redlining-section">
+      <div class="div-next-to-p">
+        <div class="container-zoom">
+          <input type="checkbox" id="redlining">
+          <label for="redlining">
+              <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/bronx-redlining.png" alt="bronx redlining"/>
+              <div class="image-copyright">Source: Nelson, Winling, Marciano, Connolly, et al.,  Mapping Inequality</div>
+          </label>
+        </div>
       </div>
 
       <div>
@@ -129,17 +134,18 @@
           <li>declining neighborhoods;</li>
           <li>undesirable (darker red).</li>
         </ol>
+
+        <p>
+            The categories were assigned primarily based on the neighborhood's socio-demographic composition, and areas with high percentages of low-income immigrant or Black residents were marked as 'D' - 'undesirable', colored in dark red.
+        </p>
+
+        <p>
+            Redlining is associated with a wide range of present-day adverse outcomes, including disproportionate vulnerability to heat, adverse health outcomes, higher asthma rates, birth outcomes, and cancer diagnoses, among others.
+        </p>
       </div>
     </div>
 
     <div class="grid-first-long redlining-section">
-      <p>
-        The categories were assigned primarily based on the neighborhood's socio-demographic composition, and areas with high percentages of low-income immigrant or Black residents were marked as 'D' - 'undesirable', colored in dark red.
-      </p>
-
-      <p>
-        Redlining is associated with a wide range of present-day adverse outcomes, including disproportionate vulnerability to heat, adverse health outcomes, higher asthma rates, birth outcomes, and cancer diagnoses, among others.
-      </p>
 
       <p>
         For information specific to NYC, see Gaffud, 2021<sup>1</sup>
@@ -163,18 +169,13 @@
     </div>
     <div class="health-section buffer"></div>
 
-    <div class="grid-2 health-section nyc-health-img-grid">
-      <div class="nyc-health-img-container">
-        <div class="nyc-health-img1">
-          <img class="nyc-health-img static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/child-asthma.png" alt="child asthma rates NYC" />
-        </div>
-
-        <div class="nyc-health-img2">
-          <img class="nyc-health-img static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/diabetes.png" alt="diabetes rates NYC" />
-        </div>
-
-        <div class="nyc-health-img3">
-          <img class="nyc-health-img static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/hypertension.png" alt="hypertension rates NYC" />
+    <div class="grid-2-row-1 health-section">
+      <div class="nyc-health-img-container container-zoom">
+        <div class="nyc-health-img-div">
+          <input type="checkbox" id="unequalAsthma">
+          <label for="unequalAsthma">
+            <img class="nyc-health-img static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/child-asthma.png" alt="child asthma rates NYC" />
+          </label>
         </div>
       </div>
 
@@ -183,8 +184,13 @@
           In areas already marginalized along race and class lines, heat-related impacts are not only about temperature and humidity. Those with pre-existing conditions are more susceptible to heat-related illness and death, as high heat can contribute to deaths from heart attacks, strokes, and other forms of cardiovascular disease. High heat combined with air pollution can also be deadly, particularly for those with respiratory problems.
         </p>
 
-        <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/ozone.jpeg" alt="ozone">
-        <div class="image-copyright">Source: ClimateCentral.org</div>
+        <div class="container-zoom">
+          <input type="checkbox" id="ozone">
+          <label for="ozone">
+            <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/ozone.jpeg" alt="ozone">
+            <div class="image-copyright">Source: ClimateCentral.org</div>
+          </label>
+        </div>
 
         <div class="outlined">
           <a href="https://www.airnow.gov/?city=New%20York&state=NY&country=USA" target="_blank">Check the air quality in your area here</a>
@@ -193,21 +199,26 @@
 
     </div>
 
-    <div class="p-with-color health-section">
-      Neighborhoods that are hotter also tend to have higher rates of pre-existing health conditions, leaving residents all the more susceptible to heat-related illness and death.
-    </div>
-
-    <div class="p-with-color health-section">
-      These stark health disparities are not coincidental. These areas are more likely to have higher rates of pollution due to a concentration of less-desirable infrastructure, such as industry, highways, and waste transfer facilities. A lower average income also means residents do not have access to good quality, consistent health care.
-    </div>
-
     <div class="grid-second-long health-section">
-      <div>
-        <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/asthma.jpeg" alt="child using inhaler" />
+      <div class="div-next-to-p">
+        <img
+            class="static-image"
+            src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/asthma.jpeg"
+            alt="child using inhaler" />
         <div class="image-copyright">Photo: CSULB Environmental Sociology</div>
       </div>
       <div>
-        The Mott Haven-Port Morris area of the South Bronx is one of these areas. Known as 'Asthma Alley'<sup>4</sup>, it experiences some of the worst congestion in the US. This means that residents are more likely to have existing health conditions such as asthma, which is made worse by extreme heat. Extreme temperature can cause air to become stagnant, trapping pollutants in the air, which can cause an asthma flare-up, which causes your airways to swell, making it hard to breathe.
+        <p>
+            Neighborhoods that are hotter also tend to have higher rates of pre-existing health conditions, leaving residents all the more susceptible to heat-related illness and death.
+        </p>
+
+        <p>
+        These stark health disparities are not coincidental. These areas are more likely to have higher rates of pollution due to a concentration of less-desirable infrastructure, such as industry, highways, and waste transfer facilities. A lower average income also means residents do not have access to good quality, consistent health care.
+        </pollution>
+
+        <p>
+            The Mott Haven-Port Morris area of the South Bronx is one of these areas. Known as 'Asthma Alley'<sup>4</sup>, it experiences some of the worst congestion in the US. This means that residents are more likely to have existing health conditions such as asthma, which is made worse by extreme heat. Extreme temperature can cause air to become stagnant, trapping pollutants in the air, which can cause an asthma flare-up, which causes your airways to swell, making it hard to breathe.
+        <p>
       </div>
     </div>
 
@@ -220,11 +231,11 @@
     <div class="greenspace-section buffer"></div>
 
     <div class="grid-first-long greenspace-section">
-      <div>
+      <p>
         Having access to greenspace (tree canopy, parks) makes a significant difference in buffering again extreme heat. Trees and vegatation are effective in reducing the urban heat island effect by lowering surface and air temperatures by 20-45°F<sup>5</sup>. However, low-income, people of color neighborhoods have less greenspace on average compared to the white, more affluent areas. This means yet another buffer against extreme heat that marginalized populations do not have access to. For information specific to NYC, see Urofsky & Parks, 2020<sup>6</sup>
-      </div>
+      </p>
 
-      <div>
+      <div class="div-next-to-p">
         <img class="static-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/no-greenspace.png" alt="no green space" />
         <div class="image-copyright">Source: South Bronx Unite</div>
       </div>
@@ -241,7 +252,7 @@
       </div>
     </div>
 
-    <div class="greenspace-section">
+    <div class="greenspace-section" style="padding-bottom: 1rem">
       <div>
         <a class="static-image" href="https://tree-map.nycgovparks.org/" target="_blank">
           <img class="street-tree-image" src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/unequal/nyc-street-trees.png">

@@ -98,11 +98,12 @@
 
     <div class="buffer"></div>
     <div class="grid-second-long">
-      <div>
-        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/uhi.png" alt="Picture showing how cities get hotter than the surrounding areas" />
-        <div class="image-copyright">
-          copyright: Kamyar Fuladlu
-        </div>
+      <div class="container-zoom">
+        <input type="checkbox" id="uhi">
+        <label for="uhi">
+          <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/uhi.png" alt="Picture showing how cities get hotter than the surrounding areas" />
+          <div class="image-copyright"> source: Kamyar Fuladlu </div>
+        </label>
       </div>
       <div>
         <p>
@@ -132,12 +133,12 @@
     </div>
 
     <div class="grid-3">
-      <div>
+      <div class="div-next-to-p">
         <a href="https://osf.io/pvd9f/" target="_blank">
           <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/nyc.png" alt="Bronx & Manhattan campaign results from CAPA" />
         </a>
       </div>
-      <div>
+      <div class="div-next-to-p">
         <a href="https://osf.io/byafe/" target="_blank">
           <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/nj.png" alt="Jersey City, Newark, & Elizabeth campaign results from CAPA" />
         </a>
@@ -152,11 +153,11 @@
         <p>
           NJ: the cities of Jersey City, Newark, and Elizabeth.
         </p>
-        <h3 class="hide-on-mobile">
-          CLICK ON THE IMAGE TO SEE CAPA'S RESULTS REPORTS FOR EACH AREA
-        </h3>
       </div>
     </div>
+    <h3 class="hide-on-mobile" style="text-align: center;">
+        CLICK ON THE IMAGE TO SEE CAPA'S RESULTS REPORTS FOR EACH AREA
+    </h3>
 
     <div id="what-is-uhi"></div>
     <div class="header-buffer"></div>
@@ -184,11 +185,12 @@
           Global temperatures and urban populations continue to rise, which makes this an ever-urgent problem. A study involving 13,000 urban areas found that city dwellers' exposure to life-threatening heat and humidity has increased threefold since the 1980s.
         </p>
       </div>
-      <div>
-        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/rural-city.jpeg" alt="Rural vs City" />
-        <div class="image-copyright">
-          copyright: Landscape Architects Network
-        </div>
+      <div class="div-next-to-p container-zoom">
+        <input type="checkbox" id="rural-city">
+        <label for="rural-city">
+          <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/rural-city.jpeg" alt="Rural vs City" />
+          <div class="image-copyright"> source: Landscape Architects Network </div>
+        </input>
       </div>
     </div>
 
@@ -199,8 +201,8 @@
     </div>
     <div class="buffer"></div>
 
-    <div class="grid-2">
-      <div>
+    <div class="grid-2-row-1">
+      <div class="div-next-to-p">
         <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor4.jpeg" alt="Volunteers with sensors" />
       </div>
       <div>
@@ -216,12 +218,9 @@
       </div>
     </div>
 
-    <div class="grid-first-long-two-short">
+    <h3 class="h3-above-grid" > How were the data collected?  </h3>
+    <div class="grid-first-long">
       <div>
-        <h3>
-          How were the data collected?
-        </h3>
-
         <p>
           The traverse routes for collecting data were designed together with SBU as well as other local groups (WE ACT for Environmental Justice based in Harlem, and Community Boards 9-12 in Northern Manhattan) in order to include areas of concern that matter to local residents. These points included major intersections, frequented bus stops, common corridors of activity, as well as areas with public housing. These points were then sent to CAPA Strategies, who designed the traverse routes based on them.
         </p>
@@ -239,40 +238,70 @@
         </p>
       </div>
 
-      <div>
-        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor1.jpeg" alt="CAPA sensor" />
-      </div>
+      <div class="div-next-to-p">
+        <div class="container-zoom">
+            <input type="checkbox" id="sensor1">
+            <label for="sensor1">
+                <img
+                    src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor1.jpeg"
+                    alt="CAPA sensor"
+                    height="300px"
+                    class="centered-img"
+                />
+            </label>
+        </div>
 
-      <div>
-        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor5.jpeg" alt="CAPA sensor" />
+        <div class="buffer"></div>
+
+        <div class="container-zoom">
+            <input type="checkbox" id="sensor5">
+            <label for="sensor5">
+                <img
+                    src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor5.jpeg"
+                    alt="CAPA sensor"
+                    height="300px"
+                    class="centered-img"
+                />
+            </label>
+        </div>
       </div>
     </div>
 
-    <div class="grid-two-short-one-long">
+    <h3 class="h3-above-grid"> How do our methods and results differ from existing data? </h3>
+    <div class="grid-second-long">
 
-      <div>
-        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor2.jpeg" alt="Volunteer with CAPA sensor" />
+      <div class="div-next-to-p">
+        <div class="container-zoom">
+          <input type="checkbox" id="volunteer1">
+          <label for="volunteer1">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor2.jpeg" alt="Volunteer with CAPA sensor" height="300px" class="centered-img"/>
+          <label>
+        </div>
+
+        <div class="buffer"></div>
+
+        <div class="container-zoom">
+          <input type="checkbox" id="sensor3">
+          <label for="sensor3">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor3.jpeg" alt="Volunteer with CAPA sensor" height="300px" class="centered-img"/>
+          <label>
+        </div>
       </div>
 
       <div>
-        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/sensor3.jpeg" alt="Volunteer with CAPA sensor" />
-      </div>
-
-      <div>
-        <h3>
-          How do our methods and results differ from existing data?
-        </h3>
-  
         <ul>
           <li>
             Measures ambient temperature: Previous models have been based on satellite data, which record the temperature of the ground itself, while our campaign measured air temperatures and humidity close to the ground, which is the heat people actually feel.
           </li>
+          <br>
           <li>
             Finer spatial resolution: Our map outputs are in higher resolution (1 meter - 10 meters), meaning a finer spatial resolution than most public satellite products related to land surface temperature and air temperature (which are at scales ranging from 30 meters to 1 kilometer). These more granular maps are more conducive to designing targeted local mitigation efforts.
           </li>
+          <br>
           <li>
             Real-time, mobile data collection: Data are collected in real time across several different locations, while most existing air temperature data is collected in one stationary location.
           </li>
+          <br>
           <li>
             Capture variance throughout the day: Data are collected multiple times in the day (morning, afternoon, and evening) to capture how heat may vary throughout the day.
           </li>
@@ -285,6 +314,7 @@
     <div class="section-header">
       NEXT STEPS
     </div>
+    <div class="buffer"></div>
 
     <div class="grid-first-long">
       <div>
@@ -298,39 +328,48 @@
       </div>
 
       <div>
-        <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/uhi-mitigation.jpeg" alt="Urban heat island mitigation" />
-        <div class="image-copyright">
-          Source: EPA.gov
+        <div class="container-zoom">
+          <input type="checkbox" id="uhi-mitigation">
+          <label for="uhi-mitigation">
+            <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/uhi-mitigation.jpeg" alt="Urban heat island mitigation" />
+            <div class="image-copyright"> source: EPA.gov </div>
+          </label>
         </div>
       </div>
     </div>
+    <div class="buffer"></div>
 
-    <h3>
+    <h3 class="h3-above-grid">
       Where do we see this project going? What's ahead for this project?
     </h3>
 
-    <p>
-      In addition to the creation of this story map, Columbia researchers will continue to support South Bronx Unite's steadfast work in green and blue space advocacy as our community partner. For anyone interested in getting involved in their efforts, please email Ashley Fontanilla at <a href="mailto:ashley@southbronxunite.org">ashley@southbronxunite.org</a>.
-    </p>
+    <div class="div-with-p">
+        <p>
+        In addition to the creation of this story map, Columbia researchers will continue to support South Bronx Unite's steadfast work in green and blue space advocacy as our community partner. For anyone interested in getting involved in their efforts, please email Ashley Fontanilla at <a href="mailto:ashley@southbronxunite.org">ashley@southbronxunite.org</a>.
+        </p>
 
-    <p>
-      Because shade trees help so much with heat mitigation, efforts will be made to prioritize the planting and maintenance of street trees in areas found to be urban heat islands from the 2021 HeatWatch campaign. Newly planted street trees need more attention than normal in their first few years after being planted. The newly planted trees must be watered when it has not rained enough to keep them healthy. If you live in the NYC area and would like to receive emails about when and how to water newly planted street trees in your neighborhood, sign up at <a href="http://workfornature.org" target="_blank">WorkForNature.org</a>
-    </p>
+        <p>
+        Because shade trees help so much with heat mitigation, efforts will be made to prioritize the planting and maintenance of street trees in areas found to be urban heat islands from the 2021 HeatWatch campaign. Newly planted street trees need more attention than normal in their first few years after being planted. The newly planted trees must be watered when it has not rained enough to keep them healthy. If you live in the NYC area and would like to receive emails about when and how to water newly planted street trees in your neighborhood, sign up at <a href="http://workfornature.org" target="_blank">WorkForNature.org</a>
+        </p>
 
-    <p>
-      CAPA Strategies hosts all resulting data maps on the <a href="https://osf.io/9neka/" target="_blank">Open Science Framework</a> to provide broad and reliable access to all. Data is available in both traverse point and raster form, and there is also a full synthesis report available as well. Additionally, data will be configured into the next Assessment for the NYC Panel on Climate Change (NPCC).
-    </p>
+        <p>
+        CAPA Strategies hosts all resulting data maps on the <a href="https://osf.io/9neka/" target="_blank">Open Science Framework</a> to provide broad and reliable access to all. Data is available in both traverse point and raster form, and there is also a full synthesis report available as well. Additionally, data will be configured into the next Assessment for the NYC Panel on Climate Change (NPCC).
+        </p>
 
-    <p>
-      Lastly, we aim to coordinate with decision makers in NYC and NJ to combat inequities in heat exposure and associated health disparities. This could include locating future cooling centers or green spaces in most-affected areas, introducing programs such as allocation of free A/C for disproportionately affected communities or social resilience measures like neighbors and community members doing wellness checks that could reduce disproportionate hospitalizations and deaths. Ultimately, heat inequity cannot be addressed only through targeting heat alone, so we aim for a holistic approach that goes beyond temperature and humidity to center the health and wellness of the most affected communities.
-    </p>
+        <p>
+        Lastly, we aim to coordinate with decision makers in NYC and NJ to combat inequities in heat exposure and associated health disparities. This could include locating future cooling centers or green spaces in most-affected areas, introducing programs such as allocation of free A/C for disproportionately affected communities or social resilience measures like neighbors and community members doing wellness checks that could reduce disproportionate hospitalizations and deaths. Ultimately, heat inequity cannot be addressed only through targeting heat alone, so we aim for a holistic approach that goes beyond temperature and humidity to center the health and wellness of the most affected communities.
+        </p>
+    </div>
 
     <div>
       <img src="https://raw.githubusercontent.com/OpenStoryMap/geodata/main/nyc-heat-watch-2021/project/greenspace.jpeg" alt="Greenspace" />
     </div>
 
     <p>
-      <br><br>This website was built with OpenStoryMap. All source code and data can be found on <a href="https://github.com/OpenStoryMap" target="_blank">GitHub</a>. Dedicated to <a href="https://obits.nj.com/us/obituaries/starledger/name/sonny-gaddy-obituary?id=13172319" target="_blank">Sonny Gaddy</a>.
+      <br><br>This website was built with OpenStoryMap. All source code and data can be found on <a href="https://github.com/OpenStoryMap" target="_blank">GitHub</a>.
+    </p>
+    <p>
+      <br><br>Dedicated to <a href="https://obits.nj.com/us/obituaries/starledger/name/sonny-gaddy-obituary?id=13172319" target="_blank">Sonny Gaddy</a>.
     </p>
 
   </div>

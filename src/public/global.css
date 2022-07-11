@@ -96,6 +96,8 @@ button:focus {
 
 .image-copyright {
     text-align: center;
+    font-size: 12px;
+    margin-top: 0.5rem;
 }
 
 @media only screen and (max-width: 767px) {
@@ -446,6 +448,7 @@ a.leaflet-control-layers-toggle {
     grid-gap: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 .grid-second-long {
@@ -454,6 +457,7 @@ a.leaflet-control-layers-toggle {
     grid-gap: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 
 .grid-first-long-two-short {
@@ -470,40 +474,55 @@ a.leaflet-control-layers-toggle {
     grid-gap: 1rem;
 }
 
+/* This is for our static text areas */
+.grid-2-row-1 {
+    padding-left: 2%;
+    padding-right: 2%;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-gap: 2rem;
+}
+
 @media only screen and (max-width: 767px) {
     .grid-2 {
-        grid-template-columns: repeat(auto-fill, 90%);
+        grid-template-columns: 100%;
+        grid-gap: 1rem;
+    }
+
+    /* On mobile, the one column is good */
+    .grid-2-row-1 {
+        grid-template-columns: 100%;
         grid-gap: 1rem;
     }
 
     .grid-3 {
-        grid-template-columns: repeat(auto-fill, 90%);
+        grid-template-columns: 100%;
         grid-gap: 1rem;
     }
 
     .grid-4 {
-        grid-template-columns: repeat(auto-fill, 90%);
+        grid-template-columns: 100%;
         grid-gap: 1rem;
     }
 
     .grid-first-long {
-        grid-template-columns: repeat(auto-fill, 90%);
+        grid-template-columns: 100%;
         grid-gap: 1rem;
     }
     
     .grid-second-long {
-        grid-template-columns: repeat(auto-fill, 90%);
+        grid-template-columns: 100%;
         grid-gap: 1rem;
     }
 
     .grid-first-long-two-short {
-        grid-template-columns: repeat(auto-fill, 90%);
+        grid-template-columns: 100%;
         grid-gap: 1rem;
 
     }
 
     .grid-two-short-one-long {
-        grid-template-columns: repeat(auto-fill, 90%);
+        grid-template-columns: 100%;
         grid-gap: 1rem;
     }
 }
