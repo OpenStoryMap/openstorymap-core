@@ -29,7 +29,9 @@
       </div>
       <ul id="navbar-list" class="navbar-list">
         <li class="active">
-          <a href="/">Heat Story NYC</a>
+          <div class="label">
+            <a href="/">Heat Story NYC</a>
+          </div>
         </li>
         <li>
           <div class="dropdown">
@@ -72,13 +74,19 @@
           </div>
         </li>
         <li>
-          <a href="resources.html">Resources</a>
+          <div class="label">
+            <a href="resources.html">Resources</a>
+          </div>
         </li>
         <li>
-          <a href="submit.html">Submit Your Story</a>
+          <div class="label">
+            <a href="submit.html">Submit Your Story</a>
+          </div>
         </li>
         <li>
-          <a href="media.html">Media Coverage</a>
+          <div class="label">
+            <a href="media.html">Media Coverage</a>
+          </div>
         </li>
       </ul>
     </div>

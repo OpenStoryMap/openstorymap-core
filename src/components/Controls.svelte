@@ -5,8 +5,19 @@
   import Paper, { Title, Subtitle, Content } from '@smui/paper';
   import config from '../config';
   import { CreateControls } from './controls/ControlCreator.svelte';
+  import ControlPlaceholder from './controls/ControlPlaceholder.svelte';
 
   let controls = [];
+  let hasNoControls = true;
+
+  $: {
+    hasNoControls = true;
+    controls.forEach(({component, layerProperty, controlProperty}) => {
+      if ($mapStateStore.layers?.indexOf(layerProperty.id) > -1) {
+        hasNoControls = false;
+      }
+    });
+  }
 
   onMount(async () => {
       const controlPromises = CreateControls(config.layers);
@@ -15,7 +26,12 @@
       // are properly setup. For now, we will filter out any bad layers.
       controls = (await Promise.all(controlPromises)).filter(l => l.component !== undefined);
   });
+
 </script>
+
+{#if hasNoControls}
+  <ControlPlaceholder />
+{/if}
 
 {#if config}
     {#each controls as {component, layerProperty, controlProperty}}

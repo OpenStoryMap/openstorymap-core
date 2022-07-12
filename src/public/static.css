@@ -171,6 +171,11 @@ input[type=checkbox] {
     cursor: zoom-in;
   }
 
+  input.zoom3[type=checkbox]:checked ~ label > img {
+    transform: scale(3);
+    cursor: zoom-out;
+  }
+
   input[type=checkbox]:checked ~ label > img {
     transform: scale(2);
     cursor: zoom-out;
@@ -191,4 +196,11 @@ input[type=checkbox] {
 .h3-above-grid {
   padding-left: 1rem;
   margin-bottom: 0rem;
+}
+
+/* on mobile, no need to pad as it's only one column */
+@media only screen and (min-width: 767px) {
+    .uhi-img {
+        margin-top: 5rem;
+    }
 }
