@@ -424,6 +424,11 @@ a.leaflet-control-layers-toggle {
 /**** LAYER CONTROL - END ****/
 
 /**** GRID - START ****/
+.grid-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .grid-2 {
     display: grid;
     grid-template-columns: repeat(auto-fill, 45%);

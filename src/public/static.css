@@ -203,4 +203,11 @@ input[type=checkbox] {
     .uhi-img {
         margin-top: 5rem;
     }
+
+    .full-width {
+        width: 90%;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }
