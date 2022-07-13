@@ -94,6 +94,10 @@ button:focus {
 	cursor: pointer;
 }
 
+.hand {
+    cursor: pointer;
+}
+
 .image-copyright {
     text-align: center;
     font-size: 12px;

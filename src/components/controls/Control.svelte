@@ -25,7 +25,7 @@
                     {controlProperty.subtitle ?? ''}
                     <slot name="values"/>
                 </Subtitle>
-            <span class="w3-badge">click for info</span>
+            <span class="w3-badge hand">click for info</span>
         </span>
 
         <Tooltip persistent style="z-index: 10000" xPos="center">
