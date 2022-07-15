@@ -14,11 +14,12 @@
 }
 
 h1,h2,h3{
-  line-height:1.2
+  line-height:1.2;
 }
 
 img {
   max-width: 100%;
+  object-fit: scale-down;
 }
 
 .twoPerRow {
@@ -196,6 +197,15 @@ input[type=checkbox] {
 .h3-above-grid {
   padding-left: 1rem;
   margin-bottom: 0rem;
+}
+
+.twoPercentPad {
+  padding: 0 2%;
+}
+
+.oneRemPad {
+  padding: 0 1rem;
+  margin: 0;
 }
 
 /* on mobile, no need to pad as it's only one column */

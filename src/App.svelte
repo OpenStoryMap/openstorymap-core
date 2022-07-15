@@ -4,7 +4,7 @@
     import TabBar from '@smui/tab-bar';
 
     import MapMain from './components/MapMain.svelte';
-    import NavBar from './components/NavBar.svelte';
+  
     import Story from './components/Story.svelte'
     import Controls from './components/Controls.svelte';
 
@@ -53,7 +53,7 @@
               <a href="team.html">Team</a>
               <i class="fa fa-caret-down"></i>
             </div>
-            <div class="dropdown-content">
+            <div class="dropdown-content team">
               <a href="team.html">Columbia University</a>
               <a href="team.html#sbu" onclick="turnOffMobileMenu()">South Bronx Unite</a>
               <a href="team.html#webdev" onclick="turnOffMobileMenu()">Web Developers</a>
