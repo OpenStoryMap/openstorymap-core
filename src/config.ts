@@ -43,7 +43,7 @@ export interface Story {
 
 export interface ControlProperty {
   id: string,
-  type: 'slider',  // FIXME add more
+  type: 'slider'|'empty'|'fill-color',  // FIXME add more
   name?: string,
   subtitle?: string,
   tooltip?: string,  // more info
@@ -74,6 +74,11 @@ export interface SliderRangeProperties {
   step: number,
   start: number,
   stop: number,
+}
+
+export interface FillColorProperties {
+  include: string[],
+  initialValue: string,
 }
 
 // a union type of available layer property arguments

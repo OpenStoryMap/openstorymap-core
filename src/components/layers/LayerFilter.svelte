@@ -25,6 +25,7 @@
     export let property: LayerProperty;
     export let controlProperties: ControlProperty[];
     export let args: LayerByValueListArgs;
+    let data = null;
 
     // these are things we can only load once mounted
     let layer: L.GeoJSON;
@@ -35,6 +36,11 @@
     let valueMapKeys: string[] = [];
     let unsubscribe: (() => void);
 
+    // these are used to keep track of our data ranges for colors
+    let valueRangeKeys: string[] = [];
+    let valueRanges: {[key: string]: [number, number]} = {};
+    let colorFeatureProperty: string = null;
+
     // FIXME types
     let colorChroma: any;
 
@@ -42,9 +48,15 @@
         colorChroma = chroma.scale([args?.minColor ?? '#fff', args?.maxColor ?? '#000']);
         storeMap = {};
         controlProperties?.forEach((c: any) => {
-            const id = `${property.id}.${c.id}`;
+            // we can only have one fill color control
+            const id = c.type == 'fillColor'
+                ? `${property.id}.fillColor`
+                : `${property.id}.${c.id}`;
             storeMap[id] = GetOrCreateControlStore(id);
-            valueMapKeys.push(c.id);
+            const valueMapKey = c.type == 'fillColor'
+                ? 'fillColor'
+                : c.id;
+            valueMapKeys.push(valueMapKey);
             if (c.hideNull === true) {
                 const idForNulls = `${id}.hideNull`;
                 storeMap[idForNulls] = GetOrCreateControlStore(idForNulls);
@@ -52,12 +64,25 @@
             }
         });
 
+        const fillColor = controlProperties?.find(x => x.type == 'fill-color');
+        if (fillColor != null) {
+            valueRangeKeys = [...fillColor.args.include];
+            colorFeatureProperty = fillColor.args.initialValue;
+        }
+
+        if (args.colorFeatureProperty && valueRangeKeys.indexOf(args.colorFeatureProperty) == -1) {
+            valueRangeKeys.push(args.colorFeatureProperty);
+            colorFeatureProperty = args.colorFeatureProperty;
+        }
+
         // this has two args. I think the second one is some sort of set function
         valueStore = derived(Object.values(storeMap), (data, _) => {
             data.forEach((value, index) => {
                 const key = valueMapKeys[index];
                 if (key.endsWith('.hideNull')) {
                     includeNullMap[key] = value;
+                } else if (key == 'fillColor') {
+                    setColorChroma(value);
                 } else {
                     valueMap[key] = value;
                 }
@@ -105,8 +130,8 @@
     *     https://stackoverflow.com/questions/16148598/leaflet-update-geojson-filter
     */
     const onStyle = (feature) => {
-        const fillColor = args?.colorFeatureProperty != null
-            ? colorChroma(feature.properties[args.colorFeatureProperty])
+        const fillColor = colorFeatureProperty != null
+            ? colorChroma(feature.properties[colorFeatureProperty])
             : args?.fillColor;
 
         const colors = ({
@@ -133,7 +158,7 @@
 
         const background = args?.fillColor ? `background: ${args?.fillColor};` : '';
         const borderColor = args?.color ? `border-width: 2px; border-color: ${args?.color}; border-style: solid;` : '';
-        const backgroundCss = (args?.colorFeatureProperty != null
+        const backgroundCss = (colorFeatureProperty != null
                 && args?.minColor != null && args?.maxColor != null)
             ? `background-image: linear-gradient(to right, ${args.minColor}, ${args?.maxColor});`
             : ('' + background + borderColor);
@@ -151,14 +176,29 @@
     */
     const preprocessData = (event: any) => {
         const { data, url, name, id } = event.detail;
-        if (args?.colorFeatureProperty == null) return;
 
-        const values = data.features
-            .map(x => x.properties[args.colorFeatureProperty])
-            .filter(x => x && x != args?.null);
+        valueRangeKeys.forEach(key => {
+            const values = data.features
+                .map(x => x.properties[key])
+                .filter(x => x && x != args?.null);
 
-        colorChroma = colorChroma.domain([Math.min(...values), Math.max(...values)]);
+            valueRanges[key] = [Math.min(...values), Math.max(...values)];
+        });
+
+        if (colorFeatureProperty != null) {
+            setColorChroma(colorFeatureProperty);
+        }
     }
+
+    const setColorChroma = (key: string) => {
+        if (key == null || valueRangeKeys.indexOf(key) == -1) {
+            return;
+        }
+
+        colorFeatureProperty = key;
+        colorChroma = colorChroma.domain(valueRanges[key]);
+    }
+
 </script>
 
 <GeoJsonLayer
