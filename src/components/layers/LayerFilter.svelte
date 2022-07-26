@@ -25,7 +25,6 @@
     export let property: LayerProperty;
     export let controlProperties: ControlProperty[];
     export let args: LayerByValueListArgs;
-    let data = null;
 
     // these are things we can only load once mounted
     let layer: L.GeoJSON;
@@ -49,12 +48,12 @@
         storeMap = {};
         controlProperties?.forEach((c: any) => {
             // we can only have one fill color control
-            const id = c.type == 'fillColor'
-                ? `${property.id}.fillColor`
+            const id = c.type == 'fill-color'
+                ? `${property.id}.fill-color`
                 : `${property.id}.${c.id}`;
             storeMap[id] = GetOrCreateControlStore(id);
-            const valueMapKey = c.type == 'fillColor'
-                ? 'fillColor'
+            const valueMapKey = c.type == 'fill-color'
+                ? 'fill-color'
                 : c.id;
             valueMapKeys.push(valueMapKey);
             if (c.hideNull === true) {
@@ -64,10 +63,10 @@
             }
         });
 
-        const fillColor = controlProperties?.find(x => x.type == 'fill-color');
-        if (fillColor != null) {
-            valueRangeKeys = [...fillColor.args.include];
-            colorFeatureProperty = fillColor.args.initialValue;
+        const fillColorControl = controlProperties?.find(x => x.type == 'fill-color');
+        if (fillColorControl != null) {
+            valueRangeKeys = [...fillColorControl.args.include];
+            colorFeatureProperty = fillColorControl.args.initialValue;
         }
 
         if (args.colorFeatureProperty && valueRangeKeys.indexOf(args.colorFeatureProperty) == -1) {
@@ -81,7 +80,7 @@
                 const key = valueMapKeys[index];
                 if (key.endsWith('.hideNull')) {
                     includeNullMap[key] = value;
-                } else if (key == 'fillColor') {
+                } else if (key == 'fill-color') {
                     setColorChroma(value);
                 } else {
                     valueMap[key] = value;

@@ -17,7 +17,7 @@
   let value: number;
 
   onMount(() => {
-    const id = `${layerProperty.id}.fillColor`;
+    const id = `${layerProperty.id}.fill-color`;
     store = GetOrCreateControlStore(id);
     args = controlProperty.args as FillColorProperties;
     include = args.include;
