@@ -22,7 +22,7 @@
     "@rollup/plugin-typescript": "^8.0.0",
     "@smui-extra/accordion": "^6.0.0-beta.15",
     "@smui-extra/badge": "^6.0.0-beta.16",
-    "@smui/checkbox": "^6.0.0",
+    "@smui/checkbox": "^6.0.0-beta.16",
     "@smui/layout-grid": "^6.0.0-beta.14",
     "@smui/paper": "^6.0.0-beta.15",
     "@smui/radio": "^6.0.0",
