@@ -29,7 +29,7 @@
             </p>
 
             <p>
-            Layers will also be added with stories. Check the stories tab out for more details.
+            Layers will also be added with stories. Check the stories tab for more details.
             </p>
         </div>
     </span>
