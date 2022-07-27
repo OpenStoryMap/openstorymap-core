@@ -28,6 +28,8 @@
         return m;
     }, {});
 
+    const missingDisplay = displayProperties.missingDisplay || '';
+
     // create a map of unique keys to values
     const featureMap = Object.entries(value.feature.properties)
         .filter(x => x[0] in displayPropertyArgs)
@@ -36,10 +38,9 @@
 
     // then create that into a table
     const featureTable = Object.entries(featureMap)
-        .map(x => `<tr><td>${x[0]}</td><td>${x[1]}</td></tr>`);
+        .map(x => `<tr><td>${x[0]}</td><td>${x[1] ?? missingDisplay}</td></tr>`);
 
     if (!featureTable.length || !featureTable.length) {
-        const missingDisplay = displayProperties.missingDisplay;
         return missingDisplay != null
             ? `<h3>${value['name']}</h3>${missingDisplay}`
             : '';
