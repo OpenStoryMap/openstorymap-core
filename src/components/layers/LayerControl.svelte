@@ -102,9 +102,15 @@
         layersToRemove.forEach(l =>
             leafletMap.removeLayer(layersMap[l])
         );
-        layersToAdd.forEach(l =>
-            leafletMap.addLayer(layersMap[l])
-        );
+        layersToAdd.forEach(l => {
+            const layer = layersMap[l];
+            // if the layer doesn't exist, then skip it for now.
+            // better than crashing.
+            if (layer == null) {
+                return;
+            }
+            leafletMap.addLayer(layer)
+        });
     }
 
     $: {
